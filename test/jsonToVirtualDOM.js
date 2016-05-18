@@ -1,5 +1,5 @@
 import test from 'tape'
-import jsonToVirtualDOM from '../src/jsonToVirtualDOM'
+import jsonToVirtualDOM from '../internals/jsonToVirtualDOM'
 
 test('jsonToVirtualDOM returns a vnode', (assert) => {
   assert.equal(jsonToVirtualDOM(['div']).tagName, 'DIV')

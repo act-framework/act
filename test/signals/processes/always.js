@@ -1,5 +1,5 @@
 import test from 'tape'
-import always from '../../../src/signals/combinators/always'
+import always from '../../../signals/processes/always'
 import { spy } from 'sinon'
 
 test('always', (assert) => {

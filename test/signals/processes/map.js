@@ -1,5 +1,5 @@
 import test from 'tape'
-import map from '../../../src/signals/combinators/map'
+import map from '../../../signals/processes/map'
 import { spy } from 'sinon'
 import add from 'ramda/src/add'
 
