@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js",
+    "build": "webpack --config ../webpack.config.js"
+  },
+  "dependencies": {
+    "todomvc-app-css": "^2.0.0",
+    "todomvc-common": "^1.0.0"
+  },
+  "devDependencies": {
+    "@act/core": "^0.1.0",
+    "class-lists": "0.0.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

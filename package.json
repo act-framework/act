@@ -1,0 +1,39 @@
+{
+  "name": "@act/core",
+  "description": "Act",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/joaomilho/act.git"
+  },
+  "dependencies": {
+    "class-lists": "^1.0.0",
+    "ramda": "^0.21.0",
+    "virtual-dom": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-tape-runner": "^2.0.1",
+    "gitbook-cli": "^2.1.3",
+    "sinon": "^1.17.4",
+    "standard": "^7.1.0",
+    "tape": "^4.5.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "test:one": "babel-tape-runner",
+    "test": "babel-tape-runner test/**/*.js",
+    "lint": "standard 'src/**/*.js'"
+  },
+  "author": "Juan Lulkin <maiz@lulk.in> (https://medium.com/@joaomilho/)",
+  "bugs": {
+    "url": "https://gitlab.com/joaomilho/act/issues"
+  },
+  "homepage": "https://gitlab.com/joaomilho/act#README"
+}
