@@ -1,0 +1,12 @@
+{
+  "github": "joaomilho/act",
+  "css":  [
+    "docs/docs.css"
+  ],
+  "markdown": {
+    "typographer": true,
+    "plugins": {
+      "decorate": true
+    }
+  }
+}

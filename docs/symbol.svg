@@ -1,0 +1,9 @@
+<svg style="background:white" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100px" height="100px" viewBox="0 0 100 100" stroke-width="0" fill="#4592FB">
+  <title>ACT symbol</title>
+  <g transform="translate(0, 5)">
+    <path fill-opacity="0.6" d="M60,0 l0,70 l-60,-35 l60,-35"></path>
+    <path fill-opacity="0.6" d="M40,20 l0,70 l60,-35 l-60,-35"></path>
+    <path fill-opacity="0.2" fill="black"  d="M60,0 L60,78.4 L40,90 L40,11.6 L60,0"></path>
+  </g>
+</svg>
+

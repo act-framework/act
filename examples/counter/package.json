@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js",
+    "build": "webpack --config ../webpack.config.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

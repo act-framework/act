@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "babel-tape-runner test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-tape-runner": "^2.0.1",
+    "chai": "^3.5.0",
+    "chai-virtual-dom": "^1.0.0",
+    "sinon": "^1.17.4",
+    "tape": "^4.5.1"
+  }
+}

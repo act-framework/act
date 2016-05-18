@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100px" height="134px" viewBox="0 0 100 134" stroke-width="0" fill="#4592FB">
+  <title>ACT logo</title>
+  <text font-family="Raleway-ExtraLight, Raleway" font-size="36" font-weight="300" fill="black">
+    <tspan x="15" y="133">ACT</tspan>
+  </text>
+
+  <path fill-opacity="0.6" d="M60,0 l0,70 l-60,-35 l60,-35"></path>
+  <path fill-opacity="0.6" d="M40,20 l0,70 l60,-35 l-60,-35"></path>
+  <path fill-opacity="0.2" fill="black"  d="M60,0 l0,78 l-20,12 l0,-79 L60,0"></path>
+</svg>
+

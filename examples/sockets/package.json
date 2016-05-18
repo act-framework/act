@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js",
+    "build": "webpack --config ../webpack.config.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.13.4",
+    "socket.io": "^1.4.6",
+    "socket.io-client": "^1.4.6",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
