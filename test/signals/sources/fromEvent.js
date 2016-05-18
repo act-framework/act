@@ -1,5 +1,5 @@
 import test from 'tape'
-import fromEvent from '../../../src/signals/sources/fromEvent'
+import fromEvent from '../../../signals/sources/fromEvent'
 import { spy } from 'sinon'
 
 test('createSignal', (assert) => {

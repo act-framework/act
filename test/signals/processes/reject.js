@@ -1,5 +1,5 @@
 import test from 'tape'
-import reject from '../../../src/signals/combinators/reject'
+import reject from '../../../signals/processes/reject'
 import { spy } from 'sinon'
 import equals from 'ramda/src/equals'
 
