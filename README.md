@@ -1,6 +1,8 @@
 ![Travis](https://travis-ci.org/joaomilho/act.svg)
 
-<img src="https://raw.githubusercontent.com/joaomilho/act/master/docs/logo.png" width="100" alt="Act">
+<center>
+  <img src="https://raw.githubusercontent.com/joaomilho/act/master/docs/logo.png" width="100" alt="Act">
+</center>
 
 # ACT
 
