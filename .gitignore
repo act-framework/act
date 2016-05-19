@@ -2,3 +2,4 @@ node_modules
 vdom
 _book
 _temp
+npm-debug.log
