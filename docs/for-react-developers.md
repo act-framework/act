@@ -630,8 +630,9 @@ scroll but for any sort of subscription you need.
 One final and relevant comment is that Ramda's functions are pretty handy for
 creating your own processes. Take a look at some ideas:
 
+<font size="1">
 
-| Amount | Explanation | In code |
+| Ex | Explanation | Transforms |
 |--------|---------|---------|
 | map(head) | Given an array or string pass only the first item on | [1, 2, 3] => 1<br>'abc' => 'a'|
 | map(tail) | Given an array or string pass all except the first item on | [1, 2, 3] => [2, 3]<br>'abc' => 'bc'|
@@ -641,6 +642,8 @@ creating your own processes. Take a look at some ideas:
 | filter(propEq('id', 7)) | Given an object, passes the value if its id is 7| {id: 7} => {id: 7}<br />{id: 8} => ()|
 | filter(contains(100)) | Given an array pass it on if it contains 100 | [99, 100] => [99, 100]<br /> [99, 101] => ()|
 | fold(add, 0) | Given an array of numbers, sum them all | [1,2,3] => 6 |
+
+</font>
 
 ###### Subscription helpers
 
