@@ -83,14 +83,12 @@ const jsonToVirtualDOM = (json, update, namespaces) => {
     }
   }
 
-  if (typeof maybeChildren !== undefined) {
+  if (typeof maybeChildren !== 'undefined') {
     children = maybeChildren
   }
 
   if (isArrayLike(children)) {
     children = map((el) => processChildren(el, update, tag, children, namespaces), children)
-  } else {
-    children = String(children)
   }
 
   if (isFunction(children)) {

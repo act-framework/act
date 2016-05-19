@@ -46,8 +46,8 @@ test('with mixed children', function (assert) {
 
   assert.equal(node.children[0].tagName, 'SPAN')
   assert.equal(node.children[1].text, 'Hey')
-
   assert.equal(node.children[2].tagName, 'H1')
+  assert.equal(node.children[3].text, 'Ho')
   assert.equal(node.children[4].tagName, 'INPUT')
 
   assert.end()
@@ -73,5 +73,22 @@ test('with tag grandchild', function (assert) {
   assert.equal(node.children[0].tagName, 'SPAN')
   assert.equal(node.children[0].children[0].tagName, 'SPAN')
   assert.equal(node.children[0].children[0].children[0].text, 'foo')
+  assert.end()
+})
+
+test.only('with attributes', function (assert) {
+  const node = jsonToVirtualDOM(['input', {value: 'Morgenbesser'}])
+
+  assert.equal(node.properties.value.value, 'Morgenbesser')
+
+  assert.end()
+})
+
+test('with attributes and children', function (assert) {
+  const node = jsonToVirtualDOM(['label', {for: 'name'}, 'name'])
+
+  assert.equal(node.properties.htmlFor, 'name')
+  assert.equal(node.children[0].text, 'name')
+
   assert.end()
 })
