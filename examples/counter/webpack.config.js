@@ -9,7 +9,7 @@ const webpack = require('webpack')
 module.exports = {
   cache: true,
   entry: {
-    bundle: './counterList.js'
+    bundle: './home_page_example.js'
   },
   output: {
     path: './js/',

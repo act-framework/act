@@ -44,7 +44,7 @@ const processChildren = (el, update, tag, children, namespaces = []) => {
     }
   }
 
-  return el
+  return String(el)
 }
 
 const events = [
@@ -83,12 +83,14 @@ const jsonToVirtualDOM = (json, update, namespaces) => {
     }
   }
 
-  if (maybeChildren) {
+  if (typeof maybeChildren !== undefined) {
     children = maybeChildren
   }
 
   if (isArrayLike(children)) {
     children = map((el) => processChildren(el, update, tag, children, namespaces), children)
+  } else {
+    children = String(children)
   }
 
   if (isFunction(children)) {

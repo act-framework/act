@@ -7,11 +7,14 @@ import filter from './signals/processes/filter'
 import distinct from './signals/processes/distinct'
 import filterMap from './signals/processes/filterMap'
 import throttle from './signals/processes/throttle'
+import always from './signals/processes/always'
+import fold from './signals/processes/fold'
 import pipe from './signals/pipe'
 import equals from 'ramda/src/equals'
 import find from 'ramda/src/find'
 import toPairs from 'ramda/src/toPairs'
 import head from 'ramda/src/head'
+import add from 'ramda/src/add'
 
 const ENTER_KEY = 13
 const ESC_KEY = 27
@@ -64,6 +67,16 @@ export const andValue = (otherValue) =>
 const and = (processor) => (otherValue) => pipe(
   processor,
   andValue(otherValue)
+)
+
+export const countWith = (amount = 1) => pipe(
+  always(amount),
+  fold(add, 0)
+)
+
+export const count = pipe(
+  always(1),
+  fold(add, 0)
 )
 
 export const valueOnEnterAnd = and(valueOnEnter)

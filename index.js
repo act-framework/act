@@ -5,19 +5,27 @@ import mapObjIndexed from 'ramda/src/mapObjIndexed'
 import reduce from 'ramda/src/reduce'
 import identity from 'ramda/src/identity'
 import jsonToVirtualDOM from './internals/jsonToVirtualDOM'
-import isFunction from './internals/isFunction'
 
 let tree, rootNode
-export const render = (json, update, globalErrorHandler, domNode = document.body) => {
+export const render = (json, { update, globalErrorHandler, node = document.body } = {}) => {
   tree = jsonToVirtualDOM(json, update)
   rootNode = createElement(tree)
-  domNode.insertBefore(rootNode, domNode.firstChild)
+  node.insertBefore(rootNode, node.firstChild)
+  return tree
 }
+
+const defaultReducer = (_, { payload }) => payload
 
 let animationFrameId
 
-const main = function (view, state, reducer, { subscriptions = {}, presenter = identity, globalErrorHandler, storage } = {}) {
-  const initialState = state // storage && storage.get() || state
+const main = function (view, { model, reducer = defaultReducer, node, subscriptions = {}, presenter = identity, globalErrorHandler, storage } = {}) {
+  // TODO warn that if it's not a function, but the user
+  // passed model or subscriptions, it will not work as expected
+  if (typeof view !== 'function') {
+    return { dom: render(view, { node }) }
+  }
+
+  const initialState = storage && storage.get() || model
   let currentState = initialState
   // TODO: Think of a simple way of getting history from
   // window and run it
@@ -35,19 +43,20 @@ const main = function (view, state, reducer, { subscriptions = {}, presenter = i
     // TODO: think of a good way to debug the currentState
     // window.currentState = currentState
 
-    // TODO: The performance of libe below is shitty
-    // Don't remove, but think of a solution
-    // storage && storage.set(currentState)
-    // view(presenter(currentState))
-
     batchedUpdates.push(latest)
 
     if (animationFrameId) {
       window.cancelAnimationFrame(animationFrameId)
     }
 
-    animationFrameId = window.requestAnimationFrame(() => {
+    animationFrameId = window && window.requestAnimationFrame(() => {
       currentState = reduce(reducer, currentState, batchedUpdates)
+      // TODO: The performance of line below is shitty
+      // Don't remove, but think of a solution
+      // storage && storage.set(currentState)
+      // TODO: rethink the idea of presenters
+      // view(presenter(currentState))
+
       batchedUpdates = []
 
       const json = view(currentState)
@@ -58,15 +67,15 @@ const main = function (view, state, reducer, { subscriptions = {}, presenter = i
     })
   }
 
-  render(isFunction(view) ? view(initialState) : view, update, globalErrorHandler)
+  const dom = render(view(model), { update, globalErrorHandler, node })
 
   mapObjIndexed((subscription, type) => {
-    console.log('1', subscription, type)
     subscription((value) => {
-      console.log('2', value)
       update(type, value)
     })
   }, subscriptions)
+
+  return { dom, update }
 }
 
 export default main

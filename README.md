@@ -17,11 +17,9 @@ main('Hello world')
 And here's the classic counter example:
 
 ```js
-main(
-  (count) => ['button', {click: {add: 1}}, count],
-  0,
-  (state, {payload}) => state + payload
-)
+const view = (value) => ['button', {click: {add: count}}, value]
+const model = 0
+main(view, { model })
 ```
 
 ## Install
