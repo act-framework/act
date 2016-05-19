@@ -2,7 +2,7 @@ import test from 'tape'
 import fromEvent from '../../../signals/sources/fromEvent'
 import { spy } from 'sinon'
 
-test('createSignal', (assert) => {
+test('fromEvent', (assert) => {
   const addEventListener = spy()
   const node = { addEventListener }
   const signal = fromEvent(node, 'click', false)
