@@ -600,16 +600,16 @@ positions. To accomplish that you can simply put this logic in your reducer,
 but the encouraged way is to further compose your scroll process:
 
 ```js
-const moved = pipe
+const moved = pipe(
   scroll,
   map((scrollPosition) => scrollPosition > 0)
-  distinct()
+  distinct
 )
 ```
 
 So in this process we first get the scroll position and turn it into a boolean,
-if the user has scrolled (>0). We finally call `distinct()`, else we would get
-the `true` value everytime the user scrolled any pixel. Distinct will filter
+if the user has scrolled (>0). We finally call `distinct`, else we would get
+the `true` value everytime the user scrolled any pixel. `distinct` will filter
 our values to send them through only when they are different than the previous
 one (false becomes true and otherwise).
 
@@ -630,20 +630,16 @@ scroll but for any sort of subscription you need.
 One final and relevant comment is that Ramda's functions are pretty handy for
 creating your own processes. Take a look at some ideas:
 
-<font size="1">
-
-| Ex | Explanation | Transforms |
-|--------|---------|---------|
-| map(head) | Given an array or string pass only the first item on | [1, 2, 3] => 1<br>'abc' => 'a'|
-| map(tail) | Given an array or string pass all except the first item on | [1, 2, 3] => [2, 3]<br>'abc' => 'bc'|
-| map(prop('name')) | Given an object, pass it's name on | {name: 'Spinoza'} => 'Spinoza'<br />{} => undefined |
-| map(propOr('Descartes', 'name')) | Given an object, pass it's name on or the default | {name: 'Spinoza'} => 'Spinoza'<br />{} => 'Descartes' |
-| filter(equals(5)) | Passes the value if and only if it is 5 | 5 => 5<br /> 6 => ()|
-| filter(propEq('id', 7)) | Given an object, passes the value if its id is 7| {id: 7} => {id: 7}<br />{id: 8} => ()|
-| filter(contains(100)) | Given an array pass it on if it contains 100 | [99, 100] => [99, 100]<br /> [99, 101] => ()|
-| fold(add, 0) | Given an array of numbers, sum them all | [1,2,3] => 6 |
-
-</font>
+| Ex | Transforms |
+|--------|---------|
+| map(head) | [1, 2, 3] => 1<br>'abc' => 'a'|
+| map(tail) | [1, 2, 3] => [2, 3]<br>'abc' => 'bc'|
+| map(prop('name')) | {name: 'Spinoza'} => 'Spinoza'<br />{} => undefined |
+| map(propOr('Descartes', 'name')) | {name: 'Spinoza'} => 'Spinoza'<br />{} => 'Descartes' |
+| filter(equals(5)) | 5 => 5<br /> 6 => ()|
+| filter(propEq('id', 7)) | {id: 7} => {id: 7}<br />{id: 8} => ()|
+| filter(contains(100)) | [99, 100] => [99, 100]<br /> [99, 101] => ()|
+| fold(add, 0) | [1,2,3] => 6 |
 
 ###### Subscription helpers
 
@@ -659,6 +655,10 @@ The `breakpoint` subscription will give you a breakpoint for the current screen
 width, every time it changes. You can provide custom breakpoint config using
 `brekpointWith`. And `scroll` will give you the current scroll position, throttled to
 a reasonable amount of time. To know more check the documentation on subscriptions.
+
+Note that the examples above used the `scroll` helper from processes, so you
+can compose your own, and here `scroll` comes from the subscription helpers, a
+more high level library that abstracts the whole signal - source and process.
 
 ## Testing
 
