@@ -25,8 +25,7 @@ const main = function (view, { model, reducer = defaultReducer, node, subscripti
     return { dom: render(view, { node }) }
   }
 
-  const initialState = storage && storage.get() || model
-  let currentState = initialState
+  let currentState = storage && storage.get() || model
   // TODO: Think of a simple way of getting history from
   // window and run it
   // const history = []
@@ -45,15 +44,12 @@ const main = function (view, { model, reducer = defaultReducer, node, subscripti
 
     batchedUpdates.push(latest)
 
-    if (animationFrameId) {
-      window.cancelAnimationFrame(animationFrameId)
-    }
-
-    animationFrameId = window && window.requestAnimationFrame(() => {
+    const rerender = () => {
       currentState = reduce(reducer, currentState, batchedUpdates)
+
       // TODO: The performance of line below is shitty
       // Don't remove, but think of a solution
-      // storage && storage.set(currentState)
+      storage && storage.set(currentState)
       // TODO: rethink the idea of presenters
       // view(presenter(currentState))
 
@@ -63,15 +59,27 @@ const main = function (view, { model, reducer = defaultReducer, node, subscripti
       const newTree = jsonToVirtualDOM(json, update)
       rootNode = patch(rootNode, diff(tree, newTree))
       tree = newTree
-      animationFrameId = null
-    })
+      return tree
+      // animationFrameId = null
+    }
+
+    // TODO: create animation frame signal source and use it
+    if (typeof window !== 'undefined') {
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId)
+      }
+
+      animationFrameId = window.requestAnimationFrame(rerender)
+    } else {
+      return rerender()
+    }
   }
 
-  const dom = render(view(model), { update, globalErrorHandler, node })
+  const dom = render(view(currentState), { update, globalErrorHandler, node })
 
   mapObjIndexed((subscription, type) => {
     subscription((value) => {
-      update(type, value)
+      return update(type, value)
     })
   }, subscriptions)
 

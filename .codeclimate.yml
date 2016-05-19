@@ -1,0 +1,4 @@
+exclude_paths:
+- examples/**/*
+- docs/**/*
+- test/**/*
