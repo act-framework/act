@@ -1,6 +1,6 @@
 ![Travis](https://travis-ci.org/joaomilho/act.svg)
 
-![Act](docs/symbol.svg)
+![Act](./docs/symbol.svg)
 
 # ACT
 
