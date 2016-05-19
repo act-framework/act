@@ -4,7 +4,7 @@ import always from '../signals/processes/always'
 import fromEvent from '../signals/sources/fromEvent'
 
 class SignalHandler {
-  constructor (events, update, namespaces) {
+  constructor (events, update, namespaces = []) {
     this.events = events
     this.update = update
     this.namespaces = namespaces
