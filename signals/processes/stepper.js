@@ -4,7 +4,7 @@
  *
  */
 
-export default (eventSource, initial) => {
+export default (initial, eventSource) => {
   let valueAtLastStep = initial
 
   eventSource((value) => {
