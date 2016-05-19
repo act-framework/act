@@ -6,7 +6,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/joaomilho/act.git"
+    "url": "git+https://github.com/joaomilho/act.git"
   },
   "dependencies": {
     "class-lists": "^1.0.0",
@@ -30,11 +30,16 @@
   "scripts": {
     "test:one": "babel-tape-runner",
     "test": "babel-tape-runner test/**/*.js",
-    "lint": "standard 'src/**/*.js'"
+    "lint": "standard 'src/**/*.js'",
+    "docs:clean": "rm -rf _book",
+    "docs:prepare": "gitbook install",
+    "docs:build": "npm run docs:prepare && gitbook build -g joaomilho/act",
+    "docs:watch": "npm run docs:prepare && gitbook serve",
+    "docs:publish": "./scripts/publish_book"
   },
   "author": "Juan Lulkin <maiz@lulk.in> (https://medium.com/@joaomilho/)",
   "bugs": {
-    "url": "https://gitlab.com/joaomilho/act/issues"
+    "url": "https://github.com/joaomilho/act/issues"
   },
-  "homepage": "https://gitlab.com/joaomilho/act#README"
+  "homepage": "https://github.com/joaomilho/act#README"
 }
