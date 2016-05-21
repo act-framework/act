@@ -75,6 +75,6 @@ therefore reproduceable.
 
 #TBD
 
-## Storages
+## Storage
 
 #TBD
