@@ -1,13 +1,5 @@
 # Concepts
 
-* [Using JSON for rendering](/docs/concepts/json.md)
-* [Unidirectional data flow](/docs/concepts/unidirectional-data-flow.md)
-* [Single model & reducer](/docs/concepts/single-model-and-reducer.md)
-* [Reducers](/docs/concepts/reducers.md)
-* [Signals: sources & processes](/docs/concepts.md/signals.md)
-* [Subscriptions](/docs/concepts.md/subscriptions.md)
-* [Storage](/docs/concepts.md/storage.md)
-
 ## Unidirectional data flow
 
 Act follows the "unidirectional data flow" way of passing data to views, like
