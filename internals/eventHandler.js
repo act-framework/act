@@ -13,7 +13,8 @@ class EventHandler {
       return
     }
 
-    node.addEventListener(prop, (event) => this.event(event, this.update))
+    // TODO: pass current state as well
+    node.addEventListener(prop, (event) => this.event(this.update, event))
 
     node['__act'] = { [prop]: this }
   }
