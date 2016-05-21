@@ -76,7 +76,7 @@ test('with tag grandchild', function (assert) {
   assert.end()
 })
 
-test.only('with attributes', function (assert) {
+test('with attributes', function (assert) {
   const node = jsonToVirtualDOM(['input', {value: 'Morgenbesser'}])
 
   assert.equal(node.properties.value.value, 'Morgenbesser')

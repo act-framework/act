@@ -1,3 +1,3 @@
-import main from '../../src'
+import main from '../..'
 
 main('Hello world')

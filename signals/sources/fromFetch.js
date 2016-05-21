@@ -33,4 +33,3 @@ const fromFetch = (fn) => (...args) => (next, error) => {
 }
 
 export default fromFetch
-
