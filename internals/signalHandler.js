@@ -37,7 +37,7 @@ class SignalHandler {
       this.sources[type] = fromEvent(node, prop)
 
       this.processes[type](this.sources[type].start())((payload) => {
-        this.update([...this.namespaces, type].join('.'), payload)
+        this.update({ type: [...this.namespaces, type].join('.'), payload })
       })
     }, this.events)
 

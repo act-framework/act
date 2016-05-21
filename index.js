@@ -2,19 +2,19 @@ import createElement from 'virtual-dom/create-element'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import mapObjIndexed from 'ramda/src/mapObjIndexed'
-import reduce from 'ramda/src/reduce'
 import jsonToVirtualDOM from './internals/jsonToVirtualDOM'
-import delay from './internals/delay'
+import History from './internals/History'
 
 const defaultReducer = (_, { payload }) => payload
 const defaultStorage = { get: () => undefined, set: () => {} }
 
 const main = function (view, {
-  model,
-  reducer = defaultReducer,
-  node = document.body,
-  subscriptions = {},
-  storage = defaultStorage } = {}) {
+    model,
+    node = document.body,
+    reducer = defaultReducer,
+    storage = defaultStorage,
+    subscriptions = {}
+  } = {}) {
   let previousTree
   let rootNode
 
@@ -32,33 +32,27 @@ const main = function (view, {
     return { dom: render(view) }
   }
 
-  let batchedUpdates = []
-  let currentState = storage.get() ||
+  let initialState = storage.get() ||
     typeof model !== 'undefined' && model ||
-    reducer({}, {type: '__probe'})
+    reducer(undefined, {type: '__probe'})
 
-  const rerender = (state, history) => {
-    currentState = reduce(reducer, state, history)
-    const dom = render(view(currentState))
-    batchedUpdates = []
-    storage.set(currentState)
+  const rerender = (state) => {
+    const dom = render(view(state))
+    storage.set(state)
     return dom
   }
 
-  const update = (type, payload) => {
-    batchedUpdates.push({ type, payload })
+  const history = new History(initialState, reducer, rerender)
 
-    return delay(() => rerender(currentState, batchedUpdates))
-  }
+  const update = (action) => history.push(action)
 
-  const dom = render(view(currentState))
+  const dom = render(view(initialState))
 
   mapObjIndexed((subscription, type) =>
-    subscription((value) =>
-      update(type, value))
+    subscription((payload) => update({ type, payload }))
   , subscriptions)
 
-  return { dom, update, rerender }
+  return { dom, history }
 }
 
 export default main

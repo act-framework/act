@@ -36,11 +36,11 @@ test('main: renders simple function', (assert) => {
   assert.end()
 })
 
-test('main: rerenders with new value', (assert) => {
+test('main: history.push', (assert) => {
   const insertBefore = spy()
   const mockNode = { insertBefore }
 
-  const { dom, update } = main(
+  const { dom, history } = main(
     identity,
     {
       model: 'Kripke',
@@ -48,7 +48,7 @@ test('main: rerenders with new value', (assert) => {
     }
   )
   assert.equal(dom.children[0].text, 'Kripke')
-  const newDOM = update('name', 'Austin')
+  const newDOM = history.push({ type: 'name', payload: 'Austin' })
   assert.equal(newDOM.children[0].text, 'Austin')
   assert.end()
 })
@@ -67,7 +67,7 @@ test('main: rerenders with subscription', (assert) => {
     {
       model: 'Anscombe',
       node: mockNode,
-      subscriptions: [mockSubscription]
+      subscriptions: { mockSubscription }
     }
   )
 
@@ -85,7 +85,7 @@ test('main: calls storage functions when value changes', (assert) => {
   const mockNode = { insertBefore }
   const mockStorage = { get: () => 'Plato', set: spy() }
 
-  const { dom, update } = main(
+  const { dom, history } = main(
     identity,
     {
       model: 'Aristotle',
@@ -94,8 +94,54 @@ test('main: calls storage functions when value changes', (assert) => {
     }
   )
   assert.equal(dom.children[0].text, 'Plato')
-  update('name', 'Socrates')
+  history.push({ type: 'name', payload: 'Socrates' })
   assert.ok(mockStorage.set.calledWith('Socrates'))
 
   assert.end()
 })
+
+test('main: history.undo/redo', (assert) => {
+  const insertBefore = spy()
+  const mockNode = { insertBefore }
+
+  const { history } = main(
+    identity,
+    {
+      model: 'Heraclitus',
+      node: mockNode
+    }
+  )
+  history.push({ type: 'name', payload: 'Parmenides' })
+
+  const dom = history.push({ type: 'name', payload: 'Anaximander' })
+  assert.equal(dom.children[0].text, 'Anaximander')
+
+  assert.equal(history.undo().children[0].text, 'Parmenides')
+  assert.equal(history.undo().children[0].text, 'Heraclitus')
+  assert.equal(history.redo().children[0].text, 'Parmenides')
+  assert.equal(history.redo().children[0].text, 'Anaximander')
+
+  assert.end()
+})
+
+test('main: history.go', (assert) => {
+  const insertBefore = spy()
+  const mockNode = { insertBefore }
+
+  const { history } = main(
+    identity,
+    {
+      model: 'Anaximenes',
+      node: mockNode
+    }
+  )
+  history.push({ type: 'name', payload: 'Plutarchus' })
+  history.push({ type: 'name', payload: 'Plotinus' })
+
+  assert.equal(history.go(0).children[0].text, 'Anaximenes')
+  assert.equal(history.go(1).children[0].text, 'Plutarchus')
+  assert.equal(history.go(2).children[0].text, 'Plotinus')
+
+  assert.end()
+})
+
