@@ -67,16 +67,8 @@ const subscriptions = {
   scroll: scroll(fromEvent(window, 'scroll').start())
 }
 
-main(view, model, reducer, { subscriptions })
+main(view, { model, reducer, subscriptions })
 ```
-
-Note the subscriptions object is passed inside another object. This is because
-we want to emphasize that the three first options are required for
-_any_ app (to be precise, only `view` is really required but there's no sense
-to use Act to just render HTML, use HTML instead!), namely `view`, `model` and
-`reducer`. The fourth argument will contain things that are not used all the
-time, like subscriptions, middleware, presenters, global error handlers and
-others. You can learn more of those in this article.
 
 With this code, Act will get the scroll position and send it to your reducer
 with an action like `{ type: 'scroll', payload: 123 }` every time the scroll
@@ -98,7 +90,7 @@ So in this process we first get the scroll position and turn it into a boolean,
 if the user has scrolled (>0). We finally call `distinct`, else we would get
 the `true` value everytime the user scrolled any pixel. `distinct` will filter
 our values to send them through only when they are different than the previous
-one (false becomes true and otherwise).
+one (false becomes true and vice versa).
 
 Another common usage here is to to throtlle (a.k.a. debouce) this event, so you
 don't get too many rerenders which is memory and time consuming. In order to

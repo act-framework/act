@@ -1,7 +1,5 @@
 import main from '../..'
-// import history from '../../enhancers/history'
 import map from 'ramda/src/map'
-//import combine from '../../combine'
 
 const view = (count) => (
   ['div', [
@@ -20,7 +18,6 @@ const historyView = (history) => (
 const historyItem = (item) => (
   ['li', `${item.type}: ${item.payload}`]
 )
-// export const model = { count: 0, history: [] }
 
 export const count = (state = 0, {type, payload}) => {
   console.log('count')
@@ -30,12 +27,5 @@ export const count = (state = 0, {type, payload}) => {
 
   return state
 }
-
-const history = (state = [], action) => {
-  console.log('history')
-  return [...state, action]
-}
-
-// const enhancers = [history]
 
 main(view, { reducer: count, devtools: true })
