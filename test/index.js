@@ -141,6 +141,7 @@ test('main: history.go', (assert) => {
   assert.equal(history.go(0).children[0].text, 'Anaximenes')
   assert.equal(history.go(1).children[0].text, 'Plutarchus')
   assert.equal(history.go(2).children[0].text, 'Plotinus')
+  assert.equal(history.go(2), undefined)
 
   assert.end()
 })
