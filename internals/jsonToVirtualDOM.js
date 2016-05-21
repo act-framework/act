@@ -2,10 +2,11 @@ import h from 'virtual-dom/h'
 import isArrayLike from 'ramda/src/isArrayLike'
 import map from 'ramda/src/map'
 import classLists from 'class-lists'
-import isObject from 'is-object'
 import eventHandler from './eventHandler'
 import signalHandler from './signalHandler'
-import isFunction from './isFunction'
+
+const isAts = (maybeAts) =>
+  (typeof maybeAts === 'object') && !isArrayLike(maybeAts)
 
 const processChildren = (el, update, tag, children, namespaces = []) => {
   // To support the case where user does
@@ -22,7 +23,7 @@ const processChildren = (el, update, tag, children, namespaces = []) => {
   }
 
   let newChildren
-  if (isFunction(el)) {
+  if (typeof el === 'function') {
     const fn = el
     try {
       newChildren = fn()
@@ -73,14 +74,9 @@ const jsonToVirtualDOM = (json, update, namespaces) => {
   let children = []
 
   if (typeof maybeAtsOrChildren !== 'undefined') {
-    if (isObject(maybeAtsOrChildren) && !isArrayLike(maybeAtsOrChildren)) {
-      ats = maybeAtsOrChildren
-    } else {
-      // TODO is the user passed ['tag', 'value', {ats}]
-      // vdom will explode. We should validate that and give
-      // the user a better msg.
-      children = maybeAtsOrChildren
-    }
+    isAts(maybeAtsOrChildren)
+      ? ats = maybeAtsOrChildren
+      : children = maybeAtsOrChildren
   }
 
   if (typeof maybeChildren !== 'undefined') {
@@ -91,7 +87,7 @@ const jsonToVirtualDOM = (json, update, namespaces) => {
     children = map((el) => processChildren(el, update, tag, children, namespaces), children)
   }
 
-  if (isFunction(children)) {
+  if (typeof children === 'function') {
     if (children.namespace) {
       console.log('TODO namespace when function is single children')
     }

@@ -1,16 +1,15 @@
 import main from '../..'
 // import history from '../../enhancers/history'
 import map from 'ramda/src/map'
-import combine from '../../combine'
+//import combine from '../../combine'
 
-const view = ({ count, history }) => (
+const view = (count) => (
   ['div', [
     ['.counter', [
       ['h1', count],
       ['button', {click: {add: 1}}, 'Add 1'],
       ['button', {click: {add: -1}}, 'Remove 1']
-    ]],
-    historyView(history)
+    ]]
   ]]
 )
 
@@ -39,4 +38,4 @@ const history = (state = [], action) => {
 
 // const enhancers = [history]
 
-main(view, { reducer: combine({ count, history }) })
+main(view, { reducer: count, devtools: true })
