@@ -1,52 +1,42 @@
 import reduce from 'ramda/src/reduce'
+import splitAt from 'ramda/src/splitAt'
+import take from 'ramda/src/take'
 import delay from './delay'
 
 export default class History {
   constructor (state, reducer, rerender) {
-    this.past = []
-    this.future = []
+    this.timeline = []
+    this.present = 0
     this.reduce = reduce(reducer)
     this.initialState = state
     this.state = state
     this.delta = []
     this.rerender = () => rerender(this.state)
+    this.undo = () => this.go(this.present - 1)
+    this.redo = () => this.go(this.present + 1)
   }
 
-  concat (actions) {
-    this.state = this.reduce(this.state, actions)
+  concat () {
+    this.state = this.reduce(this.state, this.delta)
     const dom = this.rerender()
-    this.past = [...this.past, ...actions]
+    const [past, future] = splitAt(this.present, this.timeline)
+    this.timeline = [...past, ...this.delta, ...future]
+    this.present += this.delta.length
     this.delta = []
     return dom
   }
 
   push (action) {
     this.delta.push(action)
-    return delay(() => this.concat(this.delta))
-  }
-
-  undo () {
-    this.future.unshift(this.past.pop())
-    this.state = this.reduce(this.initialState, this.past)
-    return this.rerender()
-  }
-
-  redo () {
-    this.past.push(this.future.shift())
-    this.state = this.reduce(this.initialState, this.past)
-    return this.rerender()
+    return delay(() => this.concat())
   }
 
   go (index) {
-    if (index === this.past.length) {
+    if (index === this.present) {
       return
-    } else if (index > this.past.length) {
-      this.past = [...this.past, ...this.future.splice(0, index - this.past.length)]
-    } else {
-      this.future = [...this.past.splice(index, this.past.length - index), ...this.future]
     }
 
-    this.state = this.reduce(this.initialState, this.past)
+    this.state = this.reduce(this.initialState, take(this.present = index, this.timeline))
     return this.rerender()
   }
 }
