@@ -6,7 +6,7 @@
 
 In React you either build your components manually – almost no one does that –
 or you use JSX (to be fair there's also a [hyperscript](https://github.com/mlmorg/react-hyperscript)
-library). JSX tries to emulate HTML, but it's different in many ways. Here's
+library). JSX tries to emulate HTML, but it is different in many ways. Here's
 some JSX:
 
 ```js
@@ -69,7 +69,7 @@ shortcuts with any other tag:
 ['h1.title']
 ```
 
-## JS vs HTML names
+## JS vs HTML attribute names
 
 ##### React
 
@@ -146,7 +146,7 @@ const menu = ({ open }) => (
 ##### React
 
 In React, in practice, events are treated pretty much like in plain HTML,
-although behind the scenes it's not quite (for instance, React events are
+although behind the scenes it is not quite (for instance, React events are
 "synthetic"). If you do the following in HTML or in React you'll get the same
 results:
 
@@ -366,7 +366,7 @@ attached automatically by Act. This source give us DOM events. What the process
 `valueOnEnter` does is to get this event, fetch the value (like in
 `event.target.value` and only update when the `even.keyCode` is an enter key.
 So, as you can see, a process can not only manipulate the original value, but
-also filter it and only let us now about it when it's really important.
+also filter it and only let us now about it when it is really important.
 
 The cool thing about processes is that they are composable. This means you can
 define them piecemeal and then group them togheter. The two most important
@@ -484,7 +484,7 @@ mentioned the source is defined for you as well, which is simply the DOM element
 for the event you defined.
 
 But in case you need to do it yourself, you can check the sources available on
-the signals/sources folder (or create your own, it's damn simple) and to
+the signals/sources folder (or create your own, it is damn simple) and to
 subscribe you just call the returned function from your process, no `subscribe`
 function required. So the overall syntax of this system in sort of pseudo code
 is:
@@ -688,7 +688,6 @@ deep rendering.
   There are a couple of libraries to simplify and reduce this boilerplate, like
   [skin-deep](https://github.com/glenjamin/skin-deep) and [enzyme](https://github.com/airbnb/enzyme).
 
-
   2) Deep rendering means rendering to a DOM, and that makes your tests not
   really unit tests, but something between unit and integration tests. This
   approach requires more setup and may be slower, but has the great advantage
@@ -699,7 +698,7 @@ deep rendering.
   a testing framework built by Facebook on top of [Jasmine](http://jasmine.github.io/).
   The main advantage of Jest is the "auto mock" functionality, that truly
   isolates your module for testing. (If you're confused by the term "mock"
-  here, don't worry, it's used for many different things in the Node world. In
+  here, don't worry, it is used for many different things in the Node world. In
   this case, a mock means being able to override parts of modules, or entire
   modules, like in libraries as [rewire](https://github.com/jhnns/rewire))
 
@@ -723,7 +722,7 @@ deep rendering.
 
       const checkboxNode = ReactDOM.findDOMNode(checkbox)
 
-      // Verify that it's Off by default
+      // Verify that it is Off by default
       expect(checkboxNode.textContent).toEqual('Off')
 
       // Simulate a click and verify that it is now On

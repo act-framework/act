@@ -1,15 +1,15 @@
 # For Elm developers
 
-It's no secret Act is hugely inspired by Elm. Therefore, Act will [I hope] feel
+It is no secret Act is hugely inspired by Elm. Therefore, Act will [I hope] feel
 sort of natural to anyone with some Elm experience.
 
-The main way Act departs from Elm, and also it's main advantage, is that it's
-written in JavaScript (actually, es2015/es6). Also it's main disadvantage is
-that it's written in JavaScript :cry:.
+The main way Act departs from Elm, and also its main advantage, is that it is
+written in JavaScript (actually, es2015/es6). Also its main disadvantage is
+that it is written in JavaScript :cry:.
 
 - Being written in JavaScript allows Act to play nicer with other JavaScript
   libraries and it also appeals to a bigger number of developers than any Haskell
-  inspired language. Also, given it's simplicity Act will very likely generate
+  inspired language. Also, given its simplicity Act will very likely generate
   much smaller builds than most frameworks out there.
 
 - Being written in JavasScript makes almost impossible for Act – and any
@@ -28,7 +28,7 @@ Act uses the term `reducer` for the `update` function. Since React + Redux is
 probably a more popular setup I think more developers will be used to this
 terminology.
 
-### DOM helpers vs JSON
+### Html helpers vs JSON
 
 In Elm you build your views (if you're rendering plain HTML) using some helpers
 that you have to import. In Act you don't have to import anything, sice you
@@ -51,7 +51,7 @@ view model =
 
 ```js
 const view = (model) =>
-  ['div, [
+  ['div', [
     ['h1', model],
     ['button', {click: {increment: 1} , '+']
   ]]
