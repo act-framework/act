@@ -1,3 +1,7 @@
+##### Docs
+
+- Improve docs everywhere: getting started, concepts, API...
+
 ##### Error handling & debugging
 
 - Improve errors on renders and global error handler.
