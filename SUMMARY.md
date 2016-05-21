@@ -1,18 +1,7 @@
 # Table of contents
 
 * [act](/README.md)
-  * [Hello Act](/README.md#hello-act)
-  * [Install](/README.md#install)
-  * [Getting started](/README.md#getting-started)
-  * [Contributing](/README.md#contributing)
 * [Concepts](/docs/concepts.md)
-  * [Using JSON for rendering](/docs/concepts.md#using-json-for-rendering)
-  * [Unidirectional data flow](/docs/concepts.md#unidirectional-data-flow)
-  * [Single model & reducer](/docs/concepts.md#single-model--reducer)
-  * [Reducers](/docs/concepts.md#reducers)
-  * [Signals: sources & processes](/docs/concepts.md#signals-sources--processes)
-  * [Subscriptions](/docs/concepts.md#subscriptions)
-  * [Storage](/docs/concepts.md#storage)
 * [API](/docs/api.md)
 * [For React developers](/docs/for-react-developers.md)
   * [JSX vs JSON](/docs/for-react-developers.md#jsx-vs-json)
