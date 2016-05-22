@@ -32,7 +32,9 @@ export default class History {
   }
 
   go (index) {
-    if (index === this.present) {
+    if (index === this.present ||
+        index < 0 ||
+        index > this.timeline.length) {
       return
     }
 
