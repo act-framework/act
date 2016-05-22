@@ -17,8 +17,7 @@
   * [JS vs HTML attribute names](/docs/react/attributes.md)
   * [class-names vs class-lists](/docs/react/classes.md)
   * [Lifecycle events](/docs/react/lifecycle.md)
-  * [shouldComponentUpdate vs
-    memoization](/docs/react/should-update-vs-memoization.md)
+  * [shouldComponentUpdate vs memoization](/docs/react/should-update-vs-memoization.md)
   * [Events](/docs/react/events.md)
   * [Subscriptions](/docs/react/subscriptions.md)
   * [Testing](/docs/react/testing.md)
