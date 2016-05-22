@@ -6,6 +6,9 @@ Here's a selection of things in which Act departs from React.
 * [Class and id shortcuts](/shortcuts.md)
 * [JS vs HTML attribute names](/attributed.md)
 * [class-names vs class-lists](/classes.md)
+* [Lifecycle events](/lifecycle.md)
+* [shouldComponentUpdate vs
+  memoization](/should-update-vs-memoization.md)
 * [Events](/events.md)
 * [Subscriptions](/subscriptions.md)
 * [Testing](/testing.md)

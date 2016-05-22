@@ -16,3 +16,4 @@ frameworks. This means Act is supported by mature ideas on how to develop apps.
 * [Signals: sources & processes](/signals.md)
 * [Subscriptions](/subscriptions.md)
 * [Storage](/storage.md)
+* [Memoization](/memoization.md)
