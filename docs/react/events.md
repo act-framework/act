@@ -123,21 +123,21 @@ think of this function as the `dispatch` in Redux, or some `setState` on
 steroids :D.
 
 ```js
-const handler (update, event) =>
-  update('someAction', 'somePayload')
+const handler (history, event) =>
+  history.push('someAction', 'somePayload')
 
 const button = () => ['button', {click: handler}]
 ```
 
-That's the general syntax. `update` will send this to your reducer and your app
+That's the general syntax. `history.push` will send this to your reducer and your app
 will rerender. There's no need for Providers or connects here. Since this
 example is a little too simple, let's see a better one:
 
 ```js
 import main from '@act/core'
 
-const add (event, update) =>
-  update('add', 1)
+const add (history, event) =>
+  history.push('add', 1)
 
 const view = (model) => ['button', {click: add}, model]
 
@@ -148,7 +148,7 @@ main(view, { reducer })
 ```
 
 That's the whole app. When you click in the button, it calls add, that calls
-the update, that calls the reducer that will rerender your whole app (yeah, ok,
+`history.push`, that calls the reducer that will rerender your whole app (yeah, ok,
 just a button with a number).
 
 ###### Events with constant values
