@@ -5,8 +5,16 @@
  *
  */
 
-import jsonToVirtualDOM from './lib/jsonToVirtualDOM'
+import jsonToVirtualDOM from './internals/jsonToVirtualDOM'
 import { spy } from 'sinon'
+import _main from './'
+
+export const main = (view, config) => {
+  const insertBefore = spy()
+  const node = { insertBefore }
+
+  return _main(view, { node, ...config })
+}
 
 export const updateSpy = spy()
 
