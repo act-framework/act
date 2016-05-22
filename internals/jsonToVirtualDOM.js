@@ -6,7 +6,7 @@ import eventHandler from './eventHandler'
 import signalHandler from './signalHandler'
 
 const isAts = (maybeAts) =>
-  (typeof maybeAts === 'object') && !isArrayLike(maybeAts)
+  (typeof maybeAts === 'object') && maybeAts !== null && !isArrayLike(maybeAts)
 
 const processChildren = (el, history, tag, children, namespaces = []) => {
   // To support the case where user does
