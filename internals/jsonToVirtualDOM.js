@@ -8,7 +8,7 @@ import signalHandler from './signalHandler'
 const isAts = (maybeAts) =>
   (typeof maybeAts === 'object') && !isArrayLike(maybeAts)
 
-const processChildren = (el, update, tag, children, namespaces = []) => {
+const processChildren = (el, history, tag, children, namespaces = []) => {
   // To support the case where user does
   // ```
   // condition && ['div', ...]
@@ -19,7 +19,7 @@ const processChildren = (el, update, tag, children, namespaces = []) => {
   }
 
   if (isArrayLike(el)) {
-    return jsonToVirtualDOM(el, update, namespaces)
+    return jsonToVirtualDOM(el, history, namespaces)
   }
 
   let newChildren
@@ -30,7 +30,7 @@ const processChildren = (el, update, tag, children, namespaces = []) => {
       if (el.namespace) {
         namespaces = [...namespaces, el.namespace]
       }
-      return jsonToVirtualDOM(newChildren, update, namespaces)
+      return jsonToVirtualDOM(newChildren, history, namespaces)
     } catch (e) {
       const errorMessage = renderErrorMessage(tag, newChildren, e, fn)
 
@@ -38,7 +38,7 @@ const processChildren = (el, update, tag, children, namespaces = []) => {
 //        console.log(errorMessage)
 //        console.trace()
 //
- //       return jsonToVirtualDOM(globalErrorHandler, update)
+ //       return jsonToVirtualDOM(globalErrorHandler, history)
  //     } else {
       throw errorMessage
  //     }
@@ -52,21 +52,21 @@ const events = [
   'blur', 'change', 'click', 'input', 'keyup', 'dblclick'
 ]
 
-function injectEventHandlers (props, update, namespaces) {
+function injectEventHandlers (props, history, namespaces) {
   map((event) => {
     if (props[event]) {
       if (typeof props[event] === 'function') {
-        props[`${event}-handler`] = eventHandler(props[event], update, namespaces)
+        props[`${event}-handler`] = eventHandler(props[event], history, namespaces)
       } else {
-        props[`${event}-handler`] = signalHandler(props[event], update, namespaces)
+        props[`${event}-handler`] = signalHandler(props[event], history, namespaces)
       }
     }
   }, events)
 }
 
-const jsonToVirtualDOM = (json, update, namespaces) => {
+const jsonToVirtualDOM = (json, history, namespaces) => {
   if (typeof json === 'string') {
-    return jsonToVirtualDOM(['span', json], update)
+    return jsonToVirtualDOM(['span', json], history)
   }
 
   const [tag, maybeAtsOrChildren, maybeChildren] = json
@@ -84,30 +84,30 @@ const jsonToVirtualDOM = (json, update, namespaces) => {
   }
 
   if (isArrayLike(children)) {
-    children = map((el) => processChildren(el, update, tag, children, namespaces), children)
-  }
-
-  if (typeof children === 'function') {
+    children = map((el) => processChildren(el, history, tag, children, namespaces), children)
+  } else if (typeof children === 'function') {
     if (children.namespace) {
       console.log('TODO namespace when function is single children')
     }
     const fn = children
     try {
-      children = map((el) => processChildren(el, update, tag, children, namespaces), children())
+      children = map((el) => processChildren(el, history, tag, children, namespaces), children())
     } catch (e) {
       const errorMessage = renderErrorMessage(tag, children, e, fn)
       throw errorMessage
 //      if (globalErrorHandler) {
 //        console.trace()
 //        console.log(errorMessage)
- //       children = jsonToVirtualDOM(globalErrorHandler, update, globalErrorHandler)
+ //       children = jsonToVirtualDOM(globalErrorHandler, history, globalErrorHandler)
   //    } else {
     //    throw errorMessage
      // }
     }
+  } else if (children === false) {
+    children = undefined
   }
 
-  injectEventHandlers(ats, update, namespaces)
+  injectEventHandlers(ats, history, namespaces)
 
   if (ats['class']) {
     ats['class'] = classLists(...ats['class'])

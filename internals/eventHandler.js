@@ -1,7 +1,7 @@
 class EventHandler {
-  constructor (event, update) {
+  constructor (event, history) {
     this.event = event
-    this.update = update
+    this.history = history
   }
 
   hook (node, propertyName) {
@@ -14,7 +14,7 @@ class EventHandler {
     }
 
     // TODO: pass current state as well
-    node.addEventListener(prop, (event) => this.event(this.update, event))
+    node.addEventListener(prop, (event) => this.event(this.history, event))
 
     node['__act'] = { [prop]: this }
   }
