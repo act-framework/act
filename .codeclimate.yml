@@ -1,6 +1,0 @@
-languages:
-  JavaScript: true
-exclude_paths:
-- examples/**/*
-- docs/**/*
-- test/**/*
