@@ -19,7 +19,7 @@ const main = function (view, {
   let rootNode
 
   const render = (json) => {
-    const tree = jsonToVirtualDOM(json, update)
+    const tree = jsonToVirtualDOM(json, history)
 
     previousTree
       ? rootNode = patch(rootNode, diff(previousTree, tree))

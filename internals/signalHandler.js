@@ -4,9 +4,9 @@ import always from '../signals/processes/always'
 import fromEvent from '../signals/sources/fromEvent'
 
 class SignalHandler {
-  constructor (events, update, namespaces = []) {
+  constructor (events, history, namespaces = []) {
     this.events = events
-    this.update = update
+    this.history = history
     this.namespaces = namespaces
     this.processes = {}
     this.sources = {}
@@ -37,7 +37,7 @@ class SignalHandler {
       this.sources[type] = fromEvent(node, prop)
 
       this.processes[type](this.sources[type].start())((payload) => {
-        this.update({ type: [...this.namespaces, type].join('.'), payload })
+        this.history.push({ type: [...this.namespaces, type].join('.'), payload })
       })
     }, this.events)
 
