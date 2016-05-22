@@ -1,4 +1,4 @@
-# `shouldComponentUpdate` vs memoization
+# shouldComponentUpdate vs memoization
 
 ##### React
 
@@ -27,7 +27,7 @@ used on components defined as classes and not functions.
 ##### Act
 
 Act doesn't dictate how you should avoid rerenders. Nevertheless, it encourages
-the usage of memoization. So start by reading about memoization [here](../concepts/memoize.md).
+the usage of memoization. So start by reading about memoization [here](../concepts/memoization.md).
 
 Now that you understand what memoization is all about you probably already has
 an idea on how it differs from `shouldComponentUpdate`.
