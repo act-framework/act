@@ -1,8 +1,8 @@
 {
-  "name": "@act/core",
+  "name": "@act/main",
   "description": "A simple reactive front-end framework",
   "version": "0.0.1",
-  "main": "src/index.js",
+  "main": "index.js",
   "license": "ISC",
   "repository": {
     "type": "git",
