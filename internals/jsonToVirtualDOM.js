@@ -1,9 +1,12 @@
 import h from 'virtual-dom/h'
 import isArrayLike from 'ramda/src/isArrayLike'
 import map from 'ramda/src/map'
+import mapObjIndexed from 'ramda/src/mapObjIndexed'
 import classLists from 'class-lists'
 import eventHandler from './eventHandler'
 import signalHandler from './signalHandler'
+import events from './events'
+import intersection from 'ramda/src/intersection'
 
 const isAts = (maybeAts) =>
   (typeof maybeAts === 'object') && maybeAts !== null && !isArrayLike(maybeAts)
@@ -46,22 +49,6 @@ const processChildren = (el, history, tag, children, namespaces = []) => {
   }
 
   return String(el)
-}
-
-const events = [
-  'blur', 'change', 'click', 'input', 'keyup', 'dblclick'
-]
-
-function injectEventHandlers (props, history, namespaces) {
-  map((event) => {
-    if (props[event]) {
-      if (typeof props[event] === 'function') {
-        props[`${event}-handler`] = eventHandler(props[event], history, namespaces)
-      } else {
-        props[`${event}-handler`] = signalHandler(props[event], history, namespaces)
-      }
-    }
-  }, events)
 }
 
 const jsonToVirtualDOM = (json, history, namespaces) => {
@@ -107,13 +94,33 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
     children = undefined
   }
 
-  injectEventHandlers(ats, history, namespaces)
-
   if (ats['class']) {
     ats['class'] = classLists(...ats['class'])
   }
 
-  return h(tag, attributeToProperty(ats), children)
+  injectEventHandlers(ats, history, namespaces)
+  attributeToProperty(ats)
+
+  return h(tag, ats, children)
+}
+
+function attributeToProperty (ats) {
+  const transformableAts = intersection(Object.keys(ats), transform)
+
+  map((at) => {
+    ats[transform[at]] = ats[at]
+    delete ats[at]
+  }, transformableAts)
+}
+
+function injectEventHandlers (ats, history, namespaces) {
+  const eventsInAts = intersection(Object.keys(ats), events)
+
+  map((event) => {
+    ats[`${event}-handler`] = typeof ats[event] === 'function'
+      ? eventHandler(ats[event], history, namespaces)
+      : signalHandler(ats[event], history, namespaces)
+  }, eventsInAts)
 }
 
 const renderErrorMessage = (tag, children, e, fn) => {
@@ -164,16 +171,6 @@ var transform = {
   // 'srcdoc': 'srcDoc',
   // 'srcset': 'srcSet',
   // 'tabindex': 'tabIndex'
-}
-
-function attributeToProperty (attrs) {
-  for (var attr in attrs) {
-    if (attr in transform) {
-      attrs[transform[attr]] = attrs[attr]
-      delete attrs[attr]
-    }
-  }
-  return attrs
 }
 
 export default jsonToVirtualDOM
