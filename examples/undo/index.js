@@ -7,13 +7,11 @@ import main from '../..'
 // const undo = compose(call, prop('undo'))
 // const redo = compose(call, prop('redo'))
 
-const undo = (history) => {
+const undo = (history) =>
   history.undo()
-}
 
-const redo = (history) => {
+const redo = (history) =>
   history.redo()
-}
 
 const view = (count) => (
   ['div', [
