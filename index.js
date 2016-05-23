@@ -18,7 +18,11 @@ const main = function (view, {
   let previousTree
   let rootNode
 
-  const render = (json) => {
+  const render = (view, state) => {
+    const json = typeof view === 'function'
+      ? view(state)
+      : view // user may want to perform side-effects only
+
     const tree = jsonToVirtualDOM(json, history)
 
     previousTree
@@ -28,16 +32,12 @@ const main = function (view, {
     return (previousTree = tree)
   }
 
-  if (typeof view !== 'function') {
-    return { dom: render(view) }
-  }
-
   let initialState = storage.get() ||
     typeof model !== 'undefined' && model ||
     reducer(undefined, {type: '__probe'})
 
   const rerender = (state) => {
-    const dom = render(view(state))
+    const dom = render(view, state)
     storage.set(state)
     return dom
   }
@@ -46,7 +46,7 @@ const main = function (view, {
 
   const update = (action) => history.push(action)
 
-  const dom = render(view(initialState))
+  const dom = render(view, initialState)
 
   mapObjIndexed((subscription, type) =>
     subscription((payload) => update({ type, payload }))
