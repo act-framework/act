@@ -150,18 +150,40 @@ test('main: history.go', (assert) => {
 })
 
 import { mouse } from '../internals/events'
-import { click } from '../testHelpers'
+import * as mouseEvents from '../testHelpers/mouseEvents'
 
-test.only('main: mouse events', (assert) => {
-
+test('main: mouse events', (assert) => {
   forEach((mouseEvent) => {
     const view = ['button', {[mouseEvent]: {add: 1}}]
 
     const { dom, history } = main(view)
-    click(dom)
-    assert.deepEqual(history.latest, { type: 'add', payload: 1 })
+    mouseEvents[mouseEvent](dom)
+    assert.deepEqual(
+      history.latest,
+      { type: 'add', payload: 1 },
+      `executes mouse event ${mouseEvent}`
+    )
+  }, mouse)
 
-  } , mouse)
+  assert.end()
+})
+
+import { keyboard } from '../internals/events'
+import * as keyboardEvents from '../testHelpers/keyboardEvents'
+import { valueAndKeyCode } from '../processes'
+
+test('main: keyboard events', (assert) => {
+  forEach((keyboardEvent) => {
+    const view = ['button', {[keyboardEvent]: {get: valueAndKeyCode}}]
+    const randomKeyCode = parseInt(Math.random() * 20 + 1)
+    const { dom, history } = main(view)
+    keyboardEvents[keyboardEvent](dom, randomKeyCode, keyboardEvent)
+    assert.deepEqual(
+      history.latest,
+      { type: 'get', payload: [keyboardEvent, randomKeyCode] },
+      `executes keyboard event ${keyboardEvent}`
+    )
+  }, keyboard)
 
   assert.end()
 })

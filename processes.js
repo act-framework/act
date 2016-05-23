@@ -30,13 +30,13 @@ export const value =
   map((ev) => ev.target.value)
 
 /*
- * `value`
+ * `keyCode`
  *
  * Maps a DOM event to a keyCode. Use on input's keyup and keydown events.
  *
  */
 
-export const key =
+export const keyCode =
   map((ev) => ev.keyCode)
 
 export const log =
@@ -45,7 +45,7 @@ export const log =
     return value
   })
 
-export const valueAndCode =
+export const valueAndKeyCode =
   map((ev) => [ev.target.value, ev.keyCode])
 
 // TODO find a way to only
@@ -54,9 +54,9 @@ export const valueOnEnter = pipe(
   filterMap((ev) => ev.keyCode === ENTER_KEY && ev.target.value.trim())
 )
 
-export const onKey = (keyCode) => pipe(
-  key,
-  filter(equals(keyCode))
+export const onKey = (code) => pipe(
+  keyCode,
+  filter(equals(code))
 )
 
 export const onEsc = onKey(ESC_KEY)
