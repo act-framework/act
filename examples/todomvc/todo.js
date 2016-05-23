@@ -2,9 +2,9 @@
 // TODO: routes
 // TODO: bug when click on toggle inside "Active" filter :/
 
-import main from '@act/core'
-import { valueOnEnterAnd, valueOnEnter, valueAnd, onEsc } from '@act/core/processes'
-import localStorage from '@act/core/storages/localStorage'
+import main from '@act/main'
+import { valueOnEnterAnd, valueOnEnter, valueAnd, onEsc } from '@act/main/processes'
+import storage from '@act/main/storages/localStorage'
 import all from 'ramda/src/all'
 import any from 'ramda/src/any'
 import call from 'ramda/src/call'
@@ -110,5 +110,4 @@ const reducer = (state, {type, payload}) => {
 
 const model = { todos: [], uid: 1, show: 'All' }
 
-// TODO: Rethink localStorage, maybe async? for better performance
-main(view, model, reducer, { storage: localStorage })
+main(view, { model, reducer, storage })

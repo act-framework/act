@@ -31,7 +31,7 @@ Act is written in es6 and expects you to use webpack, so you can import only
 the files you really need. To install, just run in your project folder:
 
 ```shell
-npm i @act/core -s
+npm i @act/main -s
 ```
 
 ## Getting started

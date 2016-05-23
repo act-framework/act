@@ -134,7 +134,7 @@ will rerender. There's no need for Providers or connects here. Since this
 example is a little too simple, let's see a better one:
 
 ```js
-import main from '@act/core'
+import main from '@act/main'
 
 const add (history, event) =>
   history.push('add', 1)
@@ -157,7 +157,7 @@ Now let's make it even simpler. Since most of the time you want to emit a
 simple value from your events, like in the example above, you can reduce it to:
 
 ```js
-import main from '@act/core'
+import main from '@act/main'
 
 const view = (model) => ['button', {click: {add: 1}}, model]
 
@@ -177,8 +177,8 @@ look into signals in the next section, but I want to show you an even simpler
 version of that below, that will not require us to define any reducer:
 
 ```js
-import main from '@act/core'
-import { count } from '@act/core/processes'
+import main from '@act/main'
+import { count } from '@act/main/processes'
 
 const view = (model) => ['button', {click: {add: count}}, model]
 
@@ -202,8 +202,8 @@ without all the technical language people generally use to explain them, but I
 think that if you look at an example first, you'll just understand it:
 
 ```js
-import main from '@act/core'
-import { valueOnEnter } from 'act/processes'
+import main from '@act/main'
+import { valueOnEnter } from '@act/main/processes'
 
 const view = (value) => (
   ['div', [
