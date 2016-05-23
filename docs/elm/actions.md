@@ -35,7 +35,7 @@ const view = (model) =>
 
 // action doing some side effect
 const roll = (history) =>
-  history.push({ type: 'newFace', payload: parseInt(Math.random(5) * 6 + 1) })
+  history.push({ type: 'newFace', payload: parseInt(Math.random() * 6 + 1) })
 
 const reducer = (state, { type, payload }) =>
   type === 'newFace' ? { ...state, dieFace: payload } : state
