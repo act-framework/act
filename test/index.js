@@ -202,9 +202,28 @@ test('main: form events', (assert) => {
     assert.deepEqual(
       history.latest,
       { type: 'data', payload: [ [ 'name', 'Freud' ], [ 'age', 33 ] ] },
-      `executes mouse event ${formEvent}`
+      `executes form event ${formEvent}`
     )
   }, form)
+
+  assert.end()
+})
+
+import { input } from '../internals/events'
+import * as inputEvents from '../testHelpers/inputEvents'
+import { value } from '../processes'
+
+test('main: input events', (assert) => {
+  forEach((inputEvent) => {
+    const view = ['input', {[inputEvent]: {value: value}}]
+    const { dom, history } = main(view)
+    inputEvents[inputEvent](dom, inputEvent)
+    assert.deepEqual(
+      history.latest,
+      { type: 'value', payload: inputEvent },
+      `executes input event ${inputEvent}`
+    )
+  }, input)
 
   assert.end()
 })

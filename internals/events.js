@@ -83,6 +83,7 @@ export const misc = [
 
 export default [
   ...form,
+  ...input,
   ...keyboard,
   ...mouse,
   ...clipboard,

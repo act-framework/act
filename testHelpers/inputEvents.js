@@ -1,7 +1,7 @@
 import event from './event'
 
 export const inputEvent = (ev) => (el, value) =>
-  event(ev, { target: { value } })
+  event(ev, { target: { value } })(el)
 
 /**
  * Calls `blur` of an input
