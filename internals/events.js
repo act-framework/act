@@ -3,17 +3,21 @@
  */
 
 export const form = [
+  'reset',
+  'submit'
+]
+
+export const input = [
   'blur',
   'change',
   // 'contextmenu', // not really supported
   'focus',
   'input',
   'invalid',
-  'reset',
   'search',
-  'select',
-  'submit'
+  'select'
 ]
+
 
 export const keyboard = [
   'keydown',

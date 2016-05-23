@@ -1,3 +1,5 @@
+/* globals FormData */
+
 /*
  * This file contains signal processes for many common use cases for web apps.
  */
@@ -38,6 +40,11 @@ export const value =
 
 export const keyCode =
   map((ev) => ev.keyCode)
+
+import values from 'ramda/src/values'
+import _map from 'ramda/src/map'
+import props from 'ramda/src/props'
+
 
 export const log =
   map((value) => {
@@ -127,3 +134,12 @@ export const scroll = pipe(
 
 export const emit = (socket, event) =>
   map((value) => socket.emit(event, value))
+
+// forms
+export const naiveSerialize = pipe(
+  map((ev) => values(ev.target)),
+  map((fields) => _map(props(['name', 'value']), fields))
+)
+
+export const formData =
+  map((ev) => new FormData(ev.target))

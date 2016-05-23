@@ -188,3 +188,24 @@ test('main: keyboard events', (assert) => {
   assert.end()
 })
 
+import { form } from '../internals/events'
+import * as formEvents from '../testHelpers/formEvents'
+import { naiveSerialize } from '../processes'
+
+test('main: form events', (assert) => {
+  forEach((formEvent) => {
+    console.log('formEvent', formEvent)
+    const view = ['form', {[formEvent]: {data: naiveSerialize}}]
+
+    const { dom, history } = main(view)
+    formEvents[formEvent](dom, {name: 'Freud', age: 33})
+    assert.deepEqual(
+      history.latest,
+      { type: 'data', payload: [ [ 'name', 'Freud' ], [ 'age', 33 ] ] },
+      `executes mouse event ${formEvent}`
+    )
+  }, form)
+
+  assert.end()
+})
+
