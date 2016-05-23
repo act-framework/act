@@ -3,6 +3,7 @@ import { main } from '../testHelpers'
 import { spy } from 'sinon'
 import identity from 'ramda/src/identity'
 import map from 'ramda/src/map'
+import forEach from 'ramda/src/forEach'
 import prop from 'ramda/src/prop'
 import props from 'ramda/src/props'
 
@@ -147,3 +148,21 @@ test('main: history.go', (assert) => {
 
   assert.end()
 })
+
+import { mouse } from '../internals/events'
+import { click } from '../testHelpers'
+
+test.only('main: mouse events', (assert) => {
+
+  forEach((mouseEvent) => {
+    const view = ['button', {[mouseEvent]: {add: 1}}]
+
+    const { dom, history } = main(view)
+    click(dom)
+    assert.deepEqual(history.latest, { type: 'add', payload: 1 })
+
+  } , mouse)
+
+  assert.end()
+})
+
