@@ -1,6 +1,7 @@
 import reduce from 'ramda/src/reduce'
 import splitAt from 'ramda/src/splitAt'
 import take from 'ramda/src/take'
+import last from 'ramda/src/last'
 import delay from './delay'
 
 export default class History {
@@ -24,6 +25,10 @@ export default class History {
     this.present += this.delta.length
     this.delta = []
     return dom
+  }
+
+  get latest () {
+    return last(this.timeline)
   }
 
   push (action) {
