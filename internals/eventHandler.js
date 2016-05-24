@@ -13,10 +13,11 @@ class EventHandler {
       return
     }
 
-    // TODO: pass current state as well
     node.addEventListener(prop, (event) => this.event(this.history, event))
 
-    node['__act'] = { [prop]: this }
+    node['__act'] = node['__act']
+      ? { ...node['__act'], [prop]: this }
+      : { [prop]: this }
   }
 }
 
