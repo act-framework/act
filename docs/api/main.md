@@ -1,6 +1,6 @@
 # main
 
-The `main` function is the most important function in App, since it bootstraps
+The `main` function is the most important function in Act, since it bootstraps
 your whole app.
 
 ### Params
@@ -15,15 +15,15 @@ your whole app.
 |params.storage|object|an object with `get` and `set` to remember your state|
 |params.subscriptions|object|an object with subscription functions|
 
-### Import
+### import
 
-```
+```js
 import main from '@act/main'
 ```
 
-### view
+#### view
 
-```
+```js
 // string
 main('Hello!')
 
@@ -38,7 +38,7 @@ If `string` is passed, it will be wrapped in a `span` tag.
 
 Your view can break down into other functions or constants:
 
-```
+```js
 const view = (content) =>
   ['main', [header, body(content), footer]]
 
@@ -47,18 +47,18 @@ const header =
 
 const body = (content) =>
   ['article', content]
-  
+
 const footer =
-  ['footer', 'All rights reserved']  
-  
+  ['footer', 'All rights reserved']
+
 main(view, { model: 'Here is the content' })
 ```
 
-### params.model
+#### params.model
 
 The `model` represents your initial application data, before any transformation happens. It is optional since your app may not need any data or it may define it based on reducers [see below].
 
-```
+```js
 import map from 'ramda/src/map'
 
 const view = (model) =>
@@ -66,69 +66,41 @@ const view = (model) =>
   	['h1', model.title],
   	['ul', map(todo, model.todos)]
   ]]
- 
+
 const todo = (task) =>
   ['li', `[${task.status}] ${task.description}`]
-  
+
 const model = {
   title: 'Welcome to the TODO app',
   todos: [
     { status: 'DONE', description: 'Write docs for params.model' },
-    { status: 'REJECTED', description: 'Make sure it works on IE6' }    
+    { status: 'REJECTED', description: 'Make sure it works on IE6' }
   ]
 }
 
 main(view, { model })
 ```
 
-### params.model
-
-The `model` represents your initial application data, before any transformation happens. It is optional since your app may not need any data or it may define it based on reducers [see below].
-
-```
-import map from 'ramda/src/map'
-
-const view = (model) =>
-  ['main', [
-  	['h1', model.title],
-  	['ul', map(todo, model.todos)]
-  ]]
- 
-const todo = (task) =>
-  ['li', `[${task.status}] ${task.description}`]
-  
-const model = {
-  title: 'Welcome to the TODO app',
-  todos: [
-    { status: 'DONE', description: 'Write docs for params.model' },
-    { status: 'REJECTED', description: 'Make sure it works on IE6' }    
-  ]
-}
-
-main(view, { model })
-```
-
-
-### params.node
+#### params.node
 
 A reference to the DOM node where you want your app to be rendered.
 
-```
+```js
 main('Hello!', { node: document.getElementById('app') })
 ```
 
-### params.storage
+#### params.storage
 
 An object with a `get` and a `set` functions. The `get` function will be called in the first render, and `set` will be called every time your state changes, receiving the state.
 
 There can be only one storage.
 
-```
+```js
 import storage from '@act/main/storages/localStorage'
 
 const view = (count) =>
   ['button', { click: { add: 1 } }, count]
-   
+
 const reducer = (state = 0, {type, payload}) => {
   switch (type) {
 	case 'add':
@@ -143,16 +115,16 @@ main(view, { reducer, storage })
 
 In the above example, the initial count will be fetched from the storage, else it will be `0`. Every time the state changes – when the user clicks the button –, the storage will be updated.
 
-### params.subscriptions
+#### params.subscriptions
 
 An object where keys are the types of actions to be emitted and values are a subscription function. Check more about subscriptions in the concepts docs.
 
-```
+```js
 import breakpoint from '@act/main/subscriptions/breakpoint'
 
 const view = (breakpoint) =>
   ['div', `Current breakpoint is: ${breakpoint}`]
-   
+
 const subscriptions = {
   breakpoint: breakpoint
 }

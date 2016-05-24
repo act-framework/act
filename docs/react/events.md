@@ -195,7 +195,7 @@ and this will be clearer.
 
 For many use cases you'll want to manipulate the event in order to get a
 meaninful value from it. To do that you can totally just use a handler, as we
-say above and use imperative programming to get it done. But there's a more
+saw above and use imperative programming to get it done. But there's a more
 elegant way out there, and you'll certainly become a better programmer by
 learning it. I'll call this "signals". I'll explain you what is a signal,
 without all the technical language people generally use to explain them, but I
@@ -377,9 +377,9 @@ sources it means no `addEventListener` will be attached to the DOM element),
 which is probably what you expected anyway.
 
 Now that you know the basics, you can also check the chapter about
-[subscriptions](#subscriptions) to know how to handle things other than clicks
-and keyboard events, things that are not automatically attached to your views,
-like window events, timers, ajax calls and sockets.
+[subscriptions](../concepts/subscriptions) to know how to handle things other
+than clicks and keyboard events, things that are not automatically attached to
+your views, like window events, timers, ajax calls and sockets.
 
 Oh, and last, but not the least, now I can tell you that events with constant
 values are actually also signals, using the `always` process.
