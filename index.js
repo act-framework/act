@@ -8,6 +8,16 @@ import History from './internals/History'
 const defaultReducer = (_, { payload }) => payload
 const defaultStorage = { get: () => undefined, set: () => {} }
 
+/**
+ * Creates an Act application.
+ *
+ * @name main
+ * @kind function
+ * @memberof @act/main
+ * @param {string|json|function} view
+ * @param {object} params
+ */
+
 const main = function (view, {
     model,
     node = document.body,

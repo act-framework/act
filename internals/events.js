@@ -1,6 +1,4 @@
-/**
- * A list of DOM events, split by use-case.
- */
+// A list of DOM events, split by use-case.
 
 export const form = [
   'reset',
