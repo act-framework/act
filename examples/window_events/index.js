@@ -1,6 +1,6 @@
-import main from '../../src'
-import { dimensions, scroll } from '../../src/processes'
-import fromEvent from '../../src/signals/sources/fromEvent'
+import main from '../..'
+import { dimensions, scroll } from '../../processes'
+import fromEvent from '../../signals/sources/fromEvent'
 import times from 'ramda/src/times'
 
 const view = ({dimensions, scroll}) => (
@@ -31,4 +31,4 @@ const subscriptions = {
   scroll: scroll(fromEvent(window, 'scroll').start())
 }
 
-main(view, model, reducer, { subscriptions })
+main(view, { model, reducer, subscriptions })

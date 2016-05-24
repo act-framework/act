@@ -1,11 +1,11 @@
-import main from '../../src'
-import { width, scroll } from '../../src/processes'
-import fromEvent from '../../src/signals/sources/fromEvent'
-import times from 'ramda/src/times'
-import throttle from '../../src/signals/combinators/throttle'
-import map from '../../src/signals/combinators/map'
-import distinct from '../../src/signals/combinators/distinct'
+import main from '../..'
+import { width, scroll } from '../../processes'
+import fromEvent from '../../signals/sources/fromEvent'
+import throttle from '../../signals/combinators/throttle'
+import map from '../../signals/combinators/map'
+import distinct from '../../signals/combinators/distinct'
 import head from 'ramda/src/head'
+import times from 'ramda/src/times'
 
 const view = ({breakpoint, scroll}) => (
   ['div', [
@@ -48,4 +48,4 @@ const subscriptions = {
   scroll: throttledScroll(fromEvent(window, 'scroll').start())
 }
 
-main(view, model, reducer, { subscriptions })
+main(view, { model, reducer, subscriptions })

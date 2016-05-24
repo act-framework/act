@@ -1,6 +1,6 @@
-import main from '../../src'
+import main from '../..'
 import times from 'ramda/src/times'
-import { breakpoint, scroll } from '../../src/subscriptions/window'
+import { breakpoint, scroll } from '../../subscriptions/window'
 
 const view = ({breakpoint, scroll}) => (
   ['main', [
@@ -29,4 +29,4 @@ const subscriptions = {
   scroll
 }
 
-main(view, model, reducer, { subscriptions })
+main(view, { model, reducer, subscriptions })
