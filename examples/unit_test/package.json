@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "test": "babel-tape-runner test.js"
+    "test": "babel-tape-runner test.js",
+    "build": "echo 'unit_test does not build :D'"
   },
   "dependencies": {},
   "devDependencies": {

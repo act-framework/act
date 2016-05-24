@@ -91,6 +91,37 @@ export const valueOnEnterAnd = and(valueOnEnter)
 export const valueAnd = and(value)
 
 /*
+ * mouse
+ */
+
+export const positionsImmediate =
+  map((ev) => [ev.pageX, ev.pageY])
+
+export const xImmediate =
+  map((ev) => ev.pageX)
+
+export const yImmediate =
+  map((ev) => ev.pageY)
+
+export const positions = pipe(
+  throttle(300),
+  positionsImmediate,
+  distinct
+)
+
+export const x = pipe(
+  throttle(300),
+  xImmediate,
+  distinct
+)
+
+export const y = pipe(
+  throttle(300),
+  yImmediate,
+  distinct
+)
+
+/*
  * window
  */
 

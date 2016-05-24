@@ -94,7 +94,7 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
     children = undefined
   }
 
-  if (ats['class']) {
+  if (ats['class'] && typeof ats['class'] !== 'string') {
     ats['class'] = classLists(...ats['class'])
   }
 
@@ -105,7 +105,7 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
 }
 
 function attributeToProperty (ats) {
-  const transformableAts = intersection(Object.keys(ats), transform)
+  const transformableAts = intersection(Object.keys(ats), Object.keys(transform))
 
   map((at) => {
     ats[transform[at]] = ats[at]

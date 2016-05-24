@@ -11,7 +11,14 @@ const view = (count) => (
   ]]
 )
 
-const historyView = (history) => (
+export const count = (state = 0, {type, payload}) =>
+  type === 'add'
+    ? state + payload
+    : state
+
+const { history } = main(view, { reducer: count, devtools: true })
+
+const devtools = (history) => (
   ['ol', map(historyItem, history)]
 )
 
@@ -19,13 +26,12 @@ const historyItem = (item) => (
   ['li', `${item.type}: ${item.payload}`]
 )
 
-export const count = (state = 0, {type, payload}) => {
-  console.log('count')
-  if (type === 'add') {
-    return state + payload
-  }
-
-  return state
+const subscriptions = {
+  change: history.subscribe()
 }
 
-main(view, { reducer: count, devtools: true })
+main(devtools, {
+  node: document.getElementById('devtools'),
+  model: [],
+  subscriptions
+})

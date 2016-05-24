@@ -1,5 +1,5 @@
 import * as processes from '../processes'
-import fromEvent from '../../src/signals/sources/fromEvent'
+import fromEvent from '../signals/sources/fromEvent'
 
 // resize
 const resize = fromEvent(window, 'resize').start()
@@ -19,4 +19,9 @@ const scrollE = fromEvent(window, 'scroll').start()
 
 export const scroll = processes.scroll(scrollE)
 
-// mouse move TODO
+// mouse move
+const mouseMove = fromEvent(window, 'mousemove').start()
+
+export const positions = processes.positions(mouseMove)
+export const x = processes.x(mouseMove)
+export const y = processes.y(mouseMove)

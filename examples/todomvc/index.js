@@ -2,9 +2,9 @@
 // TODO: routes
 // TODO: bug when click on toggle inside "Active" filter :/
 
-import main from '@act/main'
-import { valueOnEnterAnd, valueOnEnter, valueAnd, onEsc } from '@act/main/processes'
-import storage from '@act/main/storages/localStorage'
+import main from '../..'
+import { valueOnEnterAnd, valueOnEnter, valueAnd, onEsc } from '../../processes'
+import storage from '../../storages/localStorage'
 import all from 'ramda/src/all'
 import any from 'ramda/src/any'
 import call from 'ramda/src/call'

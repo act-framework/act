@@ -1,12 +1,13 @@
-import main from '../../src'
+import main from '../..'
 import map from 'ramda/src/map'
 import * as api from './api'
 
-const get = (fn) => (ev, update) => {
-  update('loading')
-  fn()(
-    (json) => update('success', json.items),
-    (r) => update('failure', r.statusText || r.message)
+const get = (apiCall) => (history, ev) => {
+  history.push({ type: 'loading' })
+
+  apiCall()(
+    (json) => history.push({ type: 'success', payload: json.items }),
+    (r) => history.push({ type: 'failure', payload: r.statusText || r.message })
   )
 }
 
@@ -43,4 +44,5 @@ const reducer = (state, {type, payload}) => {
 }
 
 const model = {loading: false, items: [], error: null}
-main(view, model, reducer)
+
+main(view, { model, reducer })

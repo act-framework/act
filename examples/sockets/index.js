@@ -1,8 +1,8 @@
-import main from '../../src'
-import { emit, valueOnEnter } from '../../src/processes'
-import pipe from '../../src/signals/pipe'
+import main from '../..'
+import { emit, valueOnEnter } from '../../processes'
+import pipe from '../../signals/pipe'
+import fromSocket from '../../signals/sources/fromSocket'
 import map from 'ramda/src/map'
-import fromSocket from '../../src/signals/sources/fromSocket'
 
 const socket = fromSocket('localhost:8081')
 
@@ -28,7 +28,7 @@ const message = (msg) => (
   ['li', msg]
 )
 
-const reducer = (state, {type, payload}) => {
+const reducer = (state, { type, payload }) => {
   switch (type) {
     case 'messages':
       return payload
@@ -43,4 +43,4 @@ const subscriptions = {
   messages: socket.on('messages')
 }
 
-main(chat, model, reducer, { subscriptions })
+main(chat, { model, reducer, subscriptions })

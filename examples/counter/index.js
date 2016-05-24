@@ -1,4 +1,4 @@
-import main from '../../src'
+import main from '../..'
 
 const counter = (count) => (
   ['main', [
@@ -8,7 +8,7 @@ const counter = (count) => (
   ]]
 )
 
-const reducer = (state, {type, payload}) => {
+const reducer = (state = 0, {type, payload}) => {
   switch (type) {
     case 'add':
       return state + payload
@@ -17,4 +17,4 @@ const reducer = (state, {type, payload}) => {
   }
 }
 
-main(counter, 0, reducer)
+main(counter, { reducer })

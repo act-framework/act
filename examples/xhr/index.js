@@ -1,27 +1,30 @@
-import main from '../../src'
+import main from '../..'
 import map from 'ramda/src/map'
-import { get, getJSON } from '../../src/signals/sources/xhr'
+import { get, getJSON } from '../../signals/sources/xhr'
 
-const goodJSON = (ev, update) => {
-  update('loading')
+const goodJSON = (history, ev) => {
+  history.push({ type: 'loading' })
+
   getJSON('/good.json')(
-    ({ items }) => update('success', items)
+    ({ items }) => history.push({ type: 'success', payload: items })
   )
 }
 
-const badJSON = (ev, update) => {
-  update('loading')
+const badJSON = (history, ev) => {
+  history.push({ type: 'loading' })
+
   getJSON('/bad.json')(
     () => {},
-    (_, { message }) => update('failure', message)
+    (_, { message }) => history.push({ type: 'failure', payload: message })
   )
 }
 
-const badURL = (ev, update) => {
-  update('loading')
+const badURL = (history, ev) => {
+  history.push({ type: 'loading' })
+
   get('/waat.json')(
     () => {},
-    (_, { message }) => update('failure', message)
+    (_, { message }) => history.push({ type: 'failure', payload: message })
   )
 }
 
@@ -58,4 +61,5 @@ const reducer = (state, {type, payload}) => {
 }
 
 const model = {loading: false, items: [], error: null}
-main(view, model, reducer)
+
+main(view, { model, reducer })
