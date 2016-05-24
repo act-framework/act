@@ -16,7 +16,6 @@ export const input = [
   'select'
 ]
 
-
 export const keyboard = [
   'keydown',
   'keypress',

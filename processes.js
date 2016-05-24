@@ -61,12 +61,13 @@ export const valueOnEnter = pipe(
   filterMap((ev) => ev.keyCode === ENTER_KEY && ev.target.value.trim())
 )
 
-export const onKey = (code) => pipe(
+export const onKeyCode = (code) => pipe(
   keyCode,
   filter(equals(code))
 )
 
-export const onEsc = onKey(ESC_KEY)
+export const onEsc = onKeyCode(ESC_KEY)
+export const onEnter = onKeyCode(ENTER_KEY)
 
 export const andValue = (otherValue) =>
   map((value) => ({value, ...otherValue}))
