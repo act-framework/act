@@ -159,7 +159,7 @@ test('main: mouse events', (assert) => {
     const { dom, history } = main(view)
     mouseEvents[mouseEvent](dom)
     assert.deepEqual(
-      history.latest,
+      history.current,
       { type: 'add', payload: 1 },
       `executes mouse event ${mouseEvent}`
     )
@@ -179,7 +179,7 @@ test('main: keyboard events', (assert) => {
     const { dom, history } = main(view)
     keyboardEvents[keyboardEvent](dom, randomKeyCode, keyboardEvent)
     assert.deepEqual(
-      history.latest,
+      history.current,
       { type: 'get', payload: [keyboardEvent, randomKeyCode] },
       `executes keyboard event ${keyboardEvent}`
     )
@@ -200,7 +200,7 @@ test('main: form events', (assert) => {
     const { dom, history } = main(view)
     formEvents[formEvent](dom, {name: 'Freud', age: 33})
     assert.deepEqual(
-      history.latest,
+      history.current,
       { type: 'data', payload: [ [ 'name', 'Freud' ], [ 'age', 33 ] ] },
       `executes form event ${formEvent}`
     )
@@ -219,7 +219,7 @@ test('main: input events', (assert) => {
     const { dom, history } = main(view)
     inputEvents[inputEvent](dom, inputEvent)
     assert.deepEqual(
-      history.latest,
+      history.current,
       { type: 'value', payload: inputEvent },
       `executes input event ${inputEvent}`
     )
