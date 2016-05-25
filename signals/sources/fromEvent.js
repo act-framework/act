@@ -6,7 +6,7 @@ class FromEvent {
     this.stopped = false
   }
 
-  start () {
+  start (initialValue) {
     return (next) => {
       if (this.stopped) {
         return
@@ -14,6 +14,9 @@ class FromEvent {
 
       this.next = next
       this.node.addEventListener(this.event, this.next, !!this.useCapture)
+      if (initialValue) {
+        this.next(initialValue)
+      }
     }
   }
 
