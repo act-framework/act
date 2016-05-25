@@ -1,7 +1,7 @@
 # Table of contents
 
 * [act](/README.md)
-* Examples
+* [Examples](/docs/examples.md)
 * [Concepts](/docs/concepts/README.md)
   * [Using JSON for rendering](/docs/concepts/json.md)
   * [Unidirectional data flow](/docs/concepts/unidirectional-data-flow.md)
