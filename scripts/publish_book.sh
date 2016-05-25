@@ -1,5 +1,6 @@
 #!/bin/sh
 
+./scripts/build_examples.sh
 npm run docs:clean
 npm run docs:build
 cd _book
