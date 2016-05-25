@@ -101,10 +101,10 @@ import { click } from '@act/main/testHelpers'
 
 assert.equal(dom.tagName, 'button')
 assert.equal(dom.children[0].text, '0')
-assert.equal(history.latest, undefined)
+assert.equal(history.current, undefined)
 const newDOM = click(dom)
 assert.equal(newDOM.children[0].text, '1')
-assert.equal(history.latest, { type: 'add', payload: 1 })
+assert.equal(history.current, { type: 'add', payload: 1 })
 ```
 
 You can know more checking the unit_test folder under examples.
