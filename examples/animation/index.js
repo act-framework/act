@@ -17,22 +17,34 @@ const go = (history, payload) => {
   history.go(payload)
 }
 
+let interval
 const replay = (history, payload) => {
   let i = 0
   history.go(i++)
 
-  const interval = setInterval(() => {
-    if (i === history.length) {
-      return clearInterval(interval)
-    }
-
+  interval && clearInterval(interval)
+  interval = setInterval(() => {
+    if (i === history.length) return clearInterval(interval)
     history.go(i++)
+  }, 1000 / 60)
+}
+
+const rewind = (history, payload) => {
+  let i = history.length
+  history.go(i--)
+
+  interval && clearInterval(interval)
+  interval = setInterval(() => {
+    if (i === 0) return clearInterval(interval)
+    history.go(i--)
   }, 1000 / 60)
 }
 
 const view = ({ current }, history) => (
   ['main', [
     ['button', {click: replay}, 'Replay'],
+    ['button', {click: rewind}, 'Rewind'],
+    ['br'],
     0,
     ['input', {
       style: {width: 100 + history.length},
@@ -45,39 +57,22 @@ const view = ({ current }, history) => (
     }],
     history.length,
     ['br'],
-    ['center', history.present],
-
-    ['div', {
-      click: [start, positionsImmediate],
-      style: {
-        border: '2px dashed black',
-        height: 600
-      }
-    }],
-    ['div', {class: [styles, 'dot'], style: {
-      left: current[0],
-      top: current[1]}}]
+    history.present,
+    ['div', { class: [styles, 'box'], click: [start, positionsImmediate] }, 'click in the box'],
+    ['div', { class: [styles, 'dot'], style: { left: current[0], top: current[1] } }]
   ]]
 )
 
-const reducer = (state, { type, payload }) => {
+const reducer = (state = { dest: [0, 0], current: [0, 0] }, { type, payload }) => {
   switch (type) {
     case 'dest':
       return { ...state, dest: payload, previous: state.current }
     case 'step':
-      // say current is 0, 0, and dest is 100, 0
-      // and step is 5
-      const [x, y] = state.previous
-      const [x2, y2] = state.dest
-      const diffX = (x2 - x)
-      const diffY = (y2 - y)
-      return { ...state, current: [x + (payload * diffX), y + (payload * diffY)] }
+      const { previous: [x, y], dest: [x2, y2] } = state
+      return { ...state, current: [x + (payload * (x2 - x)), y + (payload * (y2 - y))] }
     default:
       return state
   }
 }
 
-main(view, {
-  model: { dest: [0, 0], current: [0, 0] },
-  reducer
-})
+main(view, { reducer })

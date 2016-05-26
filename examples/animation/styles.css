@@ -5,3 +5,9 @@
   position: absolute;
   border-radius: 10px;
 }
+
+.box {
+  border: 2px dashed black;
+  line-height: 600px;
+  text-align: center;
+}
