@@ -70,6 +70,19 @@ test('main: renders simple function', (assert) => {
   assert.end()
 })
 
+test('main: side effect action', (assert) => {
+  const sideEffect = spy()
+  const view = ['button', {click: sideEffect}]
+  const { dom } = main(view)
+  mouseEvents['click'](dom)
+  assert.ok(
+    sideEffect.called,
+    'calls side effect action when event is triggered'
+  )
+
+  assert.end()
+})
+
 test('main: history.push', (assert) => {
   const { dom, history } = main(identity, { model: 'Kripke' })
 
