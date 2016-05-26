@@ -7,6 +7,7 @@
 * [hello world](http://joaomilho.github.io/act/examples/hello_world/) [code](https://github.com/joaomilho/act/blob/master/examples/hello_world/index.js)
 * [images](http://joaomilho.github.io/act/examples/images/) [code](https://github.com/joaomilho/act/blob/master/examples/images/index.js)
 * [mouse events](http://joaomilho.github.io/act/examples/mouse_events/) [code](https://github.com/joaomilho/act/blob/master/examples/mouse_events/index.js)
+* [naive router](http://joaomilho.github.io/act/examples/naive_router/) [code](https://github.com/joaomilho/act/blob/master/examples/naive_router/index.js)
 * [sockets](http://joaomilho.github.io/act/examples/sockets/) [code](https://github.com/joaomilho/act/blob/master/examples/sockets/index.js)
 * [todomvc](http://joaomilho.github.io/act/examples/todomvc/) [code](https://github.com/joaomilho/act/blob/master/examples/todomvc/index.js)
 * [undo/redo](http://joaomilho.github.io/act/examples/undo/) [code](https://github.com/joaomilho/act/blob/master/examples/undo/index.js)
