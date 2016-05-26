@@ -1,5 +1,8 @@
 #!/bin/sh
 
+mv .gitignore .master.gitignore
+mv .ghpages.gitignore .gitignore
+
 ./scripts/build_examples.sh
 npm run docs:clean
 npm run docs:build
@@ -10,3 +13,6 @@ git checkout -b gh-pages
 git add .
 git commit -am 'update book'
 git push git@github.com:joaomilho/act gh-pages --force
+
+mv .gitignore .ghpages.gitignore
+mv .master.gitignore .gitignore
