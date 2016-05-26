@@ -1,6 +1,4 @@
 node_modules
-vdom
 _book
-_temp
 examples/**/bundle.js
 npm-debug.log
