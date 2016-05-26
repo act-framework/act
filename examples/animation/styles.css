@@ -1,0 +1,7 @@
+.dot {
+  width: 10px;
+  height: 10px;
+  background: red;
+  position: absolute;
+  border-radius: 10px;
+}

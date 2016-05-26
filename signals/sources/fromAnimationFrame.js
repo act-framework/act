@@ -12,8 +12,11 @@ class FromAnimationFrame {
         return
       }
 
-      this.next = next
-      this.id = requestAnimationFrame(this.next)
+      const frame = () => {
+        this.id = requestAnimationFrame(frame)
+        next()
+      }
+      frame()
     }
   }
 
@@ -24,6 +27,4 @@ class FromAnimationFrame {
   }
 }
 
-
 export default () => new FromAnimationFrame()
-
