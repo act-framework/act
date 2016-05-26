@@ -4,6 +4,7 @@ import patch from 'virtual-dom/patch'
 import mapObjIndexed from 'ramda/src/mapObjIndexed'
 import jsonToVirtualDOM from './internals/jsonToVirtualDOM'
 import History from './internals/History'
+import map from 'ramda/src/map'
 
 const defaultReducer = (_, { payload }) => payload
 const defaultStorage = { get: () => undefined, set: () => {} }
@@ -19,9 +20,11 @@ const defaultStorage = { get: () => undefined, set: () => {} }
  */
 
 const main = function (view, {
+    historyClass = History,
     model,
     node = document.body,
     reducer = defaultReducer,
+    sideEffects = [],
     storage = defaultStorage,
     subscriptions = {}
   } = {}) {
@@ -30,7 +33,7 @@ const main = function (view, {
 
   const render = (view, state) => {
     const json = typeof view === 'function'
-      ? view(state)
+      ? view(state, history)
       : view // user may want to perform side-effects only
 
     const tree = jsonToVirtualDOM(json, history)
@@ -43,8 +46,9 @@ const main = function (view, {
   }
 
   let initialState = storage.get() ||
-    typeof model !== 'undefined' && model ||
-    reducer(undefined, {type: '__probe'})
+    typeof model !== 'undefined'
+      ? model
+      : reducer(undefined, {type: '__probe'})
 
   const rerender = (state) => {
     const dom = render(view, state)
@@ -52,15 +56,17 @@ const main = function (view, {
     return dom
   }
 
-  const history = new History(initialState, reducer, rerender)
-
-  const update = (action) => history.push(action)
+  const history = new historyClass(initialState, reducer, rerender)
 
   const dom = render(view, initialState)
 
   mapObjIndexed((subscription, type) =>
-    subscription((payload) => update({ type, payload }))
+    subscription((payload) => history.push({ type, payload }))
   , subscriptions)
+
+  map(([action, subscription]) =>
+    subscription((payload) => action(history, payload))
+  , sideEffects)
 
   return { dom, history }
 }
