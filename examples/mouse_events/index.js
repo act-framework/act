@@ -1,5 +1,5 @@
 import main from '../..'
-import { positions } from '../../subscriptions/window'
+import { positions } from '../../subscriptions/mouse'
 
 const view = (pos) =>
   ['div', `Position: ${pos}`]

@@ -19,9 +19,7 @@ const scrollE = fromEvent(window, 'scroll').start()
 
 export const scroll = processes.scroll(scrollE)
 
-// mouse move
-const mouseMove = fromEvent(window, 'mousemove').start()
+// click
+const click = fromEvent(window, 'click').start()
 
-export const positions = processes.positions(mouseMove)
-export const x = processes.x(mouseMove)
-export const y = processes.y(mouseMove)
+export const clickPosition = processes.positionsImmediate(click)
