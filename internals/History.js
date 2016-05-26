@@ -35,6 +35,10 @@ export default class History {
     return dom
   }
 
+  get length () {
+    return this.timeline.length
+  }
+
   get current () {
     return this.timeline[this.present - 1]
   }
@@ -53,6 +57,7 @@ export default class History {
   }
 
   go (index) {
+    index = parseInt(index)
     if (index === this.present ||
         index < 0 ||
         index > this.timeline.length) {
