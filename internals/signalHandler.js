@@ -1,11 +1,23 @@
-import mapObjIndexed from 'ramda/src/mapObjIndexed'
-import pipe from '../signals/pipe'
 import always from '../signals/processes/always'
 import fromEvent from '../signals/sources/fromEvent'
+import identity from '../signals/processes/identity'
+import isArrayLike from 'ramda/src/isArrayLike'
+import map from 'ramda/src/map'
+import toPairs from 'ramda/src/toPairs'
 
 class SignalHandler {
   constructor (events, history, namespaces = []) {
-    this.events = events
+    if (typeof events === 'function') {
+      this.events = [[events, identity]]
+    } else if (isArrayLike(events)) {
+      this.events = isArrayLike(events[0]) ? events : [events]
+    } else if (typeof events === 'object') {
+      this.events = toPairs(events)
+    } else {
+      this.events = []
+    }
+
+    // this.events = events
     this.history = history
     this.namespaces = namespaces
     this.processes = {}
@@ -14,8 +26,12 @@ class SignalHandler {
 
   hook (node, propertyName) {
     const prop = propertyName.split('-')[0]
+    let index = 0
+    map(([typeOrAction, processOrValue]) => {
+      const [type, action] = typeof typeOrAction === 'string'
+        ? [typeOrAction, (history, payload) => this.history.push({ type: [...this.namespaces, type].join('.'), payload })]
+        : [`${prop}-${++index}`, typeOrAction]
 
-    mapObjIndexed((processOrValue, type) => {
       if (typeof processOrValue === 'function') {
         this.processes[type] = processOrValue
       } else {
@@ -23,7 +39,7 @@ class SignalHandler {
         // const a = pipe(always(processOrValue))
         // a.cname = 'foooo'
 
-        this.processes[type] = pipe(always(processOrValue))
+        this.processes[type] = always(processOrValue)
       }
 
       if (node['__act'] && node['__act'][prop]) {
@@ -37,16 +53,16 @@ class SignalHandler {
       this.sources[type] = fromEvent(node, prop)
 
       this.processes[type](this.sources[type].start())((payload) => {
-        this.history.push({ type: [...this.namespaces, type].join('.'), payload })
+        action(this.history, payload)
       })
     }, this.events)
 
     // TODO: Think of a better struct for _this_ for better debugging
     // cause now it's sources[type], processes[type] ...
     // It may be better to have type.sources, type.processes ...
-    node['__act'] = {
-      [prop]: this
-    }
+    node['__act'] = node['__act']
+      ? { ...node['__act'], [prop]: this }
+      : { [prop]: this }
   }
 }
 

@@ -1,9 +1,7 @@
 import h from 'virtual-dom/h'
 import isArrayLike from 'ramda/src/isArrayLike'
 import map from 'ramda/src/map'
-import mapObjIndexed from 'ramda/src/mapObjIndexed'
 import classLists from 'class-lists'
-import eventHandler from './eventHandler'
 import signalHandler from './signalHandler'
 import events from './events'
 import intersection from 'ramda/src/intersection'
@@ -117,9 +115,7 @@ function injectEventHandlers (ats, history, namespaces) {
   const eventsInAts = intersection(Object.keys(ats), events)
 
   map((event) => {
-    ats[`${event}-handler`] = typeof ats[event] === 'function'
-      ? eventHandler(ats[event], history, namespaces)
-      : signalHandler(ats[event], history, namespaces)
+    ats[`${event}-handler`] = signalHandler(ats[event], history, namespaces)
   }, eventsInAts)
 }
 
