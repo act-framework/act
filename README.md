@@ -1,11 +1,12 @@
-<div style="text-align: center;">
+<p align="center" style="font-family: Raleway-ExtraLight, Raleway, Proxima Nova, Avenir, Arial, sans">
   <img src="https://raw.githubusercontent.com/joaomilho/act/master/docs/logo.png" width="100" alt="Act" />
   <br />	
-  <div style="font-family: Raleway-ExtraLight, Raleway, Proxima Nova, Avenir, Arial, sans">The simple reactive front-end framework</div>
-  <br />	
-  [![Travis](https://travis-ci.org/joaomilho/act.svg)](https://travis-ci.org/joaomilho/act)
-  [![npm](https://img.shields.io/npm/v/@act/core.svg?maxAge=2592000)](http://npmjs.com/package/@act/core)
-</div>
+  The simple reactive front-end framework
+  <br /><br />
+  <a href="https://travis-ci.org/joaomilho/act"><img src="https://travis-ci.org/joaomilho/act.svg" /></a> 
+  &nbsp; <a href="http://npmjs.com/package/@act/main"><img src="https://img.shields.io/npm/v/@act/main.svg?maxAge=2592000" /></a>
+  
+</p>
 <br />
 
 ## Hello Act
