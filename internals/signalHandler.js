@@ -7,7 +7,7 @@ import toPairs from 'ramda/src/toPairs'
 
 class SignalHandler {
   constructor (events, history, namespaces = []) {
-    if (typeof events === 'function') {
+    if (typeof events === 'function' || typeof events === 'string') {
       this.events = [[events, identity]]
     } else if (isArrayLike(events)) {
       this.events = isArrayLike(events[0]) ? events : [events]
@@ -17,7 +17,6 @@ class SignalHandler {
       this.events = []
     }
 
-    // this.events = events
     this.history = history
     this.namespaces = namespaces
     this.processes = {}

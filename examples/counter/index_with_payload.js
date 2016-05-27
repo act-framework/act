@@ -3,17 +3,15 @@ import main from '../..'
 const counter = (count) => (
   ['main', [
     ['h1', count],
-    ['button', {click: 'inc'}, 'Increment'],
-    ['button', {click: 'dec'}, 'Decrement']
+    ['button', {click: {add: 1}}, 'Add 1'],
+    ['button', {click: {add: -1}}, 'Remove 1']
   ]]
 )
 
 const reducer = (state = 0, {type, payload}) => {
   switch (type) {
-    case 'inc':
-      return state + 1
-    case 'dec':
-      return state - 1
+    case 'add':
+      return state + payload
     default:
       return state
   }
