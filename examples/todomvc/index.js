@@ -17,45 +17,40 @@ import propEq from 'ramda/src/propEq'
 import reject from 'ramda/src/reject'
 import set from 'ramda/src/set'
 
-const view = ({ show, todos }) => (
+const view = ({ show, todos }) =>
   ['section.todoapp', todos.length ? [header, list(filters[show](todos)), footer(show, todos)] : [header]]
-)
 
-const header = () => (
+const header = () =>
   ['header.header', [
     ['h1', 'todos'],
     ['input.new-todo', {placeholder: 'What needs to be done?', autofocus: true, value: '',
       keyup: {add: valueOnEnter, clear: onEsc}}]
   ]]
-)
 
-const list = (todos) => (
+const list = (todos) =>
   ['section.main', [
     ['input.toggle-all', {type: 'checkbox', change: {toggleAll: all(prop('completed'), todos)}}],
     ['label', {for: 'toggle-all'}, 'Mark all as complete'],
     ['ul.todo-list', map(todo, todos)]
   ]]
-)
 
 const todo = (todo) => todo.editing ? editingTodo(todo) : stdTodo(todo)
 
-const editingTodo = (todo) => (
+const editingTodo = (todo) =>
   ['li.editing', [
     ['input.edit', {value: todo.title, autofocus: true,
       keyup: {edit: valueOnEnterAnd({id: todo.id})},
       blur: {edit: valueAnd({id: todo.id})}}]
   ]]
-)
 
-const stdTodo = (todo) => (
+const stdTodo = (todo) =>
   ['li', {class: [[todo.completed, 'completed']]}, [
     ['input.toggle', {type: 'checkbox', checked: todo.completed, click: {toggleCompleted: todo.id}}],
     ['label', {dblclick: {toggleEditing: todo.id}}, todo.title],
     ['button.destroy', {click: {remove: todo.id}}]
   ]]
-)
 
-const footer = (show, todos) => (
+const footer = (show, todos) =>
   ['footer.footer', [
     ['span.todo-count', call(({length}) =>
       [['strong', length], ` ${length === 1 ? 'item' : 'items'} left`], filters['Active'](todos))],
@@ -63,13 +58,11 @@ const footer = (show, todos) => (
     any(prop('completed'), todos) &&
       ['button.clear-completed', {click: {clearCompleted: true}}, 'Clear completed']
   ]]
-)
 
-const filterItem = (show) => (item) => (
+const filterItem = (show) => (item) =>
   ['li', [
     ['a', {class: [[show === item, 'selected']], href: '#/active', click: {show: item}}, item]
   ]]
-)
 
 const filters = {
   All: identity,

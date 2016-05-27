@@ -13,6 +13,6 @@ git checkout -b gh-pages
 git add .
 git commit -am 'update book'
 git push git@github.com:joaomilho/act gh-pages --force
-
+cd ..
 mv .gitignore .ghpages.gitignore
 mv .master.gitignore .gitignore

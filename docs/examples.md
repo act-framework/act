@@ -10,7 +10,7 @@
 * [mouse events](http://joaomilho.github.io/act/examples/mouse_events/) [code](https://github.com/joaomilho/act/blob/master/examples/mouse_events/index.js)
 * [naive router](http://joaomilho.github.io/act/examples/naive_router/) [code](https://github.com/joaomilho/act/blob/master/examples/naive_router/index.js)
 * [sockets](http://joaomilho.github.io/act/examples/sockets/) [code](https://github.com/joaomilho/act/blob/master/examples/sockets/index.js)
-* [todomvc](http://joaomilho.github.io/act/examples/todomvc/) [code](https://github.com/joaomilho/act/blob/master/examples/todomvc/index.js)
+* [todomvc](http://joaomilho.github.io/act/examples/todomvc/) [code](https://github.com/joaomilho/act/blob/master/examples/todomvc/index.js) (full build: 14.4kb gzipped) (code: ~90LsoC)
 * [undo/redo](http://joaomilho.github.io/act/examples/undo/) [code](https://github.com/joaomilho/act/blob/master/examples/undo/index.js)
 * unit tests [code](https://github.com/joaomilho/act/blob/master/examples/unit_test/test.js)
 * [window events](http://joaomilho.github.io/act/examples/window_events/) [code](https://github.com/joaomilho/act/blob/master/examples/window_events/index.js)
