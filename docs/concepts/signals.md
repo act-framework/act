@@ -29,9 +29,34 @@ only when the user hits enter, that's why we have this `valueOnEnter` there.
 The reducer doesn't actually need to be defined, since we saw earlier that the
 default reducer will override the state with the payload sent.
 
-There are plenty of helpers like this in Act, to cover most of the common use
-cases for web apps, just take a look at the processes.js file. If what you need
-is not there, don't worry, you can create your own processes.
+But sometimes the goal of an action is not to change state, but to do some side
+effect. If the side effect doesn't need any info from the event, use plain
+actions, like we learned in the [actions](./actions.md) chapter. But if you need,
+you can use the following syntax:
+
+```
+{ event: [sideEffect, process] }
+```
+
+In this case, everey time the `event` happens, it will process it's value using
+`process` and finally it will call `sideEffect` with the history and the signal
+value. And if you need multiple side effects in the same event, you can always
+do:
+
+```
+{ event: [[sideEffect1, process1], [sideEffect2, process2]] }
+```
+
+Actually, all allowed syntaxes eventually translate to a list of pairs
+internally to Act.
+
+If you want a quick way to know when to use each, look into the
+[diagrams](../real_world/diagrams.md) doc.
+
+Now, going back to the `valueOnEnter` thing: there are plenty of helpers like
+this in Act, to cover most of the common use cases for web apps, just take a
+look at the code. If what you need is not there, don't worry, you can create
+your own processes.
 
 But wait, I was talking about signals, and now I mentioned processes! The
 example was simple, but what all this means? Well, a signal has two parts, a

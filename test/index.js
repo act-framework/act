@@ -6,6 +6,7 @@ import map from 'ramda/src/map'
 import forEach from 'ramda/src/forEach'
 import prop from 'ramda/src/prop'
 import props from 'ramda/src/props'
+import TraversableHistory from '../internals/TraversableHistory'
 
 test('main: dom', (assert) => {
   // tag
@@ -152,7 +153,7 @@ test('main: calls storage functions when value changes', (assert) => {
 })
 
 test('main: history.undo/redo', (assert) => {
-  const { history } = main(identity, { model: 'Heraclitus' })
+  const { history } = main(identity, { model: 'Heraclitus', historyClass: TraversableHistory })
 
   history.push({ type: 'name', payload: 'Parmenides' })
   const dom = history.push({ type: 'name', payload: 'Anaximander' })
@@ -169,7 +170,7 @@ test('main: history.undo/redo', (assert) => {
 })
 
 test('main: history.go', (assert) => {
-  const { history } = main(identity, { model: 'Anaximenes' })
+  const { history } = main(identity, { model: 'Anaximenes', historyClass: TraversableHistory })
 
   history.push({ type: 'name', payload: 'Plutarchus' })
   history.push({ type: 'name', payload: 'Plotinus' })
@@ -191,7 +192,7 @@ test('main: mouse events', (assert) => {
   forEach((mouseEvent) => {
     const view = ['button', {[mouseEvent]: {add: 1}}]
 
-    const { dom, history } = main(view)
+    const { dom, history } = main(view, { historyClass: TraversableHistory })
     mouseEvents[mouseEvent](dom)
     assert.deepEqual(
       history.current,
@@ -211,7 +212,7 @@ test('main: keyboard events', (assert) => {
   forEach((keyboardEvent) => {
     const view = ['button', {[keyboardEvent]: {get: valueAndKeyCode}}]
     const randomKeyCode = parseInt(Math.random() * 20 + 1)
-    const { dom, history } = main(view)
+    const { dom, history } = main(view, { historyClass: TraversableHistory })
     keyboardEvents[keyboardEvent](dom, randomKeyCode, keyboardEvent)
     assert.deepEqual(
       history.current,
@@ -232,7 +233,7 @@ test('main: form events', (assert) => {
     console.log('formEvent', formEvent)
     const view = ['form', {[formEvent]: {data: naiveSerialize}}]
 
-    const { dom, history } = main(view)
+    const { dom, history } = main(view, { historyClass: TraversableHistory })
     formEvents[formEvent](dom, {name: 'Freud', age: 33})
     assert.deepEqual(
       history.current,
@@ -251,7 +252,7 @@ import { value } from '../processes'
 test('main: input events', (assert) => {
   forEach((inputEvent) => {
     const view = ['input', {[inputEvent]: {value: value}}]
-    const { dom, history } = main(view)
+    const { dom, history } = main(view, { historyClass: TraversableHistory })
     inputEvents[inputEvent](dom, inputEvent)
     assert.deepEqual(
       history.current,

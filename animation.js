@@ -1,4 +1,4 @@
-import AnimationHistory from './internals/AnimationHistory'
+import TraversableAnimationHistory from './internals/TraversableAnimationHistory'
 import fromAnimationFrame from './signals/sources/FromAnimationFrame'
 import Spring from './internals/spring'
 import map from './signals/processes/map'
@@ -15,6 +15,6 @@ export const spring = (config) => (callback, finish = () => {}) => {
 }
 
 const main = (view, opts) => {
-  return _main(view, { ...opts, historyClass: AnimationHistory })
+  return _main(view, { ...opts, historyClass: TraversableAnimationHistory })
 }
 export default main

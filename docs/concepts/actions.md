@@ -23,8 +23,7 @@ const button = () => ['button', {click: handler}]
 
 That's the general syntax. `history.push` will send this to your reducer and
 your app will rerender. To find out more about `history` check [its docs](/history.md).
-There's no need for Providers or connects here. Since this example is a little
-too simple, let's see a better one:
+Since this example is a little too simple, let's see a better one:
 
 ```js
 import main from '@act/main'
@@ -41,9 +40,8 @@ main(view, { reducer })
 ```
 
 That's the whole app. When you click in the button, it calls add, that calls
-`history.push`, that calls the reducer that will rerender your whole app (yeah, ok,
-just a button with a number).
-
+`history.push`, that calls the reducer that will rerender your whole app (yeah,
+ok, just a button with a number).
 
 ###### Events with constant values
 

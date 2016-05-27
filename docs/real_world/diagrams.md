@@ -6,10 +6,10 @@
   <tr>
   	<th></th>
   	<th>simply updates data</th>
-  	<th>side effect <small>(may update data)</small></th> 
-  </tr>  
+  	<th>side effect <small>(may update data)</small></th>
+  </tr>
   <tr>
-  	<th>interaction on element inside view</th>  
+  	<th>interaction on element inside view</th>
   	<td>action</td>
   	<td>action with side effect</td>
   </tr>

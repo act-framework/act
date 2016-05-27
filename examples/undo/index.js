@@ -1,4 +1,5 @@
 import main from '../..'
+import TraversableHistory from '../../internals/TraversableHistory'
 
 // suggestion:
 // import call from 'ramda/src/call'
@@ -25,9 +26,9 @@ const view = (count) => (
   ]]
 )
 
-export const reducer = (state = 0, {type, payload}) =>
+export const reducer = (state, {type, payload}) =>
   type === 'add'
     ? state + payload
     : state
 
-main(view, { reducer })
+main(view, { reducer, model: 0, historyClass: TraversableHistory })

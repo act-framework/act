@@ -111,3 +111,22 @@ a reasonable amount of time. To know more check the documentation on subscriptio
 Note that the examples above used the `scroll` helper from processes, so you
 can compose your own, and here `scroll` comes from the subscription helpers, a
 more high level library that abstracts the whole signal - source and process.
+
+### Subscriptions with side effects
+
+Not all subscriptions are supposed to change our state. Some may only execute
+some side effect, or even do both. In this case, you can use the following
+syntax:
+
+```
+const subscriptions = [
+  [sideEffect, subscription]
+]
+```
+
+This will call `sideEffect` with the history and the subscription value every
+time there's a new value produced. Note this is analogous to actions with
+signals and side effects, even the syntax is the same.
+
+If you want a quick way to know when to use each, look into the
+[diagrams](../real_world/diagrams.md) doc.
