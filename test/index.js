@@ -113,6 +113,28 @@ test('main: subscription', (assert) => {
   assert.end()
 })
 
+test('main: side effect subscription', (assert) => {
+  const sideEffect = spy()
+  let subscriptionEmitter
+  const mockSubscription = (fn) => {
+    subscriptionEmitter = fn
+  }
+
+  const { dom } = main(
+    identity,
+    {
+      model: 'Thales',
+      subscriptions: [[sideEffect, mockSubscription]]
+    }
+  )
+
+  subscriptionEmitter('Bentham')
+  assert.equal(sideEffect.lastCall.args[1], 'Bentham')
+
+  assert.end()
+})
+
+
 test('main: calls storage functions when value changes', (assert) => {
   const mockStorage = { get: () => 'Plato', set: spy() }
 

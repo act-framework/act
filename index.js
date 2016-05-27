@@ -1,10 +1,11 @@
 import createElement from 'virtual-dom/create-element'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
-import mapObjIndexed from 'ramda/src/mapObjIndexed'
 import jsonToVirtualDOM from './internals/jsonToVirtualDOM'
 import History from './internals/History'
 import map from 'ramda/src/map'
+import isArrayLike from 'ramda/src/isArrayLike'
+import toPairs from 'ramda/src/toPairs'
 
 const defaultReducer = (_, { payload }) => payload
 const defaultStorage = { get: () => undefined, set: () => {} }
@@ -60,13 +61,13 @@ const main = function (view, {
 
   const dom = render(view, initialState)
 
-  mapObjIndexed((subscription, type) =>
-    subscription((payload) => history.push({ type, payload }))
-  , subscriptions)
+  map(([typeOrAction, subscription]) => {
+    const action = typeof typeOrAction === 'string'
+      ? (history, payload) => history.push({ type: typeOrAction, payload })
+      : typeOrAction
 
-  map(([action, subscription]) =>
     subscription((payload) => action(history, payload))
-  , sideEffects)
+  }, isArrayLike(subscriptions) ? subscriptions : toPairs(subscriptions))
 
   return { dom, history }
 }
