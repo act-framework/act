@@ -48,3 +48,10 @@ const menu = ({ open }) => (
   ['ol#menu', {class: [[open: 'is-open', 'is-closed']]}, map(menuItem, items)]
 )
 ```
+
+And if you're using [css-modules](https://github.com/css-modules/css-modules), you need no special binding, just do:
+
+```
+import styles from './styles.css'
+
+... { class: [styles, 'class', 'another_class'] } ...

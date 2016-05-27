@@ -7,7 +7,7 @@ although behind the scenes it is not quite (for instance, React events are
 "synthetic"). If you do the following in HTML or in React you'll get the same
 results:
 
-```js
+```html
 // html
 <button onClick="() => alert('Hello!')">Say hello</button>
 

@@ -9,7 +9,7 @@ current ones, returning `false` if you want to avoid a rerender.
 
 Here's a dummy example:
 
-```
+```js
 class Hello extends React.Component  {
   shouldComponentUpdate (nextProps) {
     return this.props.name !== nextProps.name

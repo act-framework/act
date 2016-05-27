@@ -23,6 +23,6 @@ view model =
 const view = (model) =>
   ['div', [
     ['h1', model],
-    ['button', {click: {increment: 1} , '+']
+    ['button', {click: 'increment'} , '+']
   ]]
 ```

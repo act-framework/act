@@ -15,7 +15,7 @@ when a component gets out of the DOM (`componentWillUnmount`).
 
 Act doesn't come with any built in lifecycle events. But don't panic! What you
 have to understand is that Act doesn't really have a clear concept of
-"component". Act has view functions (or even constants) that will, in the end
+"component". Act has view functions (or even constants) that will in the end
 be aggregated by a single view function that returns your whole DOM
 representation as JSON. But this doesn't mean you simply can't achieve the same
 results as in most React lifecycle events.
@@ -33,12 +33,11 @@ virtual-dom's concept of [thunk](https://github.com/Matt-Esch/virtual-dom/blob/m
 Third, if you wanna have a mount hook on a specific tag (not a function!), since
 Act uses virtual-dom behind the scenes, you can still use the [hook
 mechanism](https://github.com/Matt-Esch/virtual-dom/blob/master/docs/hooks.md)
-that exists there (if you're really interested, look into Act's hooks on
-eventHandler.js and signalHook.js).
+that exists there (if you're really interested, look into Act's hooks at `internals/signalHandler.js`).
 
 Finally, remember you're simply dealing with functions, and they come with all
 sorts of natural ways to do things. For instance, if you memoize a view, it
 will run only if the inputs changed, therefore if you execute some routine in
-this function before returing it's JSON, you can be assured this routing will
+this function before returing it's JSON, you can be assured it will
 only be executed when the function gets new values. Be creative.
 

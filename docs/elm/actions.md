@@ -26,6 +26,8 @@ update msg model =
       (Model newFace, Cmd.none)
 ```
 
+##### Act
+
 ```js
 const view = (model) =>
   ['div', [
