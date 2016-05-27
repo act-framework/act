@@ -1,24 +1,24 @@
 # Cheatsheet
 
-You can also download a [PDF cheat sheet](lulk.in/act/docs/cheatsheet.pdf).
+You can also download a [PDF cheat sheet](http://lulk.in/act/docs/cheatsheet.pdf).
 
 #### main
 
 Render text
 
-```
+```js
 main('Hello')
 ```
 
 Render tag
 
-```
+```js
 main(['h1', 'Hello'])
 ```
 
 Render function
 
-```
+```js
 const view = () => ['h1', 'Hello']
 
 main(view)
@@ -26,7 +26,7 @@ main(view)
 
 Render function with model
 
-```
+```js
 const view = (val) => ['em', val]
 const model = 10
 
@@ -35,7 +35,7 @@ main(view, { model })
 
 With reducer
 
-```
+```js
 const reducer = (state = 0, {type, payload}) => {
   switch(type) {
     case 'em'
@@ -50,7 +50,7 @@ main(view, { reducer })
 
 With subscriptions
 
-```
+```js
 const subscriptions = {
   scroll
 }
@@ -60,7 +60,7 @@ main(view, { subscriptions }
 
 Render on a specific DOM node
 
-```
+```js
 const node = document.getElementById('app')
 
 main(view, { node })
@@ -68,7 +68,7 @@ main(view, { node })
 
 With different history
 
-```
+```js
 main(view, { historyClass: TraversableHistory })
 ```
 
@@ -76,46 +76,46 @@ main(view, { historyClass: TraversableHistory })
 
 Simple tag
 
-```
+```js
 ['h1']
 ```
 
 Tag with id
 
-```
+```js
 ['h1#title']
 ['h1', {id: 'title'}]
 ```
 
 Tag with class
 
-```
+```js
 ['div.main']
 ['div', {class: 'main'}]
 ```
 
 Tag with attributes
 
-```
+```js
 ['input', {type: 'checkbox', checked: true}]
 ```
 
 Tag with styles
 
-```
+```js
 ['i', {style: 'color: red; margin: 5px'}]
 ['i', {style: {color: 'red', margin: 5}}]
 ```
 
 Tag with css modules (constant)
 
-```
+```js
 ['i', {style: [styles, 'main']}]
 ```
 
 Tag with css modules (conditional)
 
-```
+```js
 ['i', {style: [styles, [open, 'is_open']]}]
 ['i', {
   style: [styles, [open, 'is_open', 'is_closed']]
@@ -124,20 +124,20 @@ Tag with css modules (conditional)
 
 Tag with text child
 
-```
+```js
 ['h1', 'Hello']
 ['em', 12]
 ```
 
 Tag with child
 
-```
+```js
 ['main', ['h1', 'Hello']]
 ```
 
 Tag with children
 
-```
+```js
 ['main', [
   'Hello',
   ['br'],
@@ -149,26 +149,26 @@ Tag with children
 
 Emit action with type and no payload
 
-```
+```js
 ['button', {click: 'add'}]
 ```
 
 Emit action with type and constant payload
 
-```
+```js
 ['button', {click: {add: 1}}]
 ```
 
 Emit action with type and signal value payload
 
-```
+```js
 ['input', {keyup: {update: valueOnEnter}}]
 ```
 
 Emit multiple actions with type and signal value
 payloads
 
-```
+```js
 ['input', {keyup: {
   update: valueOnEnter,
   clear: valueOnEsc,
@@ -177,28 +177,30 @@ payloads
 
 Execute side effect with original value
 
-```
+```js
 ['input', {change: sideEffect}]
 ```
 
 Execute side effect with signal value
 
-```
+```js
 ['input', {change: [sideEffect, value]}]
 ```
 
 Execute multiple side effects with signal value
 
-```
-['input', {change: [   [sideEffect1, value],
+```js
+['input', {change: [
+  [sideEffect1, value],
   [sideEffect2, onKeyCode(33)]
 ]}]
 ```
 
 Mixing all of the above
 
-```
-['input', {change: [   ['event', identity],
+```js
+['input', {change: [
+  ['event', identity],
   ['add', always(1)],
   ['update', valueOnEnter],
   [sideEffect, onKeyCode(66)]
@@ -207,7 +209,7 @@ Mixing all of the above
 
 Side effect function
 
-```
+```js
 const sideEffect = (history, payload) {
   const result = doSomeSideEffect(payload)
   history.push({
@@ -221,7 +223,7 @@ const sideEffect = (history, payload) {
 
 Subscriptions emiting action from signal
 
-```
+```js
 const subscriptions = {
   actionType: signal
 }
@@ -232,7 +234,7 @@ const subscriptions = {
 
 Subscription calling side effect from signal
 
-```
+```js
 const subscriptions = [
   [sideEffect, signal]
 ]
