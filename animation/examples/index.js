@@ -1,6 +1,6 @@
-import main, { spring } from '../../animation'
+import main, { spring } from '..'
 import styles from './styles.css'
-import { value, positionsImmediate } from '../../processes'
+import { value, positionsImmediate } from '@act/main/processes'
 
 let currentSpring
 const start = (history, payload) => {

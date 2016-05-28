@@ -1,8 +1,8 @@
+import fromAnimationFrame from '@act/main/signals/sources/fromAnimationFrame'
+import map from '@act/main/signals/processes/map'
+import actMain from '@act/main'
+import Spring from './internals/Spring'
 import TraversableAnimationHistory from './internals/TraversableAnimationHistory'
-import fromAnimationFrame from './signals/sources/FromAnimationFrame'
-import Spring from './internals/spring'
-import map from './signals/processes/map'
-import _main from './'
 
 export const spring = (config) => (callback, finish = () => {}) => {
   const frame = fromAnimationFrame()
@@ -15,6 +15,7 @@ export const spring = (config) => (callback, finish = () => {}) => {
 }
 
 const main = (view, opts) => {
-  return _main(view, { ...opts, historyClass: TraversableAnimationHistory })
+  return actMain(view, { ...opts, historyClass: TraversableAnimationHistory })
 }
+
 export default main
