@@ -2,13 +2,14 @@ import main, { spring } from '..'
 import styles from './styles.css'
 import value from '@act/main/processes/value'
 import position from '@act/main/processes/position'
+import TraversableAnimationHistory from '../internals/TraversableAnimationHistory'
 
 let currentSpring
 const start = (history, payload) => {
   history.push({type: 'dest', payload})
   currentSpring && currentSpring.stop()
 
-  currentSpring = spring({})(
+  currentSpring = spring(
     (payload) => history.push({type: 'step', payload}),
     () => console.log('FINISHED')
   )
@@ -76,4 +77,4 @@ const reducer = (state = { dest: [0, 0], current: [0, 0] }, { type, payload }) =
   }
 }
 
-main(view, { reducer })
+main(view, { reducer, historyClass: TraversableAnimationHistory })

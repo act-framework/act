@@ -1,5 +1,6 @@
 import take from 'ramda/src/take'
 import History from './History'
+import splitAt from 'ramda/src/splitAt'
 
 export default class TraversableHistory extends History {
   constructor (...args) {
@@ -8,16 +9,18 @@ export default class TraversableHistory extends History {
     this.timeline = []
     this.present = 0
     this.initialState = this.state
-    delete this.delta
   }
 
-  push (action) {
-    this.state = this.reduce(this.state, [action])
-    this.timeline = [...this.timeline, action]
+  concat () {
+    this.state = this.reduce(this.state, this.delta)
+    const [past, future] = splitAt(this.present, this.timeline)
+    this.timeline = [...past, ...this.delta, ...future]
+
     this.subscription &&
       this.subscription(this.timeline)
 
-    this.present += 1
+    this.present += this.delta.length
+    this.delta = []
     return this.rerender()
   }
 
