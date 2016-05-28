@@ -22,6 +22,10 @@ const view = (val) =>
 main(view, { subscriptions: { spring } })
 ```
 
+Example with [manageable history](./examples/):
+
+![Example](https://s3.amazonaws.com/f.cl.ly/items/1T073x2r410f47322X3l/act-animation.gif?v=594c65f6)
+
 ## More
 
 The documentation for this module is part of [Act's](https://github.com/joaomilho/act)
