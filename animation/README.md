@@ -24,7 +24,7 @@ main(view, { subscriptions: { spring } })
 
 Example with [manageable history](./examples/):
 
-![Example](https://s3.amazonaws.com/f.cl.ly/items/1T073x2r410f47322X3l/act-animation.gif?v=594c65f6)
+<img src="https://s3.amazonaws.com/f.cl.ly/items/1T073x2r410f47322X3l/act-animation.gif?v=594c65f6" width="300" />
 
 ## More
 
