@@ -1,9 +1,7 @@
-import * as processes from '../processes'
+import _position from '../processes/position'
 import fromEvent from '../signals/sources/fromEvent'
 
 // mouse move
 const mouseMove = fromEvent(window, 'mousemove').start()
 
-export const positions = processes.positions(mouseMove)
-export const x = processes.x(mouseMove)
-export const y = processes.y(mouseMove)
+export const position = _position(mouseMove)
