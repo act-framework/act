@@ -3,6 +3,6 @@ import hash from '../processes/hash'
 
 const hashChange = hash(fromEvent(window, 'hashchange').start(true))
 
-const router = hash(hashChange)
+const naiveRouter = hash(hashChange)
 
-export default router
+export default naiveRouter

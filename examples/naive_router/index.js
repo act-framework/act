@@ -1,5 +1,6 @@
 import main from '../..'
-import router from '../../subscriptions/router'
+import naiveRouter from '../../subscriptions/naiveRouter'
+import TraversableHistory from '../../internals/TraversableHistory'
 
 const undo = (history) => {
   // Regular undo doesn't cover side effects
@@ -26,6 +27,6 @@ const view = (router) => (
   ]]
 )
 
-const subscriptions = { router }
+const subscriptions = { naiveRouter }
 
-main(view, { model: 'home', subscriptions })
+main(view, { model: 'home', subscriptions, historyClass: TraversableHistory })
