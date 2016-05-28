@@ -7,7 +7,7 @@ import _position from '../processes/position'
 import fromEvent from '../signals/sources/fromEvent'
 
 // resize
-const resize = fromEvent(window, 'resize').start()
+const resize = fromEvent(window, 'resize').start({ target: window })
 
 export const dimensions = _dimensions(resize)
 export const height = _height(resize)
