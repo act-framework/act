@@ -2,7 +2,7 @@
 
 #### Performatic and small
 
-Web apps should be fast. Act's TodoMVC has only 14kb, and [performs better](https://github.com/joaomilho/todomvc-perf-comparison)
+Web apps should be fast. Act's TodoMVC has only 13kb, and [performs better](https://github.com/joaomilho/todomvc-perf-comparison)
 than most other frameworks.
 
 #### Simple, but complete
@@ -32,3 +32,8 @@ the real cause of the problem.
 Although having options is not a problem per se, solutions should be clear for
 most common problems. No analysis paralysis.
 
+#### Testable
+
+Most of our time is spent testing and tests are the best documentation of our
+code. Testing should be straightforward and fast. Complex tests are bad docs
+and a time waster.
