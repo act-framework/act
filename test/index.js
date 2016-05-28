@@ -206,7 +206,7 @@ test('main: mouse events', (assert) => {
 
 import { keyboard } from '../internals/events'
 import * as keyboardEvents from '../testHelpers/keyboardEvents'
-import { valueAndKeyCode } from '../processes'
+import valueAndKeyCode from '../processes/valueAndKeyCode'
 
 test('main: keyboard events', (assert) => {
   forEach((keyboardEvent) => {
@@ -226,7 +226,7 @@ test('main: keyboard events', (assert) => {
 
 import { form } from '../internals/events'
 import * as formEvents from '../testHelpers/formEvents'
-import { naiveSerialize } from '../processes'
+import naiveSerialize from '../processes/naiveSerialize'
 
 test('main: form events', (assert) => {
   forEach((formEvent) => {
@@ -247,7 +247,7 @@ test('main: form events', (assert) => {
 
 import { input } from '../internals/events'
 import * as inputEvents from '../testHelpers/inputEvents'
-import { value } from '../processes'
+import value from '../processes/value'
 
 test('main: input events', (assert) => {
   forEach((inputEvent) => {
