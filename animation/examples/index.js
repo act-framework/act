@@ -1,6 +1,7 @@
 import main, { spring } from '..'
 import styles from './styles.css'
-import { value, positionsImmediate } from '@act/main/processes'
+import value from '@act/main/processes/value'
+import position from '@act/main/processes/position'
 
 let currentSpring
 const start = (history, payload) => {
@@ -58,7 +59,7 @@ const view = ({ current }, history) => (
     history.length,
     ['br'],
     history.present,
-    ['div', { class: [styles, 'box'], click: [start, positionsImmediate] }, 'click in the box'],
+    ['div', { class: [styles, 'box'], click: [start, position] }, 'click in the box'],
     ['div', { class: [styles, 'dot'], style: { left: current[0], top: current[1] } }]
   ]]
 )

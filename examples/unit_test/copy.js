@@ -1,4 +1,4 @@
-import { valueOnEnter } from '../../src/processes'
+import valueOnEnter from '../../src/processes/valueOnEnter'
 
 const view = (value) => (
   ['.counter', [

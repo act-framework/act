@@ -1,10 +1,10 @@
 import main from '../..'
-import { width, scroll } from '../../processes'
+import width from '../../processes/width'
+import scroll from '../../processes/scroll'
 import fromEvent from '../../signals/sources/fromEvent'
 import throttle from '../../signals/combinators/throttle'
 import map from '../../signals/combinators/map'
 import distinct from '../../signals/combinators/distinct'
-import head from 'ramda/src/head'
 import times from 'ramda/src/times'
 
 const view = ({breakpoint, scroll}) => (

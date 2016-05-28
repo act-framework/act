@@ -70,7 +70,7 @@ version of that below, that will not require us to define any reducer:
 
 ```js
 import main from '@act/main'
-import { count } from '@act/main/processes'
+import count from '@act/main/processes/count'
 
 const view = (model) => ['button', {click: {add: count}}, model]
 

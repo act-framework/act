@@ -10,7 +10,7 @@ but I think that if you look at an example first, you'll just understand it:
 
 ```js
 import main from '@act/main'
-import { valueOnEnter } from '@act/main/processes'
+import valueOnEnter from '@act/main/processes/valueOnEnter'
 
 const view = (value) => (
   ['div', [

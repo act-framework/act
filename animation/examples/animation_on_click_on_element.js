@@ -1,7 +1,7 @@
 import main from '../..'
 import { history, spring } from '../../animation'
 import styles from './styles.css'
-import { positionsImmediate } from '../../processes'
+import position from '../../processes/position'
 
 let currentSpring
 const start = (history, payload) => {
@@ -17,7 +17,7 @@ const start = (history, payload) => {
 const view = ({ current }) => (
   ['main', [
     ['div', {
-      click: [start, positionsImmediate],
+      click: [start, position],
       style: {
         border: '2px dashed black',
         height: 600
