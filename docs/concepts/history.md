@@ -17,6 +17,8 @@ But you don't really need to know about this details. Each module that needs to
 implement it's own history will expose a new `main` function for you, injecting
 it's history there.
 
+#### Built in histories
+
 Here's a list of features of histories used in basic Act modules, if you're
 interested:
 
@@ -31,3 +33,14 @@ interested:
 
 - TraversableAnimationHistory: Both skips buffering and gives traversing
   methods.
+
+#### Use cases for new histories
+
+You may be creating a game that allows the user to pause. In this case you'll
+need to create a history that will ignore any action, except some "continue"
+action that will enable all actions again. This will be much easier than
+setting a `pause` flag in your model and having to add conditionals for all
+reducers.
+
+There are many advanced use cases that may make your life simpler but building
+a custom history.
