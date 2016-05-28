@@ -1,8 +1,8 @@
 import mapObjIndexed from 'ramda/src/mapObjIndexed'
-import map from '../../signals/processes/map'
+import map from '../signals/processes/map'
 
 // clipboard
-export const clipboard = (mime) =>
+const clipboard = (mime) =>
   map((ev) => ev.clipboardData.getData(mime))
 
 // https://www.w3.org/TR/clipboard-apis/#mandatory-data-types
