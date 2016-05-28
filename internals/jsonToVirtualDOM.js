@@ -113,7 +113,6 @@ function attributeToProperty (ats) {
 
 function injectEventHandlers (ats, history, namespaces) {
   const eventsInAts = intersection(Object.keys(ats), events)
-
   map((event) => {
     ats[`${event}-handler`] = signalHandler(ats[event], history, namespaces)
   }, eventsInAts)
