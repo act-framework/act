@@ -14,6 +14,8 @@ your whole app.
 |params.reducer|function|a function mapping actions to state|
 |params.storage|object|an object with `get` and `set` to remember your state|
 |params.subscriptions|object|an object with subscription functions|
+|params.presenter|function|a function that sits between data and UI|
+|params.historyClass|object|a history object|
 
 ### import
 
@@ -56,7 +58,9 @@ main(view, { model: 'Here is the content' })
 
 #### params.model
 
-The `model` represents your initial application data, before any transformation happens. It is optional since your app may not need any data or it may define it based on reducers [see below].
+The `model` represents your initial application data, before any transformation
+happens. It is optional since your app may not need any data or it may define it
+based on reducers [see below].
 
 ```js
 import map from 'ramda/src/map'
@@ -91,7 +95,9 @@ main('Hello!', { node: document.getElementById('app') })
 
 #### params.storage
 
-An object with a `get` and a `set` functions. The `get` function will be called in the first render, and `set` will be called every time your state changes, receiving the state.
+An object with a `get` and a `set` functions. The `get` function will be called
+in the first render, and `set` will be called every time your state changes,
+receiving the state.
 
 There can be only one storage.
 
@@ -113,11 +119,14 @@ const reducer = (state = 0, {type, payload}) => {
 main(view, { reducer, storage })
 ```
 
-In the above example, the initial count will be fetched from the storage, else it will be `0`. Every time the state changes – when the user clicks the button –, the storage will be updated.
+In the above example, the initial count will be fetched from the storage, else
+it will be `0`. Every time the state changes – when the user clicks the button –,
+the storage will be updated.
 
 #### params.subscriptions
 
-An object where keys are the types of actions to be emitted and values are a subscription function. Check more about subscriptions in the concepts docs.
+An object where keys are the types of actions to be emitted and values are a
+subscription function. Check more about subscriptions in the concepts docs.
 
 ```js
 import breakpoint from '@act/main/subscriptions/breakpoint'
@@ -132,6 +141,35 @@ const subscriptions = {
 main(view, { subscriptions })
 ```
 
-In the above example, every time the current breakpoint changes, the reducer will receive an action with type `breakpoint` and the payload will be the current breakpoint (like `small`, `medium`...).
+In the above example, every time the current breakpoint changes, the reducer
+will receive an action with type `breakpoint` and the payload will be the
+current breakpoint (like `small`, `medium`...).
 
-Since this app doesn't define a reducer, the model will always be updated with the payload, therefore it will always contain only the current breakpoint.
+Since this app doesn't define a reducer, the model will always be updated with
+the payload, therefore it will always contain only the current breakpoint.
+
+#### params.presenter
+
+A function that sits between data and UI. Useful to perform normalizations and
+filters.
+
+```js
+import filter from 'ramda/src/filter'
+import propEq from 'ramda/src/propEq'
+
+const view = (activeItems) =>
+  ['ul', map((item) => (['li', item.name]), activeItems)]
+
+const presenter = filter(propEq('deleted', false)
+
+const model = [
+  { name: 'foo', deleted: true },
+  { name: 'bar', deleted: false }
+]
+
+main(view, { model, presenter })
+```
+
+#### params.historyClass
+
+Read more on [history docs](../concepts/history.md).
