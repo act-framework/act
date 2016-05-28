@@ -1,6 +1,5 @@
 import main from '../..'
-import { dimensions, scroll } from '../../processes'
-import fromEvent from '../../signals/sources/fromEvent'
+import { dimensions, scrollThrottled } from '../../subscriptions/window'
 import times from 'ramda/src/times'
 
 const view = ({dimensions, scroll}) => (
@@ -27,8 +26,8 @@ const reducer = (state, {type, payload}) => {
 const model = { dimensions: [0, 0], scroll: 0 }
 
 const subscriptions = {
-  resize: dimensions(fromEvent(window, 'resize').start()),
-  scroll: scroll(fromEvent(window, 'scroll').start())
+  resize: dimensions,
+  scroll: scrollThrottled
 }
 
 main(view, { model, reducer, subscriptions })
