@@ -1,6 +1,6 @@
 # Examples
 
-* [animation](http://joaomilho.github.io/act/examples/animation/) [code](https://github.com/joaomilho/act/blob/master/examples/animation/index.js)
+* [animation](http://joaomilho.github.io/act/animation/examples) [code](https://github.com/joaomilho/act/blob/master/animation/examples/index.js)
 * [clipboard](http://joaomilho.github.io/act/examples/clipboard/) [code](https://github.com/joaomilho/act/blob/master/examples/clipboard/index.js)
 * [counter](http://joaomilho.github.io/act/examples/counter/) [code](https://github.com/joaomilho/act/blob/master/examples/counter/index.js)
 * [css modules](http://joaomilho.github.io/act/examples/css_modules/) [code](https://github.com/joaomilho/act/blob/master/examples/css_modules/index.js)

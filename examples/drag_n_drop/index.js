@@ -8,21 +8,37 @@ import preventDefault from '../../processes/preventDefault'
 import valueOnEnter from '../../processes/valueOnEnter'
 import css from './styles.css'
 
-const col = (col, model) => {
-  const tasks = filter(propEq('col', col.id), model.tasks)
+const presenter = (model) => map((col) => ({
+  ...col,
+  over: col.id === model.over,
+  tasks: map((task) => ({ ...task, dragging: model.dragging === task.id }),
+    filter(propEq('col', col.id), model.tasks))
+}), model.cols)
+
+const view = (cols) => (
+  ['main', [
+    addCol,
+    ['h1', 'Act Kanban Board'],
+    ['table', { class: css.grid }, [
+      ['tr', map(col, cols)]
+    ]]
+  ]]
+)
+
+const col = (col) => {
   return (
     ['td',
       {
         class: css.col,
-        style: { border: model.over === col.id ? '1px solid #4592fb' : '1px solid #eee' },
+        style: { border: col.over ? '1px solid #4592fb' : '1px solid #eee' },
         drop: { drop: col.id },
         dragenter: { over: pipe(preventDefault, always(col.id)) },
         dragover: (_, ev) => ev.preventDefault()
       },
       [
-        ['h3', [col.title, ' (', tasks.length, ')']],
+        ['h3', [col.title, ' (', col.tasks.length, ')']],
         col.id === 1 && addTask,
-        ...map((t) => task(t, t.id === model.dragging), tasks)
+        ...map(task, col.tasks)
       ]
     ]
   )
@@ -44,25 +60,14 @@ const addCol = () =>
     keyup: { addCol: valueOnEnter }
   }]
 
-const view = (model) => (
-  ['main', [
-    addCol,
-    ['h1', 'Act Kanban Board'],
-    ['table', { class: css.grid }, [
-      ['tr', map((c) => (col(c, model)), model.cols)]
-    ]]
-  ]]
-)
-
-const task = (task, dragged) => (
+const task = (task) =>
   ['div', {
     draggable: true,
     class: css.task,
-    style: { opacity: dragged ? 0.3 : 1 },
+    style: { opacity: task.dragged ? 0.3 : 1 },
     dragstart: { drag: task.id },
     dragend: { drag: null }
   }, task.desc]
-)
 
 const reducer = (state, { type, payload }) => {
   const uid = state.uid + 1
@@ -102,4 +107,4 @@ const model = {
   ]
 }
 
-main(view, { model, reducer })
+main(view, { model, reducer, presenter })
