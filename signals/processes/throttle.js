@@ -13,7 +13,6 @@
 import curry from 'ramda/src/curry'
 
 export default curry((ms, eventSource, next) => {
-  console.log('thr', ms, '|', eventSource, next)
   let last, timer
 
   eventSource((value) => {

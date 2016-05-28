@@ -1,9 +1,17 @@
 import main from '../..'
-import { positions } from '../../subscriptions/mouse'
+import { position, positionThrottled } from '../../subscriptions/mouse'
 
-const view = (pos) =>
-  ['div', `Position: ${pos}`]
+const view = (model) =>
+  ['div', `Position: ${model.position} Throttled: ${model.positionThrottled}`]
 
-const subscriptions = { positions }
+const subscriptions = {
+  position,
+  positionThrottled
+}
 
-main(view, { model: [0, 0], subscriptions })
+const initialState = { position: [0, 0], positionThrottled: [0, 0] }
+const reducer = (state = initialState, { type, payload }) => (
+  { ...state, [type]: payload }
+)
+
+main(view, { subscriptions, reducer })

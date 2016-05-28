@@ -87,18 +87,18 @@ const reducer = (state, { type, payload }) => {
 }
 
 const model = {
+  uid: 3,
+  dragging: null,
+  over: null,
   cols: [
     { id: 1, title: 'todo' },
     { id: 2, title: 'doing' },
     { id: 3, title: 'done' }
   ],
-  dragging: null,
-  over: null,
-  uid: 3,
   tasks: [
-    {id: 1, desc: 'Add drag & drop example', col: 3},
-    {id: 2, desc: 'Implement presenters', col: 1},
-    {id: 3, desc: 'Finish docs', col: 1}
+    { id: 1, desc: 'Add drag & drop example', col: 3 },
+    { id: 2, desc: 'Implement presenters', col: 1 },
+    { id: 3, desc: 'Finish docs', col: 1 }
   ]
 }
 
