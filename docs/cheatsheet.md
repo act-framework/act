@@ -210,7 +210,7 @@ Mixing all of the above
 Side effect function
 
 ```js
-const sideEffect = (history, payload) {
+const sideEffect = (payload, history) {
   const result = doSomeSideEffect(payload)
   history.push({
     type: 'side_effect',

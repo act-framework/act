@@ -118,12 +118,12 @@ The syntax is `{event: handler}`, where
 `event` is any DOM event like `click`, `keyup`, `keydown`, `change`, and so on, and
 `handler` a function that you'll define. `handler` will receive both the event
 object (so you can do things like `preventDefault`, `stopPropagation`, get key
-codes or values from the target DOM element) and an `update` function. You can
+codes or values from the target DOM element) and a `history` object. You can
 think of this function as the `dispatch` in Redux, or some `setState` on
 steroids :D.
 
 ```js
-const handler (history, event) =>
+const handler (event, history) =>
   history.push('someAction', 'somePayload')
 
 const button = () => ['button', {click: handler}]
@@ -136,7 +136,7 @@ example is a little too simple, let's see a better one:
 ```js
 import main from '@act/main'
 
-const add (history, event) =>
+const add (event, history) =>
   history.push('add', 1)
 
 const view = (model) => ['button', {click: add}, model]
