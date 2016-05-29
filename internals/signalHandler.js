@@ -28,7 +28,7 @@ class SignalHandler {
     let index = 0
     map(([typeOrAction, processOrValue]) => {
       const [type, action] = typeof typeOrAction === 'string'
-        ? [typeOrAction, (history, payload) => this.history.push({ type: [...this.namespaces, type].join('.'), payload })]
+        ? [typeOrAction, (payload, history) => this.history.push({ type: [...this.namespaces, type].join('.'), payload })]
         : [`${prop}-${++index}`, typeOrAction]
 
       if (typeof processOrValue === 'function') {
@@ -52,7 +52,7 @@ class SignalHandler {
       this.sources[type] = fromEvent(node, prop)
 
       this.processes[type](this.sources[type].start())((payload) => {
-        action(this.history, payload)
+        action(payload, this.history)
       })
     }, this.events)
 

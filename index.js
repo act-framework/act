@@ -63,10 +63,10 @@ const main = function (view, {
 
   map(([typeOrAction, subscription]) => {
     const action = typeof typeOrAction === 'string'
-      ? (history, payload) => history.push({ type: typeOrAction, payload })
+      ? (payload, history) => history.push({ type: typeOrAction, payload })
       : typeOrAction
 
-    subscription((payload) => action(history, payload))
+    subscription((payload) => action(payload, history))
   }, isArrayLike(subscriptions) ? subscriptions : toPairs(subscriptions))
 
   return { dom, history }
