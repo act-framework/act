@@ -4,7 +4,6 @@ import patch from 'virtual-dom/patch'
 import jsonToVirtualDOM from './internals/jsonToVirtualDOM'
 import History from './internals/History'
 import map from 'ramda/src/map'
-import identity from 'ramda/src/identity'
 import isArrayLike from 'ramda/src/isArrayLike'
 import toPairs from 'ramda/src/toPairs'
 
@@ -25,7 +24,6 @@ const main = function (view, {
     historyClass = History,
     model,
     node = document.body,
-    presenter = identity,
     reducer = defaultReducer,
     sideEffects = [],
     storage = defaultStorage,
@@ -36,7 +34,7 @@ const main = function (view, {
 
   const render = (view, state) => {
     const json = typeof view === 'function'
-      ? view(presenter(state), history)
+      ? view(state, history)
       : view // user may want to perform side-effects only
 
     const tree = jsonToVirtualDOM(json, history)

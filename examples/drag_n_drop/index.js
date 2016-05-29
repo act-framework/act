@@ -107,4 +107,4 @@ const model = {
   ]
 }
 
-main(view, { model, reducer, presenter })
+main(pipe(presenter, view), { model, reducer })

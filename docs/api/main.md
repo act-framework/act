@@ -14,7 +14,6 @@ your whole app.
 |params.reducer|function|a function mapping actions to state|
 |params.storage|object|an object with `get` and `set` to remember your state|
 |params.subscriptions|object|an object with subscription functions|
-|params.presenter|function|a function that sits between data and UI|
 |params.historyClass|object|a history object|
 
 ### import
@@ -147,28 +146,6 @@ current breakpoint (like `small`, `medium`...).
 
 Since this app doesn't define a reducer, the model will always be updated with
 the payload, therefore it will always contain only the current breakpoint.
-
-#### params.presenter
-
-A function that sits between data and UI. Useful to perform normalizations and
-filters.
-
-```js
-import filter from 'ramda/src/filter'
-import propEq from 'ramda/src/propEq'
-
-const view = (activeItems) =>
-  ['ul', map((item) => (['li', item.name]), activeItems)]
-
-const presenter = filter(propEq('deleted', false)
-
-const model = [
-  { name: 'foo', deleted: true },
-  { name: 'bar', deleted: false }
-]
-
-main(view, { model, presenter })
-```
 
 #### params.historyClass
 
