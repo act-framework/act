@@ -1,4 +1,3 @@
-import mapObjIndexed from 'ramda/src/mapObjIndexed'
 import map from '../signals/processes/map'
 
 // clipboard
@@ -6,21 +5,17 @@ const clipboard = (mime) =>
   map((ev) => ev.clipboardData.getData(mime))
 
 // https://www.w3.org/TR/clipboard-apis/#mandatory-data-types
-const mimes = {
-  text: 'text/plain',
-  uriList: 'text/uri-list',
-  csv: 'text/csv',
-  css: 'text/css',
-  html: 'text/html',
-  xhtml: 'application/xhtml+xml',
-  png: 'image/png',
-  jpg: 'image/jpg, image/jpeg',
-  gif: 'image/gif',
-  svg: 'image/svg+xml',
-  xml: 'application/xml, text/xml',
-  js: 'application/javascript',
-  json: 'application/json',
-  octet: 'application/octet-stream'
-}
-
-export default mapObjIndexed(clipboard, mimes)
+export const text = clipboard('text/plain')
+export const uriList = clipboard('text/uri-list')
+export const csv = clipboard('text/csv')
+export const css = clipboard('text/css')
+export const html = clipboard('text/html')
+export const xhtml = clipboard('application/xhtml+xml')
+export const png = clipboard('image/png')
+export const jpg = clipboard('image/jpg, image/jpeg')
+export const gif = clipboard('image/gif')
+export const svg = clipboard('image/svg+xml')
+export const xml = clipboard('application/xml, text/xml')
+export const js = clipboard('application/javascript')
+export const json = clipboard('application/json')
+export const octet = clipboard('application/octet-stream')
