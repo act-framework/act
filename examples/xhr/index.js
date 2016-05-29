@@ -2,7 +2,7 @@ import main from '../..'
 import map from 'ramda/src/map'
 import { get, getJSON } from '../../signals/sources/xhr'
 
-const goodJSON = (history, ev) => {
+const goodJSON = (_, history) => {
   history.push({ type: 'loading' })
 
   getJSON('/good.json')(
@@ -10,7 +10,7 @@ const goodJSON = (history, ev) => {
   )
 }
 
-const badJSON = (history, ev) => {
+const badJSON = (_, history) => {
   history.push({ type: 'loading' })
 
   getJSON('/bad.json')(
@@ -19,7 +19,7 @@ const badJSON = (history, ev) => {
   )
 }
 
-const badURL = (history, ev) => {
+const badURL = (_, history) => {
   history.push({ type: 'loading' })
 
   get('/waat.json')(

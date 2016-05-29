@@ -2,7 +2,7 @@ import main from '../..'
 import map from 'ramda/src/map'
 import * as api from './api'
 
-const get = (apiCall) => (history, ev) => {
+const get = (apiCall) => (_, history) => {
   history.push({ type: 'loading' })
 
   apiCall()(

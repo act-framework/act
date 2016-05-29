@@ -1,17 +1,10 @@
 import main from '../..'
 import TraversableHistory from '../../internals/TraversableHistory'
 
-// suggestion:
-// import call from 'ramda/src/call'
-// import prop from 'ramda/src/prop'
-// import compose from 'ramda/src/compose'
-// const undo = compose(call, prop('undo'))
-// const redo = compose(call, prop('redo'))
-
-const undo = (history) =>
+const undo = (_, history) =>
   history.undo()
 
-const redo = (history) =>
+const redo = (_, history) =>
   history.redo()
 
 const view = (count) => (

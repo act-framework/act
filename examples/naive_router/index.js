@@ -2,7 +2,7 @@ import main from '../..'
 import naiveRouter from '../../subscriptions/naiveRouter'
 import TraversableHistory from '../../internals/TraversableHistory'
 
-const undo = (history) => {
+const undo = (_, history) => {
   // Regular undo doesn't cover side effects
   // therefore we have to run the original event
   // to simulate undoing
