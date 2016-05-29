@@ -1,9 +1,10 @@
-import main from '../../'
+import main from '@act/main'
 import valueOnEnter from '@act/main/processes/valueOnEnter'
 import onEnter from '@act/main/processes/onEnter'
 import value from '@act/main/processes/value'
 import fromSocket from '../fromSocket'
 import map from 'ramda/src/map'
+import css from './styles.css'
 
 const socket = fromSocket('localhost:8081')
 
@@ -12,10 +13,9 @@ const chat = (model) =>
 
 const header = (val) =>
   ['header', [
-    ['small', 'Type something, press ENTER and wait 2s'],
-    ['br'],
-    val,
-    ['input', {value: val, autofocus: true, keyup: [
+    ['h1', 'Act web sockets chat'],
+    ['small', 'Open this example in two windows and chat'],
+    ['input', {placeholder: 'Say something', value: val, autofocus: true, keyup: [
       [socket.emit('message'), valueOnEnter],
       ['value', value],
       ['clear', onEnter]

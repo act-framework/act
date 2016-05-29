@@ -15,6 +15,7 @@
     * [Events](/docs/react/events.md)
     * [Subscriptions](/docs/react/subscriptions.md)
     * [Testing](/docs/react/testing.md)
+    * [Reselect vs Ramda](/docs/react/reselect_vs_ramda.md)
   * [For Elm developers](/docs/elm/README.md)
     * [update vs reducer](/docs/elm/update-vs-reducer.md)
     * [Html helpers vs JSON](/docs/elm/html-helpers-vs-json.md)

@@ -1,16 +1,13 @@
-var app = require('express')()
-var http = require('http').Server(app)
-var io = require('socket.io')(http)
+const app = require('express')()
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
+const messages = []
 
 io.on('connection', (socket) => {
   console.log('user connected')
-  const messages = []
   socket.on('message', (msg) => {
-    messages.push(msg)
-    console.log('message', msg)
-    setTimeout(() => {
-      socket.emit('messages', messages)
-    }, 2000)
+    messages.unshift(msg)
+    io.sockets.emit('messages', messages)
   })
 })
 

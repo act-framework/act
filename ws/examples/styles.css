@@ -1,0 +1,37 @@
+body {
+  padding: 15px;
+  background: #f8f8fa;
+  font-family: 'Fira code', Raleway, Arial, sans;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  font-weight: 100;
+}
+
+input {
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  margin: 5px;
+  background: transparent;
+  font-size: 20px;
+  border: 0;
+  border-bottom: 1px solid #4592fc;
+  width: calc(100% - 10px);
+  font-family: 'Fira code', Raleway, Arial, sans;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: #eee;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+}
