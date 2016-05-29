@@ -1,12 +1,15 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --config ../webpack.config.dev.js",
-    "build": "webpack --config ../webpack.config.js"
+    "start": "run-p dev:*",
+    "dev:build": "webpack-dev-server --config webpack.config.dev.js",
+    "dev:server": "node server.js",
+    "build": "webpack"
   },
   "dependencies": {},
   "devDependencies": {
     "express": "^4.13.4",
+    "npm-run-all": "^2.1.1",
     "socket.io": "^1.4.6",
     "socket.io-client": "^1.4.6",
     "webpack": "^1.13.0",
