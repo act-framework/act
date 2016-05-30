@@ -19,6 +19,9 @@ test('main: dom', (assert) => {
   assert.equal(main(['i', {}, 0]).dom.children[0].text, '0', 'renders tag with numeric child')
   assert.equal(main(['i', {}, false]).dom.children[0], undefined, 'does not render false children')
   assert.equal(main(['i', {}, null]).dom.children[0], undefined, 'does not render null children')
+  assert.equal(main(['i', {}, []]).dom.children[0], undefined, 'does not render null children')
+
+  //assert.equal(main(['i', {}, () => {}]).dom.children[0], undefined, 'does not render null children')
 
   // properties
   ;[{}, false, null, undefined].forEach((empty) => {
@@ -58,6 +61,22 @@ test('main: dom', (assert) => {
     [grandchildren.tagName, grandchildren.children[0].text],
     ['A', 'Morgenbesser'],
     'renders grandchildren tags and text'
+  )
+
+  assert.end()
+})
+
+test('main: bad input value', (assert) => {
+  assert.throws(() =>
+    main(['input', {value: []}]))
+
+  assert.end()
+})
+
+test('main: good input value', (assert) => {
+  assert.equal(
+    main(['input', {value: 'good'}]).dom.properties.value.value,
+    'good'
   )
 
   assert.end()
@@ -262,4 +281,3 @@ test('main: input events', (assert) => {
 
   assert.end()
 })
-
