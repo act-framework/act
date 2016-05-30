@@ -33,7 +33,7 @@ const col = (col) => {
         style: { border: col.over ? '1px solid #4592fb' : '1px solid #eee' },
         drop: { drop: col.id },
         dragenter: { over: pipe(preventDefault, always(col.id)) },
-        dragover: (_, ev) => ev.preventDefault()
+        dragover: (ev) => ev.preventDefault()
       },
       [
         ['h3', [col.title, ' (', col.tasks.length, ')']],
