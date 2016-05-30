@@ -1,4 +1,4 @@
-import h from 'virtual-dom/h'
+import toNode from './toNode'
 import isArrayLike from 'ramda/src/isArrayLike'
 import map from 'ramda/src/map'
 import classLists from 'class-lists'
@@ -50,11 +50,12 @@ const processChildren = (el, history, tag, children, namespaces = []) => {
 }
 
 const jsonToVirtualDOM = (json, history, namespaces) => {
-  if (typeof json === 'string') {
+  if (!isArrayLike(json)) {
     return jsonToVirtualDOM(['span', json], history)
   }
 
   const [tag, maybeAtsOrChildren, maybeChildren] = json
+
   let ats = {}
   let children = []
 
@@ -88,18 +89,19 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
     //    throw errorMessage
      // }
     }
-  } else if (children === false) {
+  } else if (children === false || children === null) {
     children = undefined
+  } else {
+    children = String(children)
   }
 
   if (ats['class'] && typeof ats['class'] !== 'string') {
     ats['class'] = classLists(...ats['class'])
   }
-
   injectEventHandlers(ats, history, namespaces)
   attributeToProperty(ats)
 
-  return h(tag, ats, children)
+  return toNode(tag, ats, children)
 }
 
 function attributeToProperty (ats) {
