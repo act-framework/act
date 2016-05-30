@@ -1,0 +1,64 @@
+body {
+  padding: 15px;
+  background: #f8f8fa;
+  font-family: 'Fira code', Raleway, Arial, sans;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  font-weight: 100;
+}
+
+h3 {
+  color: #667;
+  font-weight: 100;
+  text-transform: uppercase;
+  padding: 10px 5px 0 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.grid {
+  width: 100%;
+  table-layout: fixed;
+  min-height: 85vh;
+}
+
+.task {
+  background: #f6f6f9;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #4592fb;
+  border-left-width: 10px;
+  cursor: move;
+  cursor: grab;
+}
+
+.col {
+  background: white;
+  vertical-align: top
+}
+
+.addTask {
+  outline: none;
+  font-size: 16px;
+  padding: 10px 10px 10px 20px;
+  margin: 5px;
+  border: 0;
+  border-bottom: 1px solid #4592fc;
+  width: calc(100% - 10px);
+  font-family: 'Fira code', Raleway, Arial, sans;
+}
+
+.addCol {
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  margin: 5px;
+  border: 0;
+  border-bottom: 1px solid #4592fc;
+  font-family: 'Fira code', Raleway, Arial, sans;
+  background: transparent;
+  float: right;
+}
