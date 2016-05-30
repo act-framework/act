@@ -46,10 +46,11 @@ const main = function (view, {
     return (previousTree = tree)
   }
 
-  let initialState = storage.get() ||
+  let initialState = storage.get() || (
     typeof model !== 'undefined'
       ? model
       : reducer(undefined, {type: '__probe'})
+  )
 
   const rerender = (state) => {
     const dom = render(view, state)
@@ -69,7 +70,7 @@ const main = function (view, {
     subscription((payload) => action(payload, history))
   }, isArrayLike(subscriptions) ? subscriptions : toPairs(subscriptions))
 
-  return { dom, history }
+  return { dom, history, node }
 }
 
 export default main
