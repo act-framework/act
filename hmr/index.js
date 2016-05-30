@@ -1,5 +1,5 @@
-import _main from './'
-import TraversableHistory from './internals/TraversableHistory'
+import _main from '@act/main'
+import TraversableHistory from '@act/main/internals/TraversableHistory'
 
 const main = (view, opts) => {
   const mod = opts.module

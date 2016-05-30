@@ -3,7 +3,7 @@ import map from 'ramda/src/map'
 import propEq from 'ramda/src/propEq'
 import filter from 'ramda/src/filter'
 import view from './view'
-import pipe from '../../signals/pipe'
+import pipe from '@act/main/signals/pipe'
 
 const presenter = (model) => map((col) => ({
   ...col,

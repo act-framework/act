@@ -1,9 +1,9 @@
-import preventDefault from '../../processes/preventDefault'
-import valueOnEnter from '../../processes/valueOnEnter'
+import preventDefault from '@act/main/processes/preventDefault'
+import valueOnEnter from '@act/main/processes/valueOnEnter'
 import css from './styles.css'
 import map from 'ramda/src/map'
-import always from '../../signals/processes/always'
-import pipe from '../../signals/pipe'
+import always from '@act/main/signals/processes/always'
+import pipe from '@act/main/signals/pipe'
 
 const view = (cols) => (
   ['main', [
