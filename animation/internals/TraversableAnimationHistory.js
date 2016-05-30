@@ -1,5 +1,6 @@
 import TraversableHistory from '@act/main/internals/TraversableHistory'
 import splitAt from 'ramda/src/splitAt'
+import map from 'ramda/src/map'
 
 export default class TraversableAnimationHistory extends TraversableHistory {
   constructor (...args) {
@@ -12,11 +13,9 @@ export default class TraversableAnimationHistory extends TraversableHistory {
     this.state = this.reduce(this.state, [action])
     const [past, future] = splitAt(this.present, this.timeline)
     this.timeline = [...past, action, ...future]
-
-    this.subscription &&
-      this.subscription(this.timeline)
-
     this.present += 1
+
+    map((subscription) => subscription(this), this.subscriptions)
     return this.rerender()
   }
 }

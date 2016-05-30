@@ -1,4 +1,5 @@
 import History from '@act/main/internals/History'
+import map from 'ramda/src/map'
 
 export default class AnimationHistory extends History {
   constructor (...args) {
@@ -10,10 +11,9 @@ export default class AnimationHistory extends History {
   push (action) {
     this.state = this.reduce(this.state, [action])
     const dom = this.rerender()
-    this.subscription &&
-      this.subscription(this.timeline)
-
     this.delta = []
+
+    map((subscription) => subscription(this), this.subscriptions)
     return dom
   }
 }
