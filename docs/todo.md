@@ -16,8 +16,6 @@
 
 - Add example of "eval" of components: getting JSON components from server. Think about how this can be safe enough.
 
-- Add example of mouse events.
-
 - Implement an example with hot module replacement.
 
 ##### Reducers
@@ -47,10 +45,6 @@ subscriptions = {
 ##### Breakpoints
 
 - Breakpoints [using](https://www.smashingmagazine.com/2013/03/logical-breakpoints-responsive-design/) [em](https://github.com/tysonmatanich/getEmPixels/blob/master/getEmPixels.js)?
-
-##### Events
-
-- Also pass the state to the event handlers.
 
 ##### Middleware
 
