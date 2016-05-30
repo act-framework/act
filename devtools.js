@@ -77,7 +77,7 @@ const devtools = (model, history) => (
 const action = (type, payload, index, current) => (
   ['li', [
     ['a', {
-      click: (history) => { history.go(index) },
+      click: (_, history) => { history.go(index) },
       href: '#',
       style: linkStyles(current)
     }, [
