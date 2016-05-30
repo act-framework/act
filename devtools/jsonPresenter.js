@@ -20,12 +20,10 @@ const css = {
 
 const jsonPresenter = (json, lvl = 1) => {
   const type = typeof json
-  console.log('call', json, type)
   switch (true) {
     case type === 'string':
     case type === 'number':
     case type === 'boolean':
-      console.log('return simple')
       return ['span', { style: css[type] }, JSON.stringify(json)]
     case isArrayLike(json):
       return ['span', [
