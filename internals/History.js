@@ -1,28 +1,26 @@
 import reduce from 'ramda/src/reduce'
-import splitAt from 'ramda/src/splitAt'
 import delay from './delay'
+import map from 'ramda/src/map'
 
 export default class History {
   constructor (state, reducer, rerender) {
     this.reduce = reduce(reducer)
     this.state = state
+    this.subscriptions = []
     this.delta = []
     this.rerender = () => rerender(this.state)
   }
 
-  subscribe () {
-    return (subscription) => {
-      this.subscription = subscription
-    }
+  subscribe (subscription) {
+    this.subscriptions.push(subscription)
   }
 
   concat () {
     this.state = this.reduce(this.state, this.delta)
     const dom = this.rerender()
-    this.subscription &&
-      this.subscription(this.timeline)
-
     this.delta = []
+
+    map((subscription) => subscription(this), this.subscriptions)
     return dom
   }
 
