@@ -1,7 +1,7 @@
 {
   "name": "@act/hmr",
   "description": "Hot module replacement [hmr] for Act",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "license": "ISC",
   "repository": {
