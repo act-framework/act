@@ -8,7 +8,7 @@
 * [drag & drop](http://joaomilho.github.io/act/examples/drag_n_drop/) [code](https://github.com/joaomilho/act/blob/master/examples/drag_n_drop/index.js) (a kanban board)
 * fetch [code](https://github.com/joaomilho/act/blob/master/examples/fetch/index.js) (you have to run yourself)
 * [hello world](http://joaomilho.github.io/act/examples/hello_world/) [code](https://github.com/joaomilho/act/blob/master/examples/hello_world/index.js)
-* hot module replacement (hmr) [code](https://github.com/joaomilho/act/blob/master/examples/hmr/index.js) (you have to run yourself)
+* hot module replacement (hmr) [code](https://github.com/joaomilho/act/blob/master/hmr/examples/index.js) (you have to run yourself)
 * [images](http://joaomilho.github.io/act/examples/images/) [code](https://github.com/joaomilho/act/blob/master/examples/images/index.js)
 * [mouse events](http://joaomilho.github.io/act/examples/mouse_events/) [code](https://github.com/joaomilho/act/blob/master/examples/mouse_events/index.js)
 * [naive router](http://joaomilho.github.io/act/examples/naive_router/) [code](https://github.com/joaomilho/act/blob/master/examples/naive_router/index.js)
