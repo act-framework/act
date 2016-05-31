@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.5
+
+- Fixes naiveSerialize
+
 #### 0.0.4
 
 - Adds toNode internal so require less from virtual-dom (don't change API);
