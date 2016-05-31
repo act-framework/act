@@ -7,8 +7,8 @@ standard library. The second biggest problem is the ammount of libraries trying
 to solve that by creating a bad implementation of a subset of Haskell's
 Prelude.
 
-Starting the right building blocks is the most important thing. Act chose Ramda,
-and uses it extensively, from signals to view helpers.
+Starting with the right building blocks is the most important thing. Act chose
+Ramda, and uses it extensively, from signals to view helpers.
 
 #### Performatic and small
 

@@ -1,6 +1,7 @@
 # Using JSON for rendering
 
-In Act, all views are defined in a JSON format. This is the syntax for a tag:
+In Act, all views are defined in a - sort of! - JSON format. This is the syntax
+for a tag:
 
 ```js
 [tagName, attributes, children]

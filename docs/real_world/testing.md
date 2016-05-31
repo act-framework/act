@@ -1,6 +1,6 @@
 # Testing
 
-Act only cares and hels you when it comes to unit testing, and is agnostic
+Act only cares and helps you when it comes to unit testing, and is agnostic
 about integration tests. For integration, you can use pretty much any framework
 you like.
 
@@ -76,7 +76,7 @@ deepEqual(
 
 ## Testing with `main`
 
-If you want to test some module that doesn't export it's parts (view, model,
+If you want to test some module that doesn't export its parts (view, model,
 reducer...), like the file that renders `main`, you can use the `main` function
 in `testHelpers`. It mocks only the DOM node where your app is mounted, but
 behaves pretty much like the real `main` in other ways.

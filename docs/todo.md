@@ -52,12 +52,6 @@ subscriptions = {
 
 - Allow update to get more info, like meta stuff: `update(type, payload, { arbitraryObject })`. Usefull for middleware.
 
-##### Presenter
+##### Optimistic
 
-- A presenter is something that doesn't care about actions or the history. They
-  just sit between the result of reducers (the calculated current state) and
-  the view layer. It may be useful to transform the raw data for presentational
-  purposes only (like filtering or rearanging object formats). The
-  implementation would be simply something like:
-  `view(presenter(currentState)). Since it only serves view purposes, it
-  shouldn't affect things like storages.
+- Add example for optimistic updates. May require a new History.

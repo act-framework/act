@@ -33,9 +33,14 @@ const menu = ({ open }) => (
 In Act you simply use lists, just like in the [`class-lists` package](https://www.npmjs.com/package/class-lists).
 
 ```js
+// just a list
+const button = (count) => (
+  ['button', {class: ['button, 'primary', 'enabled']}, count]
+)
+
 // only true matters
 const menuItem = ({ title, selected }) => (
-  ['li', {class: [['is-selected': selected]]}, title]
+  ['li', {class: [[selected, 'is-selected']]}, title]
 )
 
 const items = [
@@ -45,7 +50,7 @@ const items = [
 
 // both matter
 const menu = ({ open }) => (
-  ['ol#menu', {class: [[open: 'is-open', 'is-closed']]}, map(menuItem, items)]
+  ['ol#menu', {class: [[open, 'is-open', 'is-closed']]}, map(menuItem, items)]
 )
 ```
 
