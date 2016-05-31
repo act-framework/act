@@ -1,0 +1,40 @@
+body {
+  background: #f8f8fa;
+  font-family: 'Fira code', Raleway, Arial, sans;
+  margin: 0 auto;
+  padding: 15px;
+  width: 500px;
+}
+
+input {
+  color: #667;
+  font-weight: 100;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+button {
+  background: #4592fb;
+  border-radius: 4px;
+  border: 0;
+  color: white;
+  font-size: 14px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.error {
+  background: red;
+  color: white;
+  display: block;
+  padding: 10px;
+}
+
+.apology {
+  background: green;
+  color: white;
+  display: block;
+  padding: 10px;
+}
+

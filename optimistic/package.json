@@ -1,0 +1,23 @@
+{
+  "name": "@act/optimistic",
+  "description": "Optimistic updates for Act",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaomilho/act.git"
+  },
+  "dependencies": {
+    "@act/main": "0.0.5"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+  },
+  "author": "Juan Lulkin <maiz@lulk.in> (https://medium.com/@joaomilho/)",
+  "bugs": {
+    "url": "https://github.com/joaomilho/act/issues"
+  },
+  "homepage": "https://github.com/joaomilho/act#README"
+}
