@@ -12,7 +12,7 @@ that it is written in JavaScript :cry:.
   inspired language. Also, given its simplicity Act will very likely generate
   much smaller builds than most frameworks out there.
 
-- Being written in JavasScript makes almost impossible for Act – and any
+- Being written in JavaScript makes almost impossible for Act – and any
   JavaScript framework out there – to throw elegant error messages in compile
   time, and the lack of type system forces us to use strings for message types
   (like in Redux) and this makes composition of components a little too shabby.
@@ -25,3 +25,4 @@ Here's a selection of things in which Act departs from Elm:
 * [update vs reducer](/update-vs-reducer.md)
 * [Html helpers vs JSON](/html-helpers-vs-json.md)
 * [Actions](/actions.md)
+* [History](/history.md)

@@ -26,7 +26,7 @@ main(view, { model: 0 })
 
 ## More examples
 
-Check more examples [in the documentation](http://joaomilho.github.io/act/docs/examples.md).
+Check more examples [in the documentation](http://lulk.in/act/docs/examples.html).
 
 ## Install
 
