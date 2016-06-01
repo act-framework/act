@@ -93,7 +93,11 @@ const UnsupportedValueType = (data) => {
 }
 
 const errorString = (obj) => {
-  const parts = [`'${obj.tagName.toLowerCase()}'`]
+  const parts = []
+
+  if (obj.tagName) {
+    parts.push(`'${obj.tagName.toLowerCase()}'`)
+  }
 
   if (!isEmpty(obj.properties)) {
     parts.push(JSON.stringify(obj.properties))
