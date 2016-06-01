@@ -6,5 +6,6 @@
  */
 
 import map from '../signals/processes/map'
+import prop from 'ramda/src/prop'
 
-export default map((ev) => ev.keyCode)
+export default map(prop('keyCode'))
