@@ -27,7 +27,7 @@ const processChildren = (el, history, tag, children, namespaces = []) => {
   if (typeof el === 'function') {
     const fn = el
     try {
-      newChildren = fn()
+      newChildren = fn(history.state)
       if (el.namespace) {
         namespaces = [...namespaces, el.namespace]
       }
@@ -77,7 +77,7 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
     }
     const fn = children
     try {
-      children = map((el) => processChildren(el, history, tag, children, namespaces), children())
+      children = map((el) => processChildren(el, history, tag, children, namespaces), children(history.state))
     } catch (e) {
       const errorMessage = renderErrorMessage(tag, children, e, fn)
       throw errorMessage
