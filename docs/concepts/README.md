@@ -19,3 +19,4 @@ frameworks. This means Act is supported by mature ideas on how to develop apps.
 * [Subscriptions](/subscriptions.md)
 * [Storage](/storage.md)
 * [Memoization](/memoization.md)
+* [Presenters](/presenters.md)

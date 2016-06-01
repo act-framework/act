@@ -31,6 +31,7 @@
   * [Subscriptions](/docs/concepts/subscriptions.md)
   * [Storage](/docs/concepts/storage.md)
   * [Memoization](/docs/concepts/memoization.md)
+  * [Presenters](/docs/concepts/presenters.md)
 * [API](/docs/api/README.md)
   * [main](/docs/api/main.md)
   * [processes](/docs/api/processes.md)
