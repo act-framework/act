@@ -1,12 +1,15 @@
 import event from './event'
-import mapObjIndexed from 'ramda/src/mapObjIndexed'
+import map from 'ramda/src/map'
+import toPairs from 'ramda/src/toPairs'
 
-export const formEvent = (ev) => (el, values) =>
-  event(ev, {
-    target: mapObjIndexed((value, name, idx) => (
-      { value, name }
-    ), values)
-  })(el)
+export const formEvent = (ev) => (el, values) => {
+  const mockEvent = {
+    target: map(([name, value]) => ({ value, name }), toPairs(values)),
+    preventDefault: () => {}
+  }
+
+  return event(ev, mockEvent)(el)
+}
 
 /**
  * Calls `reset` of a form

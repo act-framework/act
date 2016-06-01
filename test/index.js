@@ -248,14 +248,13 @@ import naiveSerialize from '../processes/naiveSerialize'
 
 test('main: form events', (assert) => {
   forEach((formEvent) => {
-    console.log('formEvent', formEvent)
     const view = ['form', {[formEvent]: {data: naiveSerialize}}]
 
     const { dom, history } = main(view, { historyClass: TraversableHistory })
     formEvents[formEvent](dom, {name: 'Freud', age: 33})
     assert.deepEqual(
       history.current,
-      { type: 'data', payload: [ [ 'name', 'Freud' ], [ 'age', 33 ] ] },
+      { type: 'data', payload: {name: 'Freud', age: 33} },
       `executes form event ${formEvent}`
     )
   }, form)
