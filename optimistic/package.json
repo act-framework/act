@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/joaomilho/act.git"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@act/main": "0.0.5"
   },
   "devDependencies": {
