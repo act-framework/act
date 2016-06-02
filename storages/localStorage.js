@@ -9,16 +9,14 @@
  *   main(view, { storage: localStorage }
  */
 
-// TODO: check if localStorage is unique by tab/domain
-// else would have to improve storage key
-
+const key = `__act_${location.href}`
 /**
  * Gets the currently stored JSON
  *
  * @returns {json}
  */
 const get = () =>
-  JSON.parse(window.localStorage.getItem('__act'))
+  JSON.parse(window.localStorage.getItem(key))
 
 /**
  * Sets the stored JSON
@@ -26,6 +24,6 @@ const get = () =>
  * @params {json} json
  */
 const set = (json) =>
-  window.localStorage.setItem('__act', JSON.stringify(json))
+  window.localStorage.setItem(key, JSON.stringify(json))
 
 export default { get, set }
