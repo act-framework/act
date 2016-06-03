@@ -5,8 +5,8 @@
  *
  */
 
-import _main from '../'
-import jsonToVirtualDOM from '../internals/jsonToVirtualDOM'
+import _main from '../..'
+import jsonToVirtualDOM from '../../internals/jsonToVirtualDOM'
 import { spy } from 'sinon'
 
 /**

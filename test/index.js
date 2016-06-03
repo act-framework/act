@@ -1,5 +1,5 @@
 import test from 'tape'
-import { main } from '../testHelpers'
+import { main } from '../helpers/test'
 import { spy } from 'sinon'
 import identity from 'ramda/src/identity'
 import map from 'ramda/src/map'
@@ -7,6 +7,17 @@ import forEach from 'ramda/src/forEach'
 import prop from 'ramda/src/prop'
 import props from 'ramda/src/props'
 import TraversableHistory from '../internals/TraversableHistory'
+import { mouse } from '../internals/events'
+import * as mouseEvents from '../helpers/test/mouseEvents'
+import { keyboard } from '../internals/events'
+import * as keyboardEvents from '../helpers/test/keyboardEvents'
+import valueAndKeyCode from '../processes/valueAndKeyCode'
+import { form } from '../internals/events'
+import * as formEvents from '../helpers/test/formEvents'
+import naiveSerialize from '../processes/naiveSerialize'
+import { input } from '../internals/events'
+import * as inputEvents from '../helpers/test/inputEvents'
+import value from '../processes/value'
 
 test('main: dom', (assert) => {
   // tag
@@ -203,8 +214,6 @@ test('main: history.go', (assert) => {
   assert.end()
 })
 
-import { mouse } from '../internals/events'
-import * as mouseEvents from '../testHelpers/mouseEvents'
 
 test('main: mouse events', (assert) => {
   forEach((mouseEvent) => {
@@ -222,10 +231,6 @@ test('main: mouse events', (assert) => {
   assert.end()
 })
 
-import { keyboard } from '../internals/events'
-import * as keyboardEvents from '../testHelpers/keyboardEvents'
-import valueAndKeyCode from '../processes/valueAndKeyCode'
-
 test('main: keyboard events', (assert) => {
   forEach((keyboardEvent) => {
     const view = ['button', {[keyboardEvent]: {get: valueAndKeyCode}}]
@@ -242,10 +247,6 @@ test('main: keyboard events', (assert) => {
   assert.end()
 })
 
-import { form } from '../internals/events'
-import * as formEvents from '../testHelpers/formEvents'
-import naiveSerialize from '../processes/naiveSerialize'
-
 test('main: form events', (assert) => {
   forEach((formEvent) => {
     const view = ['form', {[formEvent]: {data: naiveSerialize}}]
@@ -261,10 +262,6 @@ test('main: form events', (assert) => {
 
   assert.end()
 })
-
-import { input } from '../internals/events'
-import * as inputEvents from '../testHelpers/inputEvents'
-import value from '../processes/value'
 
 test('main: input events', (assert) => {
   forEach((inputEvent) => {

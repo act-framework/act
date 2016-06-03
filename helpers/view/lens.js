@@ -21,6 +21,6 @@ import curryN from 'ramda/src/curryN'
  * ```
  */
 
-export const lens = curryN(3, (selector, viewFn, model) =>
+export default curryN(3, (selector, viewFn, model) =>
   viewFn(view(lensPath(selector), model))
 )
