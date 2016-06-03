@@ -1,5 +1,5 @@
 import main from '../..'
-import guardReducer from '../../guardReducer'
+import guard from '../../helpers/reducer/guard'
 import inc from 'ramda/src/inc'
 import dec from 'ramda/src/dec'
 import add from 'ramda/src/add'
@@ -19,7 +19,7 @@ const view = (val) => (
 )
 
 const fortyTwo = 42
-const reducer = guardReducer({ inc, dec, multiply, add, fortyTwo })
+const reducer = guard({ inc, dec, multiply, add, fortyTwo })
 
 /**
 *  This is the same as ...
