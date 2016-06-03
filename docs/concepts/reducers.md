@@ -34,7 +34,7 @@ const calculatorReducer = (state, { type, payload }) {
 #### More idiomatic reducers
 
 Many people are put off for the usage of `switch`. Although this is an
-aesthetical judgement and there's nothing intrinsically wrong with it, there
+aesthetic judgement and there's nothing intrinsically wrong with it, there
 are more idiomatic ways to write reducers.
 
 First of all a switch statement is the poor cousins of [pattern matching and
@@ -76,7 +76,7 @@ fn(100) //=> 'water boils at 100°C'
 ```
 
 So if the value passed to the function matches 0, it runs the first function
-and so on, until the getting to final condition `T`, which is basically the "true
+and so on, until getting to final condition `T`, which is basically the "true
 function", i.e a function that always returns true (like in `() => true`), so
 it always matches any unmatched value, working pretty much as Haskell's
 `otherwise` or JS's `default`.
@@ -93,12 +93,12 @@ const typeHandlers = cond([
   [T,                  (type, state, payload) => state]
 ])
 
-const reducer = (state, { type, payload }) =>
+const calculatorReducer = (state, { type, payload }) =>
   typeHandlers(type, state, payload)
 ```
 
 Although this is more composable than a switch, since you can add items to the
-list dinamically, and more funcionally speaking, idiomatic, it seems still too
+list dynamically, and more idiomatic functionally speaking, it seems still too
 verbose and not really idiomatic in a JavaScript context (which I guess it's a
 hard to define thing to do... probably idiomatic JavaScript is either jQuery or
 injecting logic as tag's attributes :D).
@@ -119,11 +119,11 @@ it is natural to assume we could end up with a configuration like this:
 We could also remove the `action` being passed to the function (something that
 `cond` would always do) by wrapping it, and have the T condition as a default.
 
-This is what you'll find in the `guardReducer` helper. It is a little
-JS-syntatic sugar over Ramda's `cond`. Here's the full example:
+This is what you'll find in the `guard` helper. It is a little
+syntactic sugar over Ramda's `cond`. Here's the full example:
 
 ```
-const reducer = guardReducer({
+const calculatorReducer = guard({
   add: (state, payload) => state + payload],
   subtract: (state, payload) => state - payload],
   multiply: (state, payload) => state * payload],
@@ -147,7 +147,7 @@ functions with exactly the same signatures we need here, namely `Number → Numb
 Therefore, we can do:
 
 ```
-const reducer = guardReducer({
+const calculatorReducer = guard({
   add: add
   subtract: subtract
   multiply: multiply
@@ -158,7 +158,7 @@ const reducer = guardReducer({
 And finally, this is the same as:
 
 ```
-const reducer = guardReducer({ add, subtract, multiply, divide })
+const calculatorReducer = guard({ add, subtract, multiply, divide })
 ```
 
 As a final note, you may be wondering what are the advantages of implementing
@@ -172,7 +172,7 @@ const load = equals('load')
 const unload = complement(load)
 const loading = set(lensProp('loading'))
 
-const reducer = guardReducer([
+const reducer = guard([
   [load, loading(true)],
   [unload, loading(false)] // runs for all actions except `'load'`
 ])
