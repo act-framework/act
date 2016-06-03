@@ -2,12 +2,14 @@
 
 #### 0.0.6
 
+- Adds `lens` view helper.
 - Passes the state to any function inside views by default, if they already
   don't get data. That's useful for `lens` and any other data transform one
   might want to do.
 - Simplifies the implementation of some processes.
-- Adds `lens` view helper.
 - Fix error when invalid element is not a tag.
+- Adds initial `guard`, an idiomatic way of building reducers.
+- Adds `transduce` process.
 
 #### 0.0.5
 
