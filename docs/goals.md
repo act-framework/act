@@ -10,10 +10,18 @@ Prelude.
 Starting with the right building blocks is the most important thing. Act chose
 Ramda, and uses it extensively, from signals to view helpers.
 
+#### Transparent
+
+Most developers use frameworks without really having a comprehensive
+understanding of its internals. Although good APIs can really diminish the
+necessity of this sort of knowledge, in real life there are always corner cases
+where a dip dive into the framework inner workings help. Also a readable and
+simple code allows expansion and collaboration.
+
 #### Performatic and small
 
 Web apps should be fast. Act's TodoMVC has only 13kb, and [performs better](https://github.com/joaomilho/todomvc-perf-comparison)
-than most other frameworks.
+than most other frameworks. It must keep this way.
 
 #### Simple, but complete
 
@@ -25,11 +33,6 @@ as complete as possible.
 
 In most other frameworks it requires some effort to accomplish things like
 `redo`. In Act the action history is a first class citizen.
-
-#### Simple errors
-
-Errors should not reflect the framework inner workings, but display
-the real cause of the problem.
 
 #### Clear solutions to common problems
 
