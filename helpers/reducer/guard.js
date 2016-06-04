@@ -24,6 +24,5 @@ const buildGuard = converge(pipe(appendDefault, cond), [map(buildGuardItem)])
 
 export default (guardConfig) => {
   const guard = buildGuard(asPairs(guardConfig))
-  window.g = guard
   return (state, action) => guard(action.type, state, action.payload)
 }
