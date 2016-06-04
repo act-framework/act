@@ -14,7 +14,7 @@ can have any other key you want.
 
 Example:
 
-```
+```js
 const calculatorReducer = (state, { type, payload }) {
   switch (type) {
     case 'add':
@@ -64,7 +64,7 @@ interesting function in Ramda to get us a little closer to that, namely,
 
 Here's the gist of `cond`:
 
-```
+```js
 const fn = cond([
   [equals(0),   always('water freezes at 0°C')],
   [equals(100), always('water boils at 100°C')],
@@ -84,7 +84,7 @@ it always matches any unmatched value, working pretty much as Haskell's
 So one more idiomatic - in the functional context – way of building a reducer,
 would be to resort to this helper:
 
-```
+```js
 const typeHandlers = cond([
   [equals("add"),      (type, state, payload) => state + payload],
   [equals("subtract"), (type, state, payload) => state - payload],
@@ -108,7 +108,7 @@ always the case we wanna use `equals` in the condition (except for T), and
 always a function with the reducer arguments as the 2nd parameter. Therefore,
 it is natural to assume we could end up with a configuration like this:
 
-```
+```js
 {
   add: (state, payload) => state + payload],
   subtract: (state, payload) => state - payload],
@@ -122,7 +122,7 @@ We could also remove the `action` being passed to the function (something that
 This is what you'll find in the `guard` helper. It is a little
 syntactic sugar over Ramda's `cond`. Here's the full example:
 
-```
+```js
 const calculatorReducer = guard({
   add: (state, payload) => state + payload],
   subtract: (state, payload) => state - payload],
@@ -146,7 +146,7 @@ functions with exactly the same signatures we need here, namely `Number → Numb
 
 Therefore, we can do:
 
-```
+```js
 const calculatorReducer = guard({
   add: add
   subtract: subtract
@@ -157,7 +157,7 @@ const calculatorReducer = guard({
 
 And finally, this is the same as:
 
-```
+```js
 const calculatorReducer = guard({ add, subtract, multiply, divide })
 ```
 
@@ -167,7 +167,7 @@ like other libraries do. Apart from the fact it follows the general Act way of
 building things it gives you some nice alternatives. For instance, if you may need
 a more tricky condition, you can still do that, using arrays instead of an object:
 
-```
+```js
 const load = equals('load')
 const unload = complement(load)
 const loading = set(lensProp('loading'))

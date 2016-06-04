@@ -1,7 +1,7 @@
 {
   "name": "@act/optimistic",
   "description": "Optimistic updates for Act",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "license": "ISC",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/joaomilho/act.git"
   },
   "peerDependencies": {
-    "@act/main": "0.0.5"
+    "@act/main": "0.0.6"
   },
   "devDependencies": {
   },
