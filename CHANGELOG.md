@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.7
+
+- Allows arrays on `guard` (as in `cond`).
+
 #### 0.0.6
 
 - Adds `lens` view helper.

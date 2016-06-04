@@ -1,16 +1,16 @@
-// TODO: allow passing arrays with more conditions
-
 import equals from 'ramda/src/equals'
 import T from 'ramda/src/T'
 import always from 'ramda/src/always'
 import converge from 'ramda/src/converge'
 import cond from 'ramda/src/cond'
 import map from 'ramda/src/map'
-import pipe from 'ramda/src/pipe'
 import append from 'ramda/src/append'
-import toPairs from 'ramda/src/toPairs'
+import pipe from 'ramda/src/pipe'
+import flip from 'ramda/src/flip'
+import identity from 'ramda/src/identity'
+import asPairs from '../../internals/asPairs'
 
-const buildGuardItem = ([typeOrCond, handler]) =>
+const buildGuardItem = ([_, [typeOrCond, handler]]) =>
   [
     typeof typeOrCond === 'string' ? equals(typeOrCond) : typeOrCond,
     typeof handler === 'function'
@@ -18,11 +18,12 @@ const buildGuardItem = ([typeOrCond, handler]) =>
       : always(handler)
   ]
 
-const appendDefault = append([T, (_, state) => state])
+const appendDefault = append([T, flip(identity)])
 
-const buildGuard = converge(pipe(appendDefault, cond), [pipe(toPairs, map(buildGuardItem))])
+const buildGuard = converge(pipe(appendDefault, cond), [map(buildGuardItem)])
 
 export default (guardConfig) => {
-  const guard = buildGuard(guardConfig)
+  const guard = buildGuard(asPairs(guardConfig))
+  window.g = guard
   return (state, action) => guard(action.type, state, action.payload)
 }
