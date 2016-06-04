@@ -6,8 +6,8 @@ import signalHandler from './signalHandler'
 import events from './events'
 import intersection from 'ramda/src/intersection'
 
-const isAts = (maybeAts) =>
-  (typeof maybeAts === 'object') && maybeAts !== null && !isArrayLike(maybeAts)
+const isAttrs = (maybeAttrs) =>
+  (typeof maybeAttrs === 'object') && maybeAttrs !== null && !isArrayLike(maybeAttrs)
 
 const processChildren = (el, history, tag, children, namespaces = []) => {
   // To support the case where user does
@@ -54,15 +54,15 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
     return jsonToVirtualDOM(['span', json], history)
   }
 
-  const [tag, maybeAtsOrChildren, maybeChildren] = json
+  const [tag, maybeAttrsOrChildren, maybeChildren] = json
 
   let ats = {}
   let children = []
 
-  if (typeof maybeAtsOrChildren !== 'undefined') {
-    isAts(maybeAtsOrChildren)
-      ? ats = maybeAtsOrChildren
-      : children = maybeAtsOrChildren
+  if (typeof maybeAttrsOrChildren !== 'undefined') {
+    isAttrs(maybeAttrsOrChildren)
+      ? ats = maybeAttrsOrChildren
+      : children = maybeAttrsOrChildren
   }
 
   if (typeof maybeChildren !== 'undefined') {
@@ -99,25 +99,25 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
     ats['class'] = classLists(...ats['class'])
   }
   injectEventHandlers(ats, history, namespaces)
-  attributeToProperty(ats)
+  attrToProp(ats)
 
   return toNode(tag, ats, children)
 }
 
-function attributeToProperty (ats) {
-  const transformableAts = intersection(Object.keys(ats), Object.keys(transform))
+function attrToProp (ats) {
+  const transformableAttrs = intersection(Object.keys(ats), Object.keys(transform))
 
   map((at) => {
     ats[transform[at]] = ats[at]
     delete ats[at]
-  }, transformableAts)
+  }, transformableAttrs)
 }
 
 function injectEventHandlers (ats, history, namespaces) {
-  const eventsInAts = intersection(Object.keys(ats), events)
+  const eventsInAttrs = intersection(Object.keys(ats), events)
   map((event) => {
     ats[`${event}-handler`] = signalHandler(ats[event], history, namespaces)
-  }, eventsInAts)
+  }, eventsInAttrs)
 }
 
 const renderErrorMessage = (tag, children, e, fn) => {
