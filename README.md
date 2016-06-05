@@ -26,7 +26,21 @@ main(view, { model: 0 })
 
 ## More examples
 
-Check more examples [in the documentation](http://lulk.in/act/docs/examples.html).
+* [counter composition](http://joaomilho.github.io/act/examples/counter/) (like
+  in Elm's architechture examples).
+  ([code](https://github.com/joaomilho/act/blob/master/examples/counter/))
+* [kanban board](http://joaomilho.github.io/act/examples/drag_n_drop/) with
+  drag & drop.
+  ([code](https://github.com/joaomilho/act/blob/master/examples/drag_n_drop/))
+* hot module replacement (hmr) [code](https://github.com/joaomilho/act/blob/master/hmr/examples/) (you have to run yourself)
+* [animation](http://joaomilho.github.io/act/examples/animation/) [code](https://github.com/joaomilho/act/blob/master/examples/animation/)
+* [todomvc](http://joaomilho.github.io/act/examples/todomvc/) [code](https://github.com/joaomilho/act/blob/master/examples/todomvc/) (full build: 13.4kb minified & gzipped) (code: ~80LsoC without imports)
+* [bmi calculator](http://joaomilho.github.io/act/examples/bmi/) [code](https://github.com/joaomilho/act/blob/master/examples/bmi/)
+* [optimistic updates](http://joaomilho.github.io/act/examples/optimistic/) [code](https://github.com/joaomilho/act/blob/master/examples/optimistic/)
+
+Check even more examples [in the documentation](http://lulk.in/act/docs/examples.html).
+
+## Why?
 
 ## Install
 

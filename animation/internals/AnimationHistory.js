@@ -11,7 +11,6 @@ export default class AnimationHistory extends History {
   push (action) {
     this.state = this.reduce(this.state, [action])
     const dom = this.rerender()
-    this.delta = []
 
     map((subscription) => subscription(this), this.subscriptions)
     return dom

@@ -1,11 +1,11 @@
-import main, { spring } from '..'
+import main, { spring } from '../../animation'
 import styles from './styles.css'
-import value from '@act/main/processes/value'
-import position from '@act/main/processes/position'
-import TraversableAnimationHistory from '../internals/TraversableAnimationHistory'
+import value from '../../processes/value'
+import position from '../../processes/position'
+import TraversableAnimationHistory from '../../animation/internals/TraversableAnimationHistory'
 
 let currentSpring
-const start = (history, payload) => {
+const start = (payload, history) => {
   history.push({type: 'dest', payload})
   currentSpring && currentSpring.stop()
 
@@ -15,12 +15,12 @@ const start = (history, payload) => {
   )
 }
 
-const go = (history, payload) => {
+const go = (payload, history) => {
   history.go(payload)
 }
 
 let interval
-const replay = (history, payload) => {
+const replay = (payload, history) => {
   let i = 0
   history.go(i++)
 
@@ -31,7 +31,7 @@ const replay = (history, payload) => {
   }, 1000 / 60)
 }
 
-const rewind = (history, payload) => {
+const rewind = (payload, history) => {
   let i = history.length
   history.go(i--)
 
@@ -53,7 +53,7 @@ const view = ({ current }, history) => (
       input: [go, value],
       type: 'range',
       min: 0,
-      value: history.present,
+      value: String(history.present),
       max: history.length,
       step: 1
     }],
