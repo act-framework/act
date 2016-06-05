@@ -1,0 +1,12 @@
+input {
+  width: 100%;
+}
+
+.underweight,
+.overweight {
+  color: orange;
+}
+
+.obese {
+  color: red;
+}
