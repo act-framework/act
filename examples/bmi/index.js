@@ -7,7 +7,7 @@ const view = ({ height, weight }) => {
   const diagnostic = diagnose(bmi)
 
   return ['div', [
-    ['h3', 'BMI calculator'],
+    ['h1', 'Act BMI calculator'],
     `Height: ${height} cm`,
     slider(100, 220, { input: { height: value }, defaultValue: height }),
     `Weight: ${weight} kg`,

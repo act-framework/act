@@ -1,0 +1,48 @@
+body {
+  background: #f8f8fa;
+  font-family: 'Fira code', Raleway, Arial, sans;
+  padding: 15px;
+}
+
+h1 {
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  color: #667;
+  font-weight: 100;
+  text-transform: uppercase;
+  padding: 10px 5px 0 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+input {
+  color: #667;
+  font-weight: 100;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+a {
+  color: #4592fb;
+  text-decoration: none;
+}
+
+button {
+  background: #4592fb;
+  border-radius: 4px;
+  border: 0;
+  color: white;
+  font-size: 14px;
+  margin: 10px 10px 10px 0;
+  padding: 10px;
+}
+
+aside {
+  padding-top: 10px;
+  text-align: right;
+}
