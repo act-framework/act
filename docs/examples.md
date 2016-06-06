@@ -1,6 +1,7 @@
 # Examples
 
-* [animation](http://joaomilho.github.io/act/animation/examples) [code](https://github.com/joaomilho/act/blob/master/animation/examples/)
+* [animation](http://joaomilho.github.io/act/examples/animation/) [code](https://github.com/joaomilho/act/blob/master/examples/animation/)
+* [bmi calculator](http://joaomilho.github.io/act/examples/bmi/) [code](https://github.com/joaomilho/act/blob/master/examples/bmi/)
 * [clipboard](http://joaomilho.github.io/act/examples/clipboard/) [code](https://github.com/joaomilho/act/blob/master/examples/clipboard/)
 * [counter](http://joaomilho.github.io/act/examples/counter/) [code](https://github.com/joaomilho/act/blob/master/examples/counter/)
 * [css modules](http://joaomilho.github.io/act/examples/css_modules/) [code](https://github.com/joaomilho/act/blob/master/examples/css_modules/)
@@ -8,7 +9,7 @@
 * [drag & drop](http://joaomilho.github.io/act/examples/drag_n_drop/) [code](https://github.com/joaomilho/act/blob/master/examples/drag_n_drop/) (a kanban board)
 * fetch [code](https://github.com/joaomilho/act/blob/master/examples/fetch) (you have to run yourself)
 * [hello world](http://joaomilho.github.io/act/examples/hello_world/) [code](https://github.com/joaomilho/act/blob/master/examples/hello_world/)
-* hot module replacement (hmr) [code](https://github.com/joaomilho/act/blob/master/hmr/examples/) (you have to run yourself)
+* hot module replacement (hmr) [code](https://github.com/joaomilho/act/blob/master/examples/hmr/) (you have to run yourself)
 * [images](http://joaomilho.github.io/act/examples/images/) [code](https://github.com/joaomilho/act/blob/master/examples/images/)
 * [lens](http://joaomilho.github.io/act/examples/lens/) [code](https://github.com/joaomilho/act/blob/master/examples/lens/)
 * [mouse events](http://joaomilho.github.io/act/examples/mouse_events/) [code](https://github.com/joaomilho/act/blob/master/examples/mouse_events/)
@@ -19,4 +20,4 @@
 * unit tests [code](https://github.com/joaomilho/act/blob/master/examples/unit_test/) (you have to run yourself)
 * [window events](http://joaomilho.github.io/act/examples/window_events/) [code](https://github.com/joaomilho/act/blob/master/examples/window_events/)
 * xhr [code](https://github.com/joaomilho/act/blob/master/examples/xhr) (you have to run yourself)
-* ws (web sockets) [code](https://github.com/joaomilho/act/blob/master/ws/examples/index.js) (you have to run yourself)
+* ws (web sockets) [code](https://github.com/joaomilho/act/blob/master/examples/ws/) (you have to run yourself)
