@@ -1,5 +1,10 @@
 # Changelog
 
+#### 0.0.3
+
+- Separate `spring` from index, and allow spring callback to have 1 or 2
+  args. If 1 receives `current`, if 2 receives `current` and `velocity`.
+
 #### 0.0.2
 
 - Exposes AnimationHistory by default;

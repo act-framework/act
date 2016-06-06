@@ -62,6 +62,7 @@ export default class Spring {
     }
 
     this.velocity = velocity
-    return this.current
+
+    return this
   }
 }
