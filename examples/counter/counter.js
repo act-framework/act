@@ -1,5 +1,5 @@
 const view = (count) =>
-  ['.counter', [
+  ['article', [
     ['h1', count],
     ['button', {click: {add: 1}}, 'Add 1'],
     ['button', {click: {add: -1}}, 'Remove 1']

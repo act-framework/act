@@ -1,0 +1,18 @@
+@import '../main.css';
+
+nav {
+  background: white;
+}
+a {
+  display: inline-block;
+  padding: 30px;
+  border-bottom: 2px solid transparent;
+}
+
+.selected {
+  border-bottom: 2px solid #4592fb;
+}
+
+article {
+  padding: 50px;
+}

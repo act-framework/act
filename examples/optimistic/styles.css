@@ -1,16 +1,20 @@
 @import '../main.css';
 
 .error {
+  border-radius: 4px;
   background: red;
   color: white;
   display: block;
   padding: 10px;
+  margin-bottom: 5px;
 }
 
 .apology {
+  border-radius: 4px;
   background: green;
   color: white;
   display: block;
   padding: 10px;
+  margin-bottom: 5px;
 }
 

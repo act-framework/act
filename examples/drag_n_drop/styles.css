@@ -1,3 +1,5 @@
+@import '../main.css';
+
 body {
   padding: 15px;
   background: #f8f8fa;
@@ -22,7 +24,7 @@ h3 {
 .grid {
   width: 100%;
   table-layout: fixed;
-  min-height: 85vh;
+  min-height: 75vh;
 }
 
 .task {

@@ -1,6 +1,7 @@
 import main from '../..'
 import naiveRouter from '../../subscriptions/naiveRouter'
 import TraversableHistory from '../../internals/TraversableHistory'
+import css from './styles.css'
 
 const undo = (_, history) => {
   // Regular undo doesn't cover side effects
@@ -17,13 +18,20 @@ const contact = ['h1', 'Contact']
 
 const routes = { home, faq, contact }
 
+const selected = (t) =>
+  t && css.selected
+
 const view = (router) => (
   ['main', [
-    routes[router] || home,
-    ['a', {href: '#home'}, 'Home'],
-    ['a', {href: '#faq'}, 'FAQ'],
-    ['a', {href: '#contact'}, 'Contact'],
-    ['button', {click: undo}, 'Undo']
+    ['nav', [
+      ['a', {class: selected(router === 'home'), href: '#home'}, 'Home'],
+      ['a', {class: selected(router === 'faq'), href: '#faq'}, 'FAQ'],
+      ['a', {class: selected(router === 'contact'), href: '#contact'}, 'Contact']
+    ]],
+    ['article', [
+      routes[router] || home,
+      ['button', {click: undo}, 'Undo']
+    ]]
   ]]
 )
 

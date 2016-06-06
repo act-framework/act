@@ -1,20 +1,17 @@
 import main from '../..'
-import map from 'ramda/src/map'
-import { text } from '../../processes/clipboard'
+import { html } from '../../processes/clipboard'
+import './styles.css'
 
 const view = (model) => (
   ['main', [
-    ['div', 'Copy, cut & paste inside the textarea to see the state'],
+    ['div', 'Copy this text and paste inside the textarea. You should see the original HTML.'],
     ['textarea', {
-      copy: { copy: text },
-      cut: { cut: text },
-      paste: { paste: text }
-    }, 'Initial value'],
-    ...map((action) => ['div', JSON.stringify(action)], model)
+      paste: { paste: html },
+      value: model
+    }]
   ]]
 )
 
-const reducer = (state, action) =>
-  [ ...state, action ]
+const reducer = (_, { payload }) => `${payload}\n\nTold ya!`
 
-main(view, { model: [], reducer })
+main(view, { model: '', reducer })

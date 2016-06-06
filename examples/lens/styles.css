@@ -1,22 +1,12 @@
+@import '../main.css';
+
 body {
-  padding: 15px;
-  background: #f8f8fa;
-  font-family: 'Fira code', Raleway, Arial, sans;
   width: 500px;
   margin: 0 auto;
-  text-align: center;
-
-}
-
-h1 {
-  padding: 10px 0;
-  margin: 0;
-  font-weight: 100;
   text-align: center;
 }
 
 .avatar {
-
   width: 128px;
   height: 128px;
   border-radius: 100px;
@@ -30,6 +20,7 @@ main {
   padding: 20px;
   background: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
 }
 
 hr {

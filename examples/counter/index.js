@@ -1,22 +1,32 @@
+import twoCounters from './fourCounters'
 import main from '../..'
+import nest from '../../nest'
+import './styles.css'
 
-const counter = (count) => (
+const view = ({left, right}) => (
   ['main', [
-    ['h1', count],
-    ['button', {click: 'inc'}, 'Increment'],
-    ['button', {click: 'dec'}, 'Decrement']
+    ['h1', 'Act nested counters'],
+    ['table', [
+      ['tr', [
+        ['td', [
+          nest.view('left', twoCounters.view(left))
+        ]],
+        ['td', [
+          nest.view('right', twoCounters.view(right))
+        ]]
+      ]]
+    ]]
   ]]
 )
 
-const reducer = (state = 0, {type, payload}) => {
-  switch (type) {
-    case 'inc':
-      return state + 1
-    case 'dec':
-      return state - 1
-    default:
-      return state
-  }
+const reducer = nest.reducers({
+  left: twoCounters.reducer,
+  right: twoCounters.reducer
+})
+
+const model = {
+  left: twoCounters.model,
+  right: twoCounters.model
 }
 
-main(counter, { reducer })
+main(view, { model, reducer })

@@ -1,4 +1,4 @@
 import main from '../..'
-import styles from './styles.css'
+import css from './styles.css'
 
-main(['div', {class: [styles, 'red']}, 'Hello CSS modules'])
+main(['div', {class: [css, 'red', 'padded']}, 'Hello CSS modules'])
