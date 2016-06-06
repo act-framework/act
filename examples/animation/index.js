@@ -98,7 +98,7 @@ const about = () =>
       but I'm not sure how to achieve the same look & feel with something else.`]
   ]]
 
-const reducer = (state = { showAbout: false, step: 0, angle: 0, velocity: 0, dest: [0, 0], current: [window.innerWidth / 2 - 100, 395] }, { type, payload }) => {
+const reducer = (state = { showAbout: false, distance: 0, angle: 0, dest: [0, 0], current: [window.innerWidth / 2 - 100, 395] }, { type, payload }) => {
   switch (type) {
     case 'dest':
       return { ...state, showAbout: false, dest: payload, previous: state.current }
