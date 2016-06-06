@@ -1,24 +1,3 @@
-/**
- * Animation example
- *
- * This example tries to show many features together:
- *  - springs
- *  - time traveling / replaying
- *  - style manipulation in JS
- *
- * It also tries to follow Disney's 12 principles of animation.
- *   - it squashes and streches the ball when moving, depending on speed
- *   - there's slow in and slow out, natural to springs
- *   - it adds some blur depending on the speed
- *
- * Take a look: http://the12principles.tumblr.com/
- *
- * To accomplish all this together in plain HTML, of course performance is
- * compromised. In real life, you will probably use the regular
- * AnimationHistory, and this will improve things a lot. Blur is also costly,
- * but I'm not sure how to achieve the same look & feel with something else.
- */
-
 import main from '../../animation'
 import spring from '../../animation/spring'
 import css from './styles.css'
@@ -72,7 +51,7 @@ const view = ({ showAbout, distance, current, angle }, history) => (
     ['br'],
     0,
     ['input', {
-      style: {width: 100 + history.length},
+      style: {width: Math.min(100 + history.length / 2, window.innerWidth - 100)},
       input: [go, value],
       type: 'range',
       min: 0,
