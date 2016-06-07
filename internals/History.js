@@ -9,6 +9,7 @@ export default class History {
     this.subscriptions = []
     this.delta = []
     this.rerender = () => rerender(this.state)
+    this.paused = false
   }
 
   subscribe (subscription) {
@@ -24,7 +25,12 @@ export default class History {
     return dom
   }
 
+  togglePause () {
+    this.paused = !this.paused
+  }
+
   push (action) {
+    if (this.paused) return
     this.delta.push(action)
     return delay(() => this.concat())
   }
