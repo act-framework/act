@@ -1,7 +1,7 @@
 {
   "name": "@act/animation",
   "description": "Animation tools for Act",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "license": "ISC",
   "repository": {
