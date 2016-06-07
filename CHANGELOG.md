@@ -3,6 +3,8 @@
 #### 0.0.7
 
 - Allows arrays on `guard` (as in `cond`).
+- Adds `togglePaused` on `History`.
+- Adds `ramdom` process.
 
 #### 0.0.6
 
