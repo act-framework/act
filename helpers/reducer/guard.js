@@ -1,22 +1,25 @@
-import equals from 'ramda/src/equals'
-import T from 'ramda/src/T'
 import always from 'ramda/src/always'
-import converge from 'ramda/src/converge'
-import cond from 'ramda/src/cond'
-import map from 'ramda/src/map'
 import append from 'ramda/src/append'
-import pipe from 'ramda/src/pipe'
+import asPairs from '../../internals/asPairs'
+import cond from 'ramda/src/cond'
+import converge from 'ramda/src/converge'
+import equals from 'ramda/src/equals'
 import flip from 'ramda/src/flip'
 import identity from 'ramda/src/identity'
-import asPairs from '../../internals/asPairs'
+import map from 'ramda/src/map'
+import pipe from 'ramda/src/pipe'
+import T from 'ramda/src/T'
 
-const buildGuardItem = ([_, [typeOrCond, handler]]) =>
-  [
+const buildGuardItem = ([typeOrCond, handler]) => {
+  return [
     typeof typeOrCond === 'string' ? equals(typeOrCond) : typeOrCond,
     typeof handler === 'function'
-      ? (_, state, payload) => handler(state, payload)
+      ? (_, state, payload) => {
+        return handler(state, payload)
+      }
       : always(handler)
   ]
+}
 
 const appendDefault = append([T, flip(identity)])
 
