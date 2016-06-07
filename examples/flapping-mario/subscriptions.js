@@ -1,4 +1,4 @@
-import { tick } from '../../subscriptions/animation'
+import tick from '../../animation/subscriptions/tick'
 import { onKeyCode } from '../../subscriptions/keyboard'
 
 const keys = {

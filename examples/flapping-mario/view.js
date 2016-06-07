@@ -63,7 +63,9 @@ const home = () =>
       ['em', 'enter'],
       ' to start and pause the game. Press ',
       ['em', 'space'],
-      ' to fly.'
+      ' to fly.',
+      ['br'],
+      'Performance to be improved :( Works best on Safari.'
     ]]
   ]]
 

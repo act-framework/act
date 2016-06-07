@@ -3,4 +3,6 @@ import random from '@act/main/processes/random'
 
 const frame = fromAnimationFrame().start()
 
-export const tick = random(frame)
+const tick = random(frame)
+
+export default tick

@@ -8,6 +8,7 @@
 * [devtools](http://joaomilho.github.io/act/examples/devtools/) [code](https://github.com/joaomilho/act/blob/master/examples/devtools/)
 * [drag & drop](http://joaomilho.github.io/act/examples/drag_n_drop/) [code](https://github.com/joaomilho/act/blob/master/examples/drag_n_drop/) (a kanban board)
 * fetch [code](https://github.com/joaomilho/act/blob/master/examples/fetch) (you have to run yourself)
+* [flapping mario](http://joaomilho.github.io/act/examples/flapping-mario/) [code](https://github.com/joaomilho/act/blob/master/examples/flapping-mario/)
 * [hello world](http://joaomilho.github.io/act/examples/hello_world/) [code](https://github.com/joaomilho/act/blob/master/examples/hello_world/)
 * hot module replacement (hmr) [code](https://github.com/joaomilho/act/blob/master/examples/hmr/) (you have to run yourself)
 * [images](http://joaomilho.github.io/act/examples/images/) [code](https://github.com/joaomilho/act/blob/master/examples/images/)
