@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.8
+
+- Adds `pause`/`unpause` to History.
+
 #### 0.0.7
 
 - Allows arrays on `guard` (as in `cond`).

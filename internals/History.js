@@ -25,8 +25,16 @@ export default class History {
     return dom
   }
 
+  pause () {
+    this.paused = true
+  }
+
   togglePause () {
     this.paused = !this.paused
+  }
+
+  unpause () {
+    this.paused = false
   }
 
   push (action) {
