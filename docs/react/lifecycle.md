@@ -30,7 +30,21 @@ Second, if you're looking to avoid rendering, take a look at
 between it and `shouldComponentUpdate`. You can also take a look at
 virtual-dom's concept of [thunk](https://github.com/Matt-Esch/virtual-dom/blob/master/docs/thunk.md).
 
-Third, if you wanna have a mount hook on a specific tag (not a function!), since
+Third, if you wanna replicate componentWillUpdate, you can always leverage
+JavaScript's closures:
+
+```js
+let lastValue
+const view(value) => {
+  if (lastValue !== value) {
+    ...
+  }
+  lastValue = value
+  ...
+}
+```
+
+Fourth, if you wanna have a mount hook on a specific tag (not a function!), since
 Act uses virtual-dom behind the scenes, you can still use the [hook
 mechanism](https://github.com/Matt-Esch/virtual-dom/blob/master/docs/hooks.md)
 that exists there (if you're really interested, look into Act's hooks at `internals/signalHandler.js`).
