@@ -15,4 +15,4 @@ import view from './view'
 import subscriptions from './subscriptions'
 
 const { history } = main(view, { reducer, subscriptions })
-history.togglePause()
+history.pause()

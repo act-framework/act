@@ -38,13 +38,11 @@ body {
 .valleys {
   z-index: 2;
   bottom: 50px;
-  -webkit-filter: blur(1px);
 }
 
 .mountains {
   z-index: 1;
   bottom: 70px;
-  -webkit-filter: sepia(0.3) blur(2.5px);
 }
 
 .mario {
@@ -71,8 +69,8 @@ body {
 }
 
 .gameOver {
-  background: url(./sprites/gameOver.jpg);
-  background-size: 100%;
+  background: #B72400 url(./sprites/gameOver.jpg) no-repeat center;
+  background-size: contain;
 }
 
 
@@ -96,4 +94,14 @@ body {
 .home img {
   -webkit-filter: blur(0);
   margin-bottom: 40px;
+}
+
+@media only screen and (max-device-width : 600px) {
+  h1 {
+    font-size: 22px;
+  }
+  .home img {
+    width: 60px;
+    margin-bottom: 10px;
+  }
 }
