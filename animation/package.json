@@ -9,7 +9,7 @@
     "url": "git+https://github.com/joaomilho/act.git"
   },
   "dependencies": {
-    "@act/main": "0.0.7"
+    "@act/main": "0.0.8"
   },
   "devDependencies": {
   },
