@@ -13,7 +13,7 @@ test('request: when is successful', (assert) => {
 
   let newRequest = request(next, error)
 
-  assert.equal(newRequest, fakeRequest, 'request returns new XMLHttpRequest')
+  assert.deepEqual(newRequest, fakeRequest, 'request returns new XMLHttpRequest')
 
   newRequest.onload()
   assert.ok(next.called, 'calls next callback when request is successful')
@@ -33,7 +33,7 @@ test('request: when it fails', (assert) => {
 
   let newRequest = request(next, error)
 
-  assert.equal(newRequest, fakeRequest, 'request returns new XMLHttpRequest')
+  assert.deepEqual(newRequest, fakeRequest, 'request returns new XMLHttpRequest')
 
   newRequest.onload()
   assert.notOk(next.called, 'never calls next when request fails')
