@@ -1,6 +1,6 @@
-import main from '../..'
+import main from 'main'
 import css from './styles.css'
-import lens from '../../helpers/view/lens'
+import lens from 'main/helpers/view/lens'
 import identity from 'ramda/src/identity'
 
 const getName = lens(['user', 'name'])

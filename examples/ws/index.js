@@ -1,10 +1,10 @@
-import main from '@act/main'
-import valueOnEnter from '@act/main/processes/valueOnEnter'
-import onEnter from '@act/main/processes/onEnter'
-import value from '@act/main/processes/value'
-import fromSocket from '../fromSocket'
+import main from 'main'
+import valueOnEnter from 'main/processes/valueOnEnter'
+import onEnter from 'main/processes/onEnter'
+import value from 'main/processes/value'
+import fromSocket from 'ws/fromSocket'
 import map from 'ramda/src/map'
-import css from './styles.css'
+import './styles.css'
 
 const socket = fromSocket('localhost:8081')
 

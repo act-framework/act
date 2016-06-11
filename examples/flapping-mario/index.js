@@ -9,7 +9,7 @@
  *
  */
 
-import main from '../../animation'
+import main from 'animation'
 import reducer from './reducer'
 import view from './view'
 import subscriptions from './subscriptions'

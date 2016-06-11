@@ -1,4 +1,4 @@
-import main from '../..'
+import main from 'main'
 import map from 'ramda/src/map'
 import next from './next'
 import { gosperGun } from './patterns'

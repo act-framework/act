@@ -1,5 +1,5 @@
-import main from '../..'
-import { scrollThrottled, breakpoint } from '../../subscriptions/window'
+import main from 'main'
+import { scrollThrottled, breakpoint } from 'main/subscriptions/window'
 import times from 'ramda/src/times'
 import './styles.css'
 

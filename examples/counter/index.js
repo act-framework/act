@@ -1,6 +1,6 @@
 import twoCounters from './fourCounters'
-import main from '../..'
-import nest from '../../nest'
+import main from 'main'
+import nest from 'main/nest'
 import './styles.css'
 
 const view = ({left, right}) => (

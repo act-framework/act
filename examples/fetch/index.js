@@ -1,4 +1,4 @@
-import main from '../..'
+import main from 'main'
 import map from 'ramda/src/map'
 import * as api from './api'
 

@@ -1,6 +1,6 @@
-import tick from '../../animation/subscriptions/tick'
-import { onKeyCode } from '../../subscriptions/keyboard'
-import fromEvent from '../../signals/sources/fromEvent'
+import tick from 'animation/subscriptions/tick'
+import { onKeyCode } from 'main/subscriptions/keyboard'
+import fromEvent from 'main/signals/sources/fromEvent'
 
 const keys = {
   space: 32,

@@ -1,4 +1,4 @@
-import fromFetch from '../../signals/sources/fromFetch'
+import fromFetch from 'main/signals/sources/fromFetch'
 
 export const good = fromFetch(() => ({
   url: '/good.json'

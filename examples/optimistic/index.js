@@ -1,6 +1,6 @@
-import main from '../../optimistic'
+import main from 'optimistic'
 import map from 'ramda/src/map'
-import naiveSerialize from '@act/main/processes/naiveSerialize'
+import naiveSerialize from 'main/processes/naiveSerialize'
 import css from './styles.css'
 
 const addComment = ({ comment }, history) => {

@@ -1,5 +1,5 @@
-import main from '../..'
-import TraversableHistory from '../../internals/TraversableHistory'
+import main from 'main'
+import TraversableHistory from 'main/internals/TraversableHistory'
 import './styles.css'
 
 const undo = (_, history) =>

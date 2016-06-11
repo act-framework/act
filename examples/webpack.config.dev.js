@@ -1,6 +1,11 @@
+const path = require('path')
+
 module.exports = {
   entry: {
     bundle: './index.js'
+  },
+  resolve: {
+    root: path.join(__dirname, '../packages')
   },
   module: {
     loaders: [

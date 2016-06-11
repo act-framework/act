@@ -2,10 +2,10 @@
 // TODO: routes
 // TODO: bug when click on toggle inside "Active" filter :/
 
-import valueOnEnterAnd from '../../processes/valueOnEnterAnd'
-import valueOnEnter from '../../processes/valueOnEnter'
-import valueAnd from '../../processes/valueAnd'
-import onEsc from '../../processes/onEsc'
+import valueOnEnterAnd from 'main/processes/valueOnEnterAnd'
+import valueOnEnter from 'main/processes/valueOnEnter'
+import valueAnd from 'main/processes/valueAnd'
+import onEsc from 'main/processes/onEsc'
 import all from 'ramda/src/all'
 import any from 'ramda/src/any'
 import call from 'ramda/src/call'

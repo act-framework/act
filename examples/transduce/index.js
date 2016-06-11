@@ -1,8 +1,8 @@
-import fromValue from '../../signals/sources/fromValue'
+import fromValue from 'main/signals/sources/fromValue'
 import compose from 'ramda/src/compose'
 import map from 'ramda/src/map'
 import filter from 'ramda/src/filter'
-import transduce from '../../signals/processes/transduce'
+import transduce from 'main/signals/processes/transduce'
 
 const number = fromValue()
 

@@ -1,5 +1,5 @@
-import main from '../..'
-import { position, positionThrottled } from '../../subscriptions/mouse'
+import main from 'main'
+import { position, positionThrottled } from 'main/subscriptions/mouse'
 
 const view = (model) =>
   ['div', `Position: ${model.position} Throttled: ${model.positionThrottled}`]

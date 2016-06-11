@@ -1,6 +1,6 @@
-import main from '../..'
-import naiveRouter from '../../subscriptions/naiveRouter'
-import TraversableHistory from '../../internals/TraversableHistory'
+import main from 'main'
+import naiveRouter from 'main/subscriptions/naiveRouter'
+import TraversableHistory from 'main/internals/TraversableHistory'
 import css from './styles.css'
 
 const undo = (_, history) => {

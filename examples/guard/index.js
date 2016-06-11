@@ -1,5 +1,5 @@
-import main from '../..'
-import guard from '../../helpers/reducer/guard'
+import main from 'main'
+import guard from 'main/helpers/reducer/guard'
 import set from 'ramda/src/set'
 import lensProp from 'ramda/src/lensProp'
 import equals from 'ramda/src/equals'

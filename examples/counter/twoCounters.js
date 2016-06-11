@@ -1,5 +1,5 @@
 import counter from './counter'
-import nest from '../../nest'
+import nest from 'main/nest'
 
 const view = ({top, bottom}) => (
   ['main', [

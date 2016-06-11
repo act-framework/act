@@ -1,11 +1,11 @@
-import main from '../..'
+import main from 'main'
 import map from 'ramda/src/map'
 import propEq from 'ramda/src/propEq'
 import filter from 'ramda/src/filter'
-import always from '../../signals/processes/always'
-import pipe from '../../signals/pipe'
-import preventDefault from '../../processes/preventDefault'
-import valueOnEnter from '../../processes/valueOnEnter'
+import always from 'main/signals/processes/always'
+import pipe from 'main/signals/pipe'
+import preventDefault from 'main/processes/preventDefault'
+import valueOnEnter from 'main/processes/valueOnEnter'
 import css from './styles.css'
 
 const presenter = (model) => map((col) => ({

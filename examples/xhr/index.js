@@ -1,6 +1,6 @@
-import main from '../..'
+import main from 'main'
 import map from 'ramda/src/map'
-import { get, getJSON } from '../../signals/sources/xhr'
+import { get, getJSON } from 'main/signals/sources/xhr'
 
 const goodJSON = (_, history) => {
   history.push({ type: 'loading' })

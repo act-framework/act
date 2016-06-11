@@ -1,4 +1,4 @@
-import main from '../..'
+import main from 'main'
 import pngLogo from './logo.png'
 import svgLogo from './logo.svg'
 

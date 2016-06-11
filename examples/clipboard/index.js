@@ -1,5 +1,5 @@
-import main from '../..'
-import { html } from '../../processes/clipboard'
+import main from 'main'
+import { html } from 'main/processes/clipboard'
 import './styles.css'
 
 const view = (model) => (

@@ -1,5 +1,5 @@
-import main from '../../hmr'
-import pipe from '@act/main/signals/pipe'
+import main from 'hmr'
+import pipe from 'main/signals/pipe'
 
 import view from './view'
 import reducer from './reducer'

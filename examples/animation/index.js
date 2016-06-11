@@ -1,9 +1,9 @@
-import main from '../../animation'
-import spring from '../../animation/spring'
+import main from 'animation'
+import spring from 'animation/spring'
 import css from './styles.css'
-import value from '../../processes/value'
-import position from '../../processes/position'
-import TraversableAnimationHistory from '../../animation/internals/TraversableAnimationHistory'
+import value from 'main/processes/value'
+import position from 'main/processes/position'
+import TraversableAnimationHistory from 'animation/internals/TraversableAnimationHistory'
 
 let currentSpring
 const start = (payload, history) => {

@@ -1,5 +1,5 @@
 import twoCounters from './twoCounters'
-import nest from '../../nest'
+import nest from 'main/nest'
 
 const view = ({left, right}) => (
   ['table', [

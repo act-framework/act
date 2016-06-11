@@ -1,13 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --config ../webpack.config.dev.js",
+    "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack"
   },
   "dependencies": {},
   "devDependencies": {
-    "@act/main": "0.0.8",
     "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",

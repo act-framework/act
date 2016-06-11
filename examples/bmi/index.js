@@ -1,5 +1,5 @@
-import main from '../..'
-import value from '../../processes/value'
+import main from 'main'
+import value from 'main/processes/value'
 import css from './styles.css'
 
 const view = ({ height, weight }) => {
