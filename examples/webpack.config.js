@@ -6,11 +6,15 @@ const R = require('ramda')
 const configEntry = (entry) =>
   [R.head(entry.split('/')), './' + entry]
 
-const buildableEntry = (entry) =>
+const blacklist = (entry) =>
   !~['hmr', 'ws', 'xhr'].indexOf(entry[0])
 
+// const whitelist = (entry) =>
+//   ~['optimistic'].indexOf(entry[0])
+
 const entries = R.compose(
-  R.filter(buildableEntry),
+//   R.filter(whitelist),
+  R.filter(blacklist),
   R.map(configEntry))(glob.sync('*/index.js'))
 
 module.exports = {
