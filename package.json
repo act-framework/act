@@ -1,5 +1,16 @@
 {
   "devDependencies": {
-    "lerna": "2.0.0-beta.13"
+    "lerna": "2.0.0-beta.13",
+    "gitbook-cli": "^2.1.3",
+    "standard": "^7.1.0"
+
+  },
+  "scripts": {
+    "lint": "standard 'packages/**/*.js'",
+    "docs:clean": "rm -rf _book",
+    "docs:prepare": "gitbook install",
+    "docs:build": "npm run docs:prepare && gitbook build -g joaomilho/act",
+    "docs:watch": "npm run docs:prepare && gitbook serve",
+    "docs:publish": "./scripts/publish_book"
   }
 }
