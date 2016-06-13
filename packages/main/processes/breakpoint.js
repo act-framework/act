@@ -18,6 +18,6 @@ const defaultBreakpoints = {
 export default (config = defaultBreakpoints) => pipe(
   width,
   map((width) =>
-    head(find(([breakpoint, max]) => width > max, toPairs(config)))),
+    head(find(([breakpoint, max]) => width >= max, toPairs(config)))),
   distinct
 )

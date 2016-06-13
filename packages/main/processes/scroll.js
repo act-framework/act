@@ -1,5 +1,5 @@
 import map from '../signals/processes/map'
 
 export default
-  map((ev) => window.pageYOffset || document.body.scrollTop)
+  map((ev) => ev.target.pageYOffset || document.body.scrollTop)
 
