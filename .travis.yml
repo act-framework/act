@@ -3,5 +3,10 @@ node_js:
 - '4'
 before_script:
 - npm install
+- lerna bootstrap
 script:
-  - npm test
+  - lerna run test
+cache:
+  directories:
+    - node_modules
+    - .nvm
