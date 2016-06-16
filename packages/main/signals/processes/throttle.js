@@ -16,7 +16,9 @@ export default curry((ms, eventSource, next) => {
   let last, timer
 
   eventSource((value) => {
-    let now = performance.now()
+    let now = typeof performance !== 'undefined'
+      ? performance.now()
+      : Date.now()
 
     if (timer) {
       clearTimeout(timer)
