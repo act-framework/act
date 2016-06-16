@@ -1,11 +1,20 @@
 const path = require('path')
+const glob = require('glob')
+const R = require('ramda')
+
+const configEntry = (entry) =>
+  [R.head(entry.split('/')), './' + entry]
+
+const entries = R.compose(
+  R.map(configEntry))(glob.sync('*/index.js'))
 
 module.exports = {
-  entry: {
-    bundle: './index.js'
-  },
+  entry: R.fromPairs(entries),
   resolve: {
     root: path.join(__dirname, '../packages')
+  },
+  output: {
+    filename: '[name]/bundle.js'
   },
   module: {
     loaders: [

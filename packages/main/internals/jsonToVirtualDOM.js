@@ -49,7 +49,7 @@ const processChildren = (el, history, tag, children, namespaces = []) => {
   return String(el)
 }
 
-const jsonToVirtualDOM = (json, history, namespaces) => {
+const jsonToVirtualDOM = (json, history, namespaces = []) => {
   if (!isArrayLike(json)) {
     return jsonToVirtualDOM(['span', json], history)
   }
@@ -73,7 +73,7 @@ const jsonToVirtualDOM = (json, history, namespaces) => {
     children = map((el) => processChildren(el, history, tag, children, namespaces), children)
   } else if (typeof children === 'function') {
     if (children.namespace) {
-      console.log('TODO namespace when function is single children')
+      namespaces = [...namespaces, children.namespace]
     }
     const fn = children
     try {
@@ -116,7 +116,7 @@ function attrToProp (ats) {
 function injectEventHandlers (ats, history, namespaces) {
   const eventsInAttrs = intersection(Object.keys(ats), events)
   map((event) => {
-    ats[`${event}-handler`] = signalHandler(ats[event], history, namespaces)
+    ats[`${event}-handler`] = signalHandler(event, ats[event], history, namespaces)
   }, eventsInAttrs)
 }
 

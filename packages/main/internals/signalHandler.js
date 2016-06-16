@@ -5,63 +5,45 @@ import isArrayLike from 'ramda/src/isArrayLike'
 import map from 'ramda/src/map'
 import toPairs from 'ramda/src/toPairs'
 
-class SignalHandler {
-  constructor (events, history, namespaces = []) {
-    if (typeof events === 'function' || typeof events === 'string') {
-      this.events = [[events, identity]]
-    } else if (isArrayLike(events)) {
-      this.events = isArrayLike(events[0]) ? events : [events]
-    } else if (typeof events === 'object') {
-      this.events = toPairs(events)
-    } else {
-      this.events = []
-    }
+const eventsAsList = (events) => {
+  if (typeof events === 'function' || typeof events === 'string') return [[events, identity]]
+  if (isArrayLike(events)) return isArrayLike(events[0]) ? events : [events]
+  if (typeof events === 'object') return toPairs(events)
+  return []
+}
 
+class SignalHandler {
+  constructor (event, events, history, namespaces = []) {
+    this.events = eventsAsList(events)
     this.history = history
     this.namespaces = namespaces
     this.processes = {}
     this.sources = {}
+    this.event = event
   }
 
-  hook (node, propertyName) {
-    const prop = propertyName.split('-')[0]
+  hook (node, _, prev) {
     let index = 0
     map(([typeOrAction, processOrValue]) => {
       const [type, action] = typeof typeOrAction === 'string'
         ? [typeOrAction, (payload, history) => this.history.push({ type: [...this.namespaces, type].join('.'), payload })]
-        : [`${prop}-${++index}`, typeOrAction]
+        : [`${this.event}-${++index}`, typeOrAction]
 
-      if (typeof processOrValue === 'function') {
-        this.processes[type] = processOrValue
-      } else {
-        // TODO we need a nice way to name lambdas to debug properly :/
-        // const a = pipe(always(processOrValue))
-        // a.cname = 'foooo'
+      this.processes[type] = typeof processOrValue === 'function'
+        ? processOrValue
+        : always(processOrValue)
 
-        this.processes[type] = always(processOrValue)
+      if (prev) {
+        if (prev.processes[type] === this.processes[type]) return
+        prev.sources[type].stop()
       }
 
-      if (node['__act'] && node['__act'][prop]) {
-        if (node['__act'][prop].processes[type] === this.processes[type]) {
-          return
-        } else {
-          node['__act'][prop].sources[type].stop()
-        }
-      }
-
-      this.sources[type] = fromEvent(node, prop)
+      this.sources[type] = fromEvent(node, this.event)
 
       this.processes[type](this.sources[type].start())((payload) => {
         action(payload, this.history)
       })
     }, this.events)
-
-    // TODO: Think of a better struct for _this_ for better debugging
-    // cause now it's sources[type], processes[type] ...
-    // It may be better to have type.sources, type.processes ...
-    node['__act'] = node['__act']
-      ? { ...node['__act'], [prop]: this }
-      : { [prop]: this }
   }
 }
 

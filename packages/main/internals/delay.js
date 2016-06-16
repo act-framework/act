@@ -1,12 +1,7 @@
 /* globals cancelAnimationFrame requestAnimationFrame */
 let animationFrameId
 
-// TODO: think on how to use fromAnimationFrame
 const delay = (fn) => {
-  if (typeof window === 'undefined') {
-    return fn()
-  }
-
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId)
   }
@@ -14,4 +9,6 @@ const delay = (fn) => {
   animationFrameId = requestAnimationFrame(fn)
 }
 
-export default delay
+export default typeof window === 'undefined'
+  ? (fn) => fn()
+  : delay

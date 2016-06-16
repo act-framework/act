@@ -69,9 +69,8 @@ export const invalid = inputEvent('invalid')
  */
 export const search = inputEvent('search')
 
-// TODO: select may need some extra info, make a test example
 /**
- * Calls `select` of a select input
+ * Calls `select` when a text is selected
  *
  * @param {VNode} element
  * @param {string} value

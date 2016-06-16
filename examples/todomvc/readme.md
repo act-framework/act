@@ -1,28 +1,8 @@
 # ACT • [TodoMVC](http://todomvc.com)
 
-> TODO: Official description of the framework (from its website)
-
-
-## Resources
-
-- [Website]()
-- [Documentation]()
-- [Used by]()
-- [Blog]()
-- [FAQ]()
-
-### Articles
-
-- [Interesting article]()
-
-### Support
-
+- [Github](https://github.com/joaomilho/act)
+- [Documentation](joaomilho.github.io/act)
 - [Twitter](http://twitter.com/act_js)
-
-
-## Implementation
-
-TODO
 
 ## Credit
 

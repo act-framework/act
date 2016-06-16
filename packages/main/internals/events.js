@@ -41,7 +41,6 @@ export const mouse = [
   'wheel'
 ]
 
-// TODO: create some example to understand the use case
 export const clipboard = [
   'copy',
   'cut',
