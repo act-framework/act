@@ -50,13 +50,9 @@ const reducer = (state = { tick: 0, speed: 0, pos: 0 }, { type, payload }) => {
 
 const keys = { space: 32, enter: 13 }
 
-const pause = (payload, history) =>
-  history.togglePause()
-
 const subscriptions = [
   ['tick', tick],
-  ['space', onKeyCode(keys.space)],
-  [pause, onKeyCode(keys.enter)]
+  ['space', onKeyCode(keys.space)]
 ]
 
 main(view, { reducer, subscriptions })

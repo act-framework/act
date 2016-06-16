@@ -10,7 +10,6 @@ export default class TraversableAnimationHistory extends TraversableHistory {
   }
 
   push (action) {
-    if (this.paused) return
     this.state = this.reduce(this.state, [action])
     const [past, future] = splitAt(this.present, this.timeline)
     this.timeline = [...past, action, ...future]

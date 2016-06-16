@@ -9,7 +9,6 @@ export default class AnimationHistory extends History {
   }
 
   push (action) {
-    if (this.paused) return
     this.state = this.reduce(this.state, [action])
     const dom = this.rerender()
 

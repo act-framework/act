@@ -1,5 +1,12 @@
 # Changelog
 
+#### 0.0.9
+
+- Adds `selection` process
+- Fallback `throttle` to `Date.now`
+- Rollback pause/unpause in History, should be project specific if really
+  needed, and can be implemented in the reducer.
+
 #### 0.0.8
 
 - Adds `pause`/`unpause` to History.
