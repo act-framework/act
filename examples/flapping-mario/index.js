@@ -14,5 +14,4 @@ import reducer from './reducer'
 import view from './view'
 import subscriptions from './subscriptions'
 
-const { history } = main(view, { reducer, subscriptions })
-history.pause()
+main(view, { reducer, subscriptions })

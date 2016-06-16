@@ -38,11 +38,13 @@ const passed = (pipe) =>
   ~~pipe.x === ~~mario.x - pipe.width
 
 const reducer = (state = initialState, { type, payload }) => {
-  if (state.status === 'gameOver') return state
+
+  if (type === 'start')
+    return { ...state, status: 'playing' }
+
+  if (state.status !== 'playing') return state
 
   switch (type) {
-    case 'start':
-      return { ...state, status: 'playing' }
 
     case 'tick':
       let { status, tick, pipes, y, score, speed } = state
@@ -50,8 +52,8 @@ const reducer = (state = initialState, { type, payload }) => {
       // move mario
       y -= speed
 
-      // hit the ground
-      if (y > height - 85) return { ...state, status: 'gameOver' }
+      // hit the ground or the "ceiling"
+      if (y > height - 85 || y < -50) return { ...state, status: 'gameOver' }
 
       // distance between 2 pipes, smaller on higher score
       const distance = 160 / (score + 1)

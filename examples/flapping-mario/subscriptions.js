@@ -1,24 +1,15 @@
 import tick from 'animation/subscriptions/tick'
 import { onKeyCode } from 'main/subscriptions/keyboard'
 import fromEvent from 'main/signals/sources/fromEvent'
+import merge from 'main/signals/processes/merge'
 
-const keys = {
-  space: 32,
-  enter: 13
-}
-
-const start = (payload, history) => {
-  history.unpause()
-  history.push({type: 'start'})
-}
+const space = (payload, history) =>
+  history.push({type: history.state.status === 'home' ? 'start' : 'fly'})
 
 const touch = fromEvent(window, 'touchend')
 const subscriptions = [
   ['tick', tick],
-  ['fly', onKeyCode(keys.space)],
-  ['fly', touch.start()],
-  [start, onKeyCode(keys.enter)],
-  [start, touch.start()]
+  [space, merge(onKeyCode(32), touch.start())]
 ]
 
 export default subscriptions
