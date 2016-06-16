@@ -74,7 +74,7 @@ const todo = (task) =>
   ['li', `[${task.status}] ${task.description}`]
 
 const model = {
-  title: 'Welcome to the TODO app',
+  title: 'Welcome to the todo app',
   todos: [
     { status: 'DONE', description: 'Write docs for params.model' },
     { status: 'REJECTED', description: 'Make sure it works on IE6' }
