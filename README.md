@@ -42,6 +42,26 @@ Check even more examples [in the documentation](http://lulk.in/act/docs/examples
 
 ## Why?
 
+##### Functional
+
+Act is built on top of [Ramda](http://ramdajs.com) and encourages a functional
+programming style.
+
+##### Small
+
+Act is small and most functionality is added by different modules, resulting on
+small builds. The TodoMVC has 13.4kb (min+gz).
+
+##### Transparent
+
+Act's internal code should be owned by it's users, therefore simplicity and
+readability are valued.
+
+##### Complete
+
+Act tries to be as complete as possible, and have clearly defined ways of doing
+the most common tasks.
+
 ## Install
 
 Act is written in es6 and expects you to use webpack, so you can import only
