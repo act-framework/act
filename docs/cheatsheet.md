@@ -110,7 +110,9 @@ Tag with styles
 Tag with css modules (constant)
 
 ```js
-['i', {style: [styles, 'main']}]
+['i', {style: [styles.main, style.selected]}]
+// or
+['i', {style: [styles, 'main', 'selected']}]
 ```
 
 Tag with css modules (conditional)
