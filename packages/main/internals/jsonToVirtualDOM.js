@@ -50,6 +50,8 @@ const processChildren = (el, history, tag, children, namespaces = []) => {
 }
 
 const jsonToVirtualDOM = (json, history, namespaces = []) => {
+  const svgns = 'http://www.w3.org/2000/svg'
+  
   if (!isArrayLike(json)) {
     return jsonToVirtualDOM(['span', json], history)
   }
@@ -69,6 +71,10 @@ const jsonToVirtualDOM = (json, history, namespaces = []) => {
     children = maybeChildren
   }
 
+  if (tag === 'svg' && namespaces.indexOf(svgns) < 0) {
+    namespaces = [...namespaces, svgns]
+  }
+  
   if (isArrayLike(children)) {
     children = map((el) => processChildren(el, history, tag, children, namespaces), children)
   } else if (typeof children === 'function') {
@@ -99,7 +105,12 @@ const jsonToVirtualDOM = (json, history, namespaces = []) => {
     ats['class'] = classLists(...ats['class'])
   }
   injectEventHandlers(ats, history, namespaces)
-  attrToProp(ats)
+
+  if (namespaces.indexOf(svgns) >= 0) {
+    ats = {namespace: svgns, attributes: ats, style: ats.style}
+  } else {
+    attrToProp(ats)
+  }
 
   return toNode(tag, ats, children)
 }
