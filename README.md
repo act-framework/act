@@ -56,7 +56,7 @@ small builds. The TodoMVC has 13.4kb (min+gz).
 
 ##### Transparent
 
-Act's internal code should be owned by it's users, therefore simplicity and
+Act's internal code should be owned by its users, therefore simplicity and
 readability are valued.
 
 ##### Complete
