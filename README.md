@@ -11,6 +11,8 @@
 
 ## Hello Act
 
+[![Join the chat at https://gitter.im/joaomilho/act](https://badges.gitter.im/joaomilho/act.svg)](https://gitter.im/joaomilho/act?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Here's Act's hello world:
 
 ```js
