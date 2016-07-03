@@ -25,8 +25,8 @@ const reducer = (state, { type, payload }) =>
 main(view, { reducer, module })
 ```
 
-Here's a full [kanban board example](https://github.com/joaomilho/act/blob/master/hmr/examples).
-And here's a [video]((https://youtu.be/f_MblTUetjo)) explaining it in more detail.
+Here's a full [kanban board example](https://github.com/joaomilho/act/blob/master/examples/hmr).
+And here's a [video](https://youtu.be/f_MblTUetjo) explaining it in more detail.
 
 
 ## More
