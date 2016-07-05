@@ -67,7 +67,7 @@ export default { view, model, reducer }
 ```
 
 As you can see, `nest` give us two methods. The first, `nest.view` receives a
-strong and a view JSON. What it does is that it renders the view, changing all
+string and a view JSON. What it does is that it renders the view, changing all
 events to prefix the given string in the type of it's actions. Yes, it's a bit
 magical. This means that the `{click: {add: 1}}` will be transformed to
 `{click: {'top.add': 1}}` and `{click: {'bottom.add': 1}}`. This is because we
