@@ -238,7 +238,7 @@ attached automatically by Act. This source give us DOM events. What the process
 `valueOnEnter` does is to get this event, fetch the value (like in
 `event.target.value` and only update when the `event.keyCode` is an enter key.
 So, as you can see, a process can not only manipulate the original value, but
-also filter it and only let us now about it when it is really important.
+also filter it and only let us know about it when it is really important.
 
 The cool thing about processes is that they are composable. This means you can
 define them piecemeal and then group them togheter. The two most important

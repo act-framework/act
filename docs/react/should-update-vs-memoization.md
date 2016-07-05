@@ -21,7 +21,7 @@ class Hello extends React.Component  {
 }
 ```
 
-At the time I'm writing this, unfortunatelly `componenShouldUpdate` can only be
+At the time I'm writing this, unfortunatelly `shouldComponentUpdate` can only be
 used on components defined as classes and not functions.
 
 ##### Act
@@ -44,5 +44,5 @@ repeating patterns.
 Another difference is that in React you have to implement your comparison based
 both on state and props, while in Act there's no concept of internal state to a
 component (did I already mentioned there's no clear concept of component?).
-That said, if memoization is too costly for you, an you wanna implement a lite
+That said, if memoization is too costly for you, and you wanna implement a lite
 version of it, say, only by comparing object id props in a list, go ahead.

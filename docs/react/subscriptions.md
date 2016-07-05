@@ -74,7 +74,7 @@ With this code, Act will get the scroll position and send it to your reducer
 with an action like `{ type: 'scroll', payload: 123 }` every time the scroll
 position changes.
 
-In real life, you'll probably only case about certain specific scroll
+In real life, you'll probably only care about certain specific scroll
 positions. To accomplish that you can simply put this logic in your reducer,
 but the encouraged way is to further compose your scroll process:
 
@@ -92,7 +92,7 @@ the `true` value everytime the user scrolled any pixel. `distinct` will filter
 our values to send them through only when they are different than the previous
 one (false becomes true and vice versa).
 
-Another common usage here is to to throtlle (a.k.a. debouce) this event, so you
+Another common usage here is to throtlle (a.k.a. debouce) this event, so you
 don't get too many rerenders which is memory and time consuming. In order to
 emit the value only once in every second, just do:
 
