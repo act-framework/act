@@ -12,14 +12,14 @@ import pipe from '@act/main/signals/pipe'
 const view = (activeItems) =>
   ['ul', map((item) => (['li', item.name]), activeItems)]
 
-const presenter = filter(propEq('deleted', false)
+const presenter = filter(propEq('deleted', false))
 
 const model = [
   { name: 'foo', deleted: true },
   { name: 'bar', deleted: false }
 ]
 
-main(pipe(presenter, view), { model, presenter })
+main(pipe(presenter, view), { model })
 ```
 
 Presenters can also be [memoized](/memoization.md):
