@@ -1,9 +1,12 @@
 # Changelog
 
+#### 0.0.10
+
+- Adds `takeUntil` process
+
 #### 0.0.9
 
 - Adds SVG support
-- Adds `takeUntil` process
 - Adds `selection` process
 - Fallback `throttle` to `Date.now`
 - Rollback pause/unpause in History, should be project specific if really
