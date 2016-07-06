@@ -1,9 +1,9 @@
 /*
  * `takeBetween` gets the current value in a process and pass it
  * if and only if it was emitted between two consecutive values
- * of another process, which acts like a a switch
+ * of another process, which acts like a switch
  *
- * It's usage is similar to `merge`:
+ * Its usage is similar to `merge`:
  *
  * ```
  * const source = takeBetween(sourceA, sourceB)
