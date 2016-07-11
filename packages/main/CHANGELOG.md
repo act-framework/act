@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.11
+
+- Adds `takeBetween` process
+
 #### 0.0.10
 
 - Adds `takeUntil` process
