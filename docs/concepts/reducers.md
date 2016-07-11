@@ -110,8 +110,8 @@ it is natural to assume we could end up with a configuration like this:
 
 ```js
 {
-  add: (state, payload) => state + payload],
-  subtract: (state, payload) => state - payload],
+  add: (state, payload) => state + payload,
+  subtract: (state, payload) => state - payload,
   ...
 }
 ```
@@ -124,10 +124,10 @@ syntactic sugar over Ramda's `cond`. Here's the full example:
 
 ```js
 const calculatorReducer = guard({
-  add: (state, payload) => state + payload],
-  subtract: (state, payload) => state - payload],
-  multiply: (state, payload) => state * payload],
-  divide: (state, payload) => state / payload],
+  add: (state, payload) => state + payload,
+  subtract: (state, payload) => state - payload,
+  multiply: (state, payload) => state * payload,
+  divide: (state, payload) => state / payload
 })
 ```
 
@@ -148,9 +148,9 @@ Therefore, we can do:
 
 ```js
 const calculatorReducer = guard({
-  add: add
-  subtract: subtract
-  multiply: multiply
+  add: add,
+  subtract: subtract,
+  multiply: multiply,
   divide: divide
 })
 ```
