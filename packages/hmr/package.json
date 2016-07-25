@@ -6,7 +6,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joaomilho/act.git"
+    "url": "git+https://github.com/act-framework/act.git"
   },
   "dependencies": {
     "@act/main": "0.0.6"
@@ -15,9 +15,9 @@
   },
   "scripts": {
   },
-  "author": "Juan Lulkin <maiz@lulk.in> (https://medium.com/@joaomilho/)",
+  "author": "Juan Lulkin <maiz@lulk.in> (https://medium.com/@act-framework/)",
   "bugs": {
-    "url": "https://github.com/joaomilho/act/issues"
+    "url": "https://github.com/act-framework/act/issues"
   },
-  "homepage": "https://github.com/joaomilho/act#README"
+  "homepage": "https://github.com/act-framework/act#README"
 }
