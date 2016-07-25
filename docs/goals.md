@@ -20,7 +20,7 @@ simple code allows expansion and collaboration.
 
 #### Performatic and small
 
-Web apps should be fast. Act's TodoMVC has only 13kb, and [performs better](https://github.com/joaomilho/todomvc-perf-comparison)
+Web apps should be fast. Act's TodoMVC has only 13kb, and [performs better](https://github.com/act-framework/todomvc-perf-comparison)
 than most other frameworks. It must keep this way.
 
 #### Simple, but complete

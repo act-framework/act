@@ -1,13 +1,13 @@
 <p align="center" style="font-family: Raleway-ExtraLight, Raleway, Proxima Nova, Avenir, Arial, sans">
-  <img src="https://raw.githubusercontent.com/joaomilho/act/master/docs/logo.png" width="100" alt="Act" />
+  <img src="https://raw.githubusercontent.com/act-framework/act/master/docs/logo.png" width="100" alt="Act" />
   <br />
   A simple reactive front-end framework
   <br /><br />
-  <a href="https://travis-ci.org/joaomilho/act"><img src="https://travis-ci.org/joaomilho/act.svg" /></a>
+  <a href="https://travis-ci.org/act-framework/act"><img src="https://travis-ci.org/joaomilho/act.svg" /></a>
   &nbsp; 
   <a href="http://npmjs.com/package/@act/main"><img src="https://img.shields.io/npm/v/@act/main.svg?maxAge=2592000" /></a>
   &nbsp; 
-  <a href="https://gitter.im/joaomilho/act?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/joaomilho/act.svg" alt="Join the chat at https://gitter.im/joaomilho/act" /></a>
+  <a href="https://gitter.im/act-framework/act?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/joaomilho/act.svg" alt="Join the chat at https://gitter.im/joaomilho/act" /></a>
 </p>
 <br />
 
@@ -28,17 +28,17 @@ main(view, { model: 0 })
 
 ## More examples
 
-* [counter composition](http://joaomilho.github.io/act/examples/counter/) (like
+* [counter composition](http://act-framework.github.io/act/examples/counter/) (like
   in Elm's architechture examples).
-  ([code](https://github.com/joaomilho/act/blob/master/examples/counter/))
-* [kanban board](http://joaomilho.github.io/act/examples/drag_n_drop/) with
+  ([code](https://github.com/act-framework/act/blob/master/examples/counter/))
+* [kanban board](http://act-framework.github.io/act/examples/drag_n_drop/) with
   drag & drop.
-  ([code](https://github.com/joaomilho/act/blob/master/examples/drag_n_drop/))
-* hot module replacement (hmr) [code](https://github.com/joaomilho/act/blob/master/hmr/examples/) (you have to run yourself)
-* [animation](http://joaomilho.github.io/act/examples/animation/) [code](https://github.com/joaomilho/act/blob/master/examples/animation/)
-* [todomvc](http://joaomilho.github.io/act/examples/todomvc/) [code](https://github.com/joaomilho/act/blob/master/examples/todomvc/) (full build: 13.4kb minified & gzipped) (code: ~80LsoC without imports)
-* [bmi calculator](http://joaomilho.github.io/act/examples/bmi/) [code](https://github.com/joaomilho/act/blob/master/examples/bmi/)
-* [optimistic updates](http://joaomilho.github.io/act/examples/optimistic/) [code](https://github.com/joaomilho/act/blob/master/examples/optimistic/)
+  ([code](https://github.com/act-framework/act/blob/master/examples/drag_n_drop/))
+* hot module replacement (hmr) [code](https://github.com/act-framework/act/blob/master/hmr/examples/) (you have to run yourself)
+* [animation](http://act-framework.github.io/act/examples/animation/) [code](https://github.com/joaomilho/act/blob/master/examples/animation/)
+* [todomvc](http://act-framework.github.io/act/examples/todomvc/) [code](https://github.com/joaomilho/act/blob/master/examples/todomvc/) (full build: 13.4kb minified & gzipped) (code: ~80LsoC without imports)
+* [bmi calculator](http://act-framework.github.io/act/examples/bmi/) [code](https://github.com/joaomilho/act/blob/master/examples/bmi/)
+* [optimistic updates](http://act-framework.github.io/act/examples/optimistic/) [code](https://github.com/joaomilho/act/blob/master/examples/optimistic/)
 
 Check even more examples [in the documentation](http://lulk.in/act/docs/examples.html).
 
@@ -75,7 +75,7 @@ npm i @act/main -s
 
 ## Getting started
 
-The easiest way to start a new Act project is by checking out [act-starter](https://github.com/joaomilho/act-starter).
+The easiest way to start a new Act project is by checking out [act-starter](https://github.com/act-framework/act-starter).
 
 This project will give you a very basic setup that you can use to bootstrap an
 Act project, including babel and webpack config for development.
