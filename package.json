@@ -9,7 +9,7 @@
     "lint": "standard 'packages/**/*.js'",
     "docs:clean": "rm -rf _book",
     "docs:prepare": "gitbook install",
-    "docs:build": "npm run docs:prepare && gitbook build -g joaomilho/act",
+    "docs:build": "npm run docs:prepare && gitbook build -g act-framework/act",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:publish": "./scripts/publish_book"
   }
