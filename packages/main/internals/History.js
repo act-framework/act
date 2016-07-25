@@ -1,31 +1,32 @@
-import reduce from 'ramda/src/reduce'
+import _reduce from 'ramda/src/reduce'
 import delay from './delay'
-import map from 'ramda/src/map'
+// import map from 'ramda/src/map'
 
-export default class History {
-  constructor (state, reducer, rerender) {
-    this.reduce = reduce(reducer)
-    this.state = state
-    this.subscriptions = []
-    this.delta = []
-    this.rerender = () => rerender(this.state)
-  }
+const history = (state, reducer, _rerender) => {
+  const reduce = _reduce(reducer)
+  // this.state = state
+  const subscriptions = []
+  let delta = []
+  const rerender = () => _rerender(state)
 
-  subscribe (subscription) {
-    this.subscriptions.push(subscription)
-  }
+  const subscribe = (subscription) =>
+    subscriptions.push(subscription)
 
-  concat () {
-    this.state = this.reduce(this.state, this.delta)
-    const dom = this.rerender()
-    this.delta = []
+  const concat = () => {
+    state = reduce(state, delta)
+    const dom = rerender()
+    delta = []
 
-    map((subscription) => subscription(this), this.subscriptions)
+    // map((subscription) => subscription(this), this.subscriptions)
     return dom
   }
 
-  push (action) {
-    this.delta.push(action)
-    return delay(() => this.concat())
+  const push = (action) => {
+    delta.push(action)
+    return delay(() => concat())
   }
+
+  return { subscribe, push }
 }
+
+export default history

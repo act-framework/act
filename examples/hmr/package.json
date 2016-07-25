@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline --watch"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1",
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.1"
+  }
+}
