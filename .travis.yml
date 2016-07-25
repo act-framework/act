@@ -5,7 +5,7 @@ before_script:
 - npm install
 - lerna bootstrap
 script:
-  - lerna run test
+  - cd packages/main/ && npm test
 cache:
   directories:
     - node_modules
