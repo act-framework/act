@@ -1,7 +1,7 @@
 # ACT • [TodoMVC](http://todomvc.com)
 
-- [Github](https://github.com/joaomilho/act)
-- [Documentation](joaomilho.github.io/act)
+- [Github](https://github.com/act-framework/act)
+- [Documentation](act-framework.github.io/act)
 - [Twitter](http://twitter.com/act_js)
 
 ## Credit
