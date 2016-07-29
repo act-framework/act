@@ -1,6 +1,6 @@
 # Cheatsheet
 
-You can also download a [PDF cheat sheet](http://lulk.in/act/docs/cheatsheet.pdf).
+You can also download a [PDF cheat sheet](http://act-framework.github.io/act/docs/cheatsheet.pdf).
 
 #### main
 
