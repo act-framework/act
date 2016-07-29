@@ -19,6 +19,7 @@ class SignalHandler {
     this.namespaces = namespaces
     this.processes = {}
     this.sources = {}
+    this.actions = {}
     this.event = event
   }
 
@@ -29,12 +30,18 @@ class SignalHandler {
         ? [typeOrAction, (payload, history) => this.history.push({ type: [...this.namespaces, type].join('.'), payload })]
         : [`${this.event}-${++index}`, typeOrAction]
 
+      this.actions[type] = action
       this.processes[type] = typeof processOrValue === 'function'
         ? processOrValue
         : always(processOrValue)
 
       if (prev) {
-        if (prev.processes[type] === this.processes[type]) return
+        if (
+          prev.processes[type] === this.processes[type] &&
+          prev.actions[type] === this.actions[type]) {
+          this.sources[type] = prev.sources[type]
+          return
+        }
         prev.sources[type].stop()
       }
 
