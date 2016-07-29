@@ -1,4 +1,4 @@
-import main from 'hmr'
+import main from '@act/hmr'
 import pipe from 'main/signals/pipe'
 
 import view from './view'
