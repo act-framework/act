@@ -1,4 +1,4 @@
-import _main from 'main'
+import _main from '@act/main'
 import historyClass from './ReloadableHistory'
 
 const main = (view, opts) => {

@@ -1,7 +1,7 @@
 {
   "name": "@act/hmr",
   "description": "Hot module replacement [hmr] for Act",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "license": "ISC",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/act-framework/act.git"
   },
   "dependencies": {
-    "@act/main": "0.0.6"
+    "@act/main": "0.0.11"
   },
   "devDependencies": {
     "babel": "^6.5.2",

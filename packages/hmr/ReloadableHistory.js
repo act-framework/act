@@ -1,4 +1,4 @@
-import TraversableHistory from 'main/internals/TraversableHistory'
+import TraversableHistory from '@act/main/internals/TraversableHistory'
 
 export default class ReloadableHistory extends TraversableHistory {
   reload (timeline) {
