@@ -3,6 +3,7 @@
 #### 0.0.11
 
 - Adds `takeBetween` process
+- Refactor histories to be functions
 
 #### 0.0.10
 
