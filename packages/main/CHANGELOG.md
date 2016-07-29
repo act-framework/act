@@ -3,7 +3,7 @@
 #### 0.0.11
 
 - Adds `takeBetween` process
-- Refactor histories to be functions
+- Move `reload` out of TraversableHistory (will go to hmr package)
 
 #### 0.0.10
 

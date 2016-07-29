@@ -4,9 +4,15 @@
     "start": "webpack-dev-server --hot --inline --watch"
   },
   "devDependencies": {
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.1",
+    "babel": "^6.5.2",
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.23.1",
-    "style-loader": "^0.13.1"
+    "ramda": "^0.21.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
   }
 }

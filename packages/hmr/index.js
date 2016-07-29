@@ -1,11 +1,11 @@
-import _main from '@act/main'
-import TraversableHistory from '@act/main/internals/TraversableHistory'
+import _main from 'main'
+import historyClass from './ReloadableHistory'
 
 const main = (view, opts) => {
   const mod = opts.module
   delete opts.module
 
-  const { node, history } = _main(view, { historyClass: TraversableHistory, ...opts })
+  const { node, history } = _main(view, { historyClass, ...opts })
 
   if (mod.hot) {
     mod.hot.accept()

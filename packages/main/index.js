@@ -2,7 +2,7 @@ import createElement from 'virtual-dom/create-element'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import jsonToVirtualDOM from './internals/jsonToVirtualDOM'
-import basicHistory from './internals/history'
+import History from './internals/History'
 import map from 'ramda/src/map'
 import isArrayLike from 'ramda/src/isArrayLike'
 import toPairs from 'ramda/src/toPairs'
@@ -21,7 +21,7 @@ const defaultStorage = { get: () => undefined, set: () => {} }
  */
 
 const main = function (view, {
-    historyFactory = basicHistory,
+    historyClass = History,
     model,
     node = document.body,
     reducer = defaultReducer,
@@ -58,7 +58,7 @@ const main = function (view, {
     return dom
   }
 
-  const history = historyFactory(initialState, reducer, rerender)
+  const history = new historyClass(initialState, reducer, rerender)
 
   const dom = render(view, initialState)
 
