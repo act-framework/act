@@ -4,10 +4,10 @@
   A simple reactive front-end framework
   <br /><br />
   <a href="https://travis-ci.org/act-framework/act"><img src="https://travis-ci.org/joaomilho/act.svg" /></a>
-  &nbsp; 
+  &nbsp;
   <a href="http://npmjs.com/package/@act/main"><img src="https://img.shields.io/npm/v/@act/main.svg?maxAge=2592000" /></a>
-  &nbsp; 
-  <a href="https://gitter.im/act-framework/act?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/joaomilho/act.svg" alt="Join the chat at https://gitter.im/joaomilho/act" /></a>
+  &nbsp;
+  <a href="https://gitter.im/joaomilho"><img src="https://badges.gitter.im/joaomilho/act.svg" alt="Join the chat at https://gitter.im/joaomilho/act" /></a>
 </p>
 <br />
 
