@@ -1,5 +1,5 @@
 import main from 'main'
-import traversableHistory from 'main/internals/traversableHistory'
+import historyFactory from 'main/internals/TraversableHistory'
 import './styles.css'
 
 const undo = (_, history) =>
@@ -25,4 +25,4 @@ export const reducer = (state, {type, payload}) =>
     ? state + payload
     : state
 
-main(view, { reducer, model: 0, historyFactory: traversableHistory })
+main(view, { reducer, model: 0, historyFactory })

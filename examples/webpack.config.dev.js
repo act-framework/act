@@ -5,7 +5,11 @@ const R = require('ramda')
 const configEntry = (entry) =>
   [R.head(entry.split('/')), './' + entry]
 
+const blacklist = (entry) =>
+  !~['hmr', 'ws', 'xhr'].indexOf(entry[0])
+
 const entries = R.compose(
+  R.filter(blacklist),
   R.map(configEntry))(glob.sync('*/index.js'))
 
 module.exports = {

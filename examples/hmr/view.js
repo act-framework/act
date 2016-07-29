@@ -8,7 +8,7 @@ import pipe from 'main/signals/pipe'
 const view = (cols) => (
   ['main', [
     addCol,
-    ['h1', 'Act! HMR Kanban Board'],
+    ['h1', 'Act HMR Kanban Board'],
     ['table', { class: css.grid }, [
       ['tr', map(col, cols)]
     ]]
