@@ -3,10 +3,10 @@ import traversableHistory from '../../internals/traversableHistory'
 import { spy } from 'sinon'
 import add from 'ramda/src/add'
 
-test('traversableHistory.push', (assert) => {
-  const renderer = spy()
-  const { push } = traversableHistory(0, add, renderer)
+const renderer = spy()
+const { push, go } = traversableHistory(0, add, renderer)
 
+test('traversableHistory: push', (assert) => {
   push(1)
   assert.ok(renderer.calledWith(1))
   push(2)
@@ -15,18 +15,15 @@ test('traversableHistory.push', (assert) => {
   assert.end()
 })
 
-test('traversableHistory.go', (assert) => {
-  const renderer = spy()
-  const { push, go } = traversableHistory(0, add, renderer)
-
+test('traversableHistory: go', (assert) => {
   push(1)
   push(2)
   go(0)
-  assert.equal(renderer.lastCall.args[0], 0)
+  assert.deepEqual(renderer.lastCall.args, [0])
   go(1)
-  assert.equal(renderer.lastCall.args[0], 1)
+  assert.deepEqual(renderer.lastCall.args, [1])
   go(2)
-  assert.equal(renderer.lastCall.args[0], 3)
+  assert.deepEqual(renderer.lastCall.args, [3])
 
   assert.end()
 })
