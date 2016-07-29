@@ -58,7 +58,6 @@ const main = function (view, {
     return dom
   }
 
-  console.log('historyFactory', historyFactory)
   const history = historyFactory(initialState, reducer, rerender)
 
   const dom = render(view, initialState)
