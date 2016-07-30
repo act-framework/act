@@ -1,5 +1,13 @@
 # Changelog
 
+#### 0.0.5
+
+- Removes subscriptions from histories;
+- Add a `traversable` main that already exposes the
+  TraversableAnimationHistory;
+- Adds `go`, `replay`, `rewind` and `springToPosition` helpers;
+- Adds `historySlider` component;
+
 #### 0.0.4
 
 - Separate `spring` from index, and allow spring callback to have 1 or 2
