@@ -1,46 +1,10 @@
-import main from 'animation'
-import spring from 'animation/spring'
+import main from 'animation/traversable'
 import css from './styles.css'
-import value from 'main/processes/value'
-import position from 'main/processes/position'
-import TraversableAnimationHistory from 'animation/internals/TraversableAnimationHistory'
-
-let currentSpring
-const start = (payload, history) => {
-  history.push({ type: 'dest', payload })
-  currentSpring && currentSpring.stop()
-
-  currentSpring = spring(
-    (payload) => history.push({ type: 'step', payload }),
-    () => history.push({type: 'finish'})
-  )
-}
-
-const go = (payload, history) =>
-  history.go(payload)
-
-let interval
-const replay = (payload, history) => {
-  let i = 0
-  history.go(i++)
-
-  interval && clearInterval(interval)
-  interval = setInterval(() => {
-    if (i === history.length) return clearInterval(interval)
-    history.go(i++)
-  }, 1000 / 60)
-}
-
-const rewind = (payload, history) => {
-  let i = history.length
-  history.go(i--)
-
-  interval && clearInterval(interval)
-  interval = setInterval(() => {
-    if (i === 0) return clearInterval(interval)
-    history.go(i--)
-  }, 1000 / 60)
-}
+import replay from 'animation/helpers/replay'
+import rewind from 'animation/helpers/rewind'
+import springToPosition from 'animation/helpers/springToPosition'
+import historySlider from 'animation/components/historySlider'
+import about from './about'
 
 const view = ({ showAbout, distance, current, angle }, history) => (
   ['main', [
@@ -49,20 +13,8 @@ const view = ({ showAbout, distance, current, angle }, history) => (
     ['a', { href: '#', click: 'toggleAbout' }, 'About ▾'],
     showAbout && about,
     ['br'],
-    0,
-    ['input', {
-      style: {width: Math.min(100 + history.length / 2, window.innerWidth - 100)},
-      input: [go, value],
-      type: 'range',
-      min: 0,
-      value: String(history.present),
-      max: history.length,
-      step: 1
-    }],
-    history.length,
-    ['br'],
-    history.present,
-    ['div', { class: css.box, click: [start, position] }, 'click in the box'],
+    historySlider(history),
+    ['div', { class: css.box, click: springToPosition }, 'click in the box'],
     ['div', { class: css.dot, style: {
       transform: `translateX(-50%) translateY(-50%) rotate(${angle}deg)`,
       width: 20 + (distance / 6),
@@ -73,30 +25,6 @@ const view = ({ showAbout, distance, current, angle }, history) => (
     }}]
   ]]
 )
-
-const about = () =>
-  ['div', { class: css.about }, [
-    ['p', 'This example tries to show many features together:'],
-    ['ul', [
-      ['li', 'springs'],
-      ['li', 'time traveling / replaying'],
-      ['li', 'style manipulation in JS']
-    ]],
-    ['p', "It also tries to follow Disney's 12 principles of animation:"],
-    ['ul', [
-      ['li', 'it squashes and streches the ball when moving, depending on speed'],
-      ['li', "there's slow in and slow out, natural to springs"],
-      ['li', 'it adds some blur depending on the speed']
-    ]],
-    ['p', [
-      'Take a look: ',
-      ['a', { href: 'the12principles.tumblr.com' }, 'http://the12principles.tumblr.com']
-    ]],
-    ['p', `To accomplish all this together in plain HTML, of course performance is
-      compromised. In real life, you will probably use the regular
-      AnimationHistory, and this will improve things a lot. Blur is also costly,
-      but I'm not sure how to achieve the same look & feel with something else.`]
-  ]]
 
 const reducer = (state = { showAbout: false, distance: 0, angle: 0, dest: [0, 0], current: [window.innerWidth / 2 - 100, 395] }, { type, payload }) => {
   switch (type) {
@@ -124,4 +52,4 @@ const reducer = (state = { showAbout: false, distance: 0, angle: 0, dest: [0, 0]
   }
 }
 
-main(view, { reducer, historyClass: TraversableAnimationHistory })
+main(view, { reducer })
