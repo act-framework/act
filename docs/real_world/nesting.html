@@ -1,0 +1,991 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Nesting | Hello Act</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../docs/real_world/testing.html" />
+    
+    
+    <link rel="prev" href="../../docs/api/processes.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="7.1"
+        data-chapter-title="Nesting"
+        data-filepath="docs/real_world/nesting.md"
+        data-basepath="../.."
+        data-revision="Sat Jul 30 2016 18:58:51 GMT+0300 (IDT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        act
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/examples.html">
+            
+                
+                    <a href="../../docs/examples.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Examples
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/goals.html">
+            
+                
+                    <a href="../../docs/goals.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Goals &amp; principles
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/cheatsheet.html">
+            
+                
+                    <a href="../../docs/cheatsheet.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Cheat Sheet
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" >
+            
+            <span><b>4.</b> Comparisons</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="docs/react/index.html">
+            
+                
+                    <a href="../../docs/react/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        For React developers
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="docs/react/jsx-vs-json.html">
+            
+                
+                    <a href="../../docs/react/jsx-vs-json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.1.</b>
+                        
+                        JSX vs JSON
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="docs/react/shortcuts.html">
+            
+                
+                    <a href="../../docs/react/shortcuts.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.2.</b>
+                        
+                        Class and id shortcuts
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="docs/react/attributes.html">
+            
+                
+                    <a href="../../docs/react/attributes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.3.</b>
+                        
+                        JS vs HTML attribute names
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="docs/react/classes.html">
+            
+                
+                    <a href="../../docs/react/classes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.4.</b>
+                        
+                        class-names vs class-lists
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="docs/react/lifecycle.html">
+            
+                
+                    <a href="../../docs/react/lifecycle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.5.</b>
+                        
+                        Lifecycle events
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="docs/react/should-update-vs-memoization.html">
+            
+                
+                    <a href="../../docs/react/should-update-vs-memoization.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.6.</b>
+                        
+                        shouldComponentUpdate vs memoization
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="docs/react/events.html">
+            
+                
+                    <a href="../../docs/react/events.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.7.</b>
+                        
+                        Events
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="docs/react/subscriptions.html">
+            
+                
+                    <a href="../../docs/react/subscriptions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.8.</b>
+                        
+                        Subscriptions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="docs/react/testing.html">
+            
+                
+                    <a href="../../docs/react/testing.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.9.</b>
+                        
+                        Testing
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.10" data-path="docs/react/reselect_vs_ramda.html">
+            
+                
+                    <a href="../../docs/react/reselect_vs_ramda.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.10.</b>
+                        
+                        Reselect vs Ramda
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="docs/elm/index.html">
+            
+                
+                    <a href="../../docs/elm/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        For Elm developers
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="docs/elm/update-vs-reducer.html">
+            
+                
+                    <a href="../../docs/elm/update-vs-reducer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                        update vs reducer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="docs/elm/html-helpers-vs-json.html">
+            
+                
+                    <a href="../../docs/elm/html-helpers-vs-json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.2.</b>
+                        
+                        Html helpers vs JSON
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="docs/elm/actions.html">
+            
+                
+                    <a href="../../docs/elm/actions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.</b>
+                        
+                        Actions
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="docs/concepts/index.html">
+            
+                
+                    <a href="../../docs/concepts/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Concepts
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="docs/concepts/json.html">
+            
+                
+                    <a href="../../docs/concepts/json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        Using JSON for rendering
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="docs/concepts/unidirectional-data-flow.html">
+            
+                
+                    <a href="../../docs/concepts/unidirectional-data-flow.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        Unidirectional data flow
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="docs/concepts/single-model-and-reducer.html">
+            
+                
+                    <a href="../../docs/concepts/single-model-and-reducer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        Single model &amp; reducer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="docs/concepts/reducers.html">
+            
+                
+                    <a href="../../docs/concepts/reducers.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        Reducers
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="docs/concepts/actions.html">
+            
+                
+                    <a href="../../docs/concepts/actions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        Actions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="docs/concepts/signals.html">
+            
+                
+                    <a href="../../docs/concepts/signals.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        Signals: sources &amp; processes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="docs/concepts/history.html">
+            
+                
+                    <a href="../../docs/concepts/history.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        History
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="docs/concepts/subscriptions.html">
+            
+                
+                    <a href="../../docs/concepts/subscriptions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.8.</b>
+                        
+                        Subscriptions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9" data-path="docs/concepts/storage.html">
+            
+                
+                    <a href="../../docs/concepts/storage.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.9.</b>
+                        
+                        Storage
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.10" data-path="docs/concepts/memoization.html">
+            
+                
+                    <a href="../../docs/concepts/memoization.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.10.</b>
+                        
+                        Memoization
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.11" data-path="docs/concepts/presenters.html">
+            
+                
+                    <a href="../../docs/concepts/presenters.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.11.</b>
+                        
+                        Presenters
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="docs/api/index.html">
+            
+                
+                    <a href="../../docs/api/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        API
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="docs/api/main.html">
+            
+                
+                    <a href="../../docs/api/main.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        main
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="docs/api/processes.html">
+            
+                
+                    <a href="../../docs/api/processes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        processes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="docs/api/signals.html">
+            
+            <span><b>6.3.</b> signals</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="docs/api/nest.html">
+            
+            <span><b>6.4.</b> nest</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="docs/api/combine.html">
+            
+            <span><b>6.5.</b> combine</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="docs/api/storages.html">
+            
+            <span><b>6.6.</b> storages</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="docs/api/subscriptions.html">
+            
+            <span><b>6.7.</b> subscriptions</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="docs/api/actions.html">
+            
+            <span><b>6.8.</b> actions</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" data-path="docs/api/testHelpers.html">
+            
+            <span><b>6.9.</b> testHelpers</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="docs/real_world/READEME.html">
+            
+            <span><b>7.</b> Real world</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="7.1" data-path="docs/real_world/nesting.html">
+            
+                
+                    <a href="../../docs/real_world/nesting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        Nesting
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="docs/real_world/testing.html">
+            
+                
+                    <a href="../../docs/real_world/testing.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        Testing
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="docs/real_world/performance.html">
+            
+                
+                    <a href="../../docs/real_world/performance.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        Performance
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="docs/real_world/errors_debugging.html">
+            
+                
+                    <a href="../../docs/real_world/errors_debugging.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        Errors &amp; debugging
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="docs/real_world/webpack.html">
+            
+                
+                    <a href="../../docs/real_world/webpack.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        Webpack tips
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="docs/todo.html">
+            
+                
+                    <a href="../../docs/todo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Wanna help?
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Hello Act</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="nesting">Nesting</h1>
+<p>Act encourages you to build simple apps, but having to reuse parts of your app
+will be very common. For this, one of the techniques you can use is nesting. If
+you read the Elm architecture documentation you already have a good idea of
+what I am talking about.</p>
+<p>Let&apos;s go over a multi-counter example. First, let&apos;s implement the counter:</p>
+<pre><code>// counter.js
+const view = (count) =&gt;
+  [&apos;.counter&apos;, [
+    [&apos;h1&apos;, count],
+    [&apos;button&apos;, {click: {add: 1}}, &apos;Add 1&apos;],
+    [&apos;button&apos;, {click: {add: -1}}, &apos;Remove 1&apos;]
+  ]]
+
+export const model = 0
+
+export const reducer = (state, {type, payload}) =&gt;
+  type === &apos;add&apos; ? state + payload : state
+
+export default { view, model, reducer }
+</code></pre><p>Note the only difference here from a counter app is that you don&apos;t need to
+import and use <code>main</code>. You simply export the relevant parts of a counter,
+namely <code>view</code>, <code>model</code> and <code>reducer</code>.</p>
+<p>If you wanted to just render this counter, it would be as easy as:</p>
+<pre><code>import counter from &apos;./counter&apos;
+import main from &apos;@act/main&apos;
+
+const { view, model, reducer } = counter
+main(view, { model, reducer })
+</code></pre><p>But we want to nest two counters togheter. To accomplish this, we&apos;ll import the
+<code>nest</code> helpers:</p>
+<pre><code>// twoCounters.js
+import counter from &apos;./counter&apos;
+import nest from &apos;@act/main/nest&apos;
+
+const view = ({top, bottom}) =&gt; (
+  [&apos;main&apos;, [
+    nest.view(&apos;top&apos;, counter.view(top)),
+    nest.view(&apos;bottom&apos;, counter.view(bottom))
+  ]]
+)
+
+const reducer = nest.reducers({
+  top: counter.reducer,
+  bottom: counter.reducer
+})
+
+const model = {
+  top: counter.model,
+  bottom: counter.model
+}
+
+export default { view, model, reducer }
+</code></pre><p>As you can see, <code>nest</code> give us two methods. The first, <code>nest.view</code> receives a
+string and a view JSON. What it does is that it renders the view, changing all
+events to prefix the given string in the type of it&apos;s actions. Yes, it&apos;s a bit
+magical. This means that the <code>{click: {add: 1}}</code> will be transformed to
+<code>{click: {&apos;top.add&apos;: 1}}</code> and <code>{click: {&apos;bottom.add&apos;: 1}}</code>. This is because we
+need a way to differentiate events that happen in different elements. You could
+simply change your reducers to account for this new action type. But before you
+do that, let&apos;s see the second helper.</p>
+<p>The second helper, <code>nest.reducers</code>, as expected will create a new reducer the
+accounts for the new action types injected in the views.</p>
+<p>So if the counter reducer is...</p>
+<pre><code>export const reducer = (state, {type, payload}) =&gt;
+  type === &apos;add&apos; ? state + payload : state
+</code></pre><p>... when we do ...</p>
+<pre><code>const reducer = nest.reducers({
+  top: counter.reducer,
+  bottom: counter.reducer
+})
+</code></pre><p>...we will end up with something like this:</p>
+<pre><code>export const reducer = (state, {type, payload}) =&gt; {
+  switch (type) {
+    case &apos;top.add&apos;:
+      return { ...state, top: state + payload }
+    case &apos;bottom.add&apos;:
+      return { ...state, bottom: state + payload }
+    default:
+      return state
+  }
+}
+</code></pre><p>Pretty rad, hum? But  you probably noticed we&apos;re still exporting the nested
+counters. That&apos;s because nesting is recursive, supporting any level of nesting.
+So let&apos;s nest our counters one more time.</p>
+<pre><code>import twoCounters from &apos;./twoCounters&apos;
+import main from &apos;@act/main&apos;
+import nest from &apos;@act/main/nest&apos;
+
+const view = ({left, right}) =&gt; (
+  [&apos;main&apos;, [
+    [&apos;.left&apos;, {style: &apos;float: left&apos;}, [
+      nest.view(&apos;left&apos;, twoCounters.view(left))
+    ]],
+    [&apos;.right&apos;, {style: &apos;float: right&apos;}, [
+      nest.view(&apos;right&apos;, twoCounters.view(right))
+    ]]
+  ]]
+)
+
+const reducer = nest.reducers({
+  left: twoCounters.reducer,
+  right: twoCounters.reducer
+})
+
+const model = {
+  left: twoCounters.model,
+  right: twoCounters.model
+}
+
+main(view, model, reducer)
+</code></pre><p>Now our model will be a deeply nested object:</p>
+<pre><code>{
+  left: {
+    top: 0,
+    bottom: 0
+  },
+  right: {
+    top: 0,
+    bottom: 0
+  }
+}
+</code></pre><p>Our views will emit actions with types like <code>left.top.add</code> and
+<code>right.bottom.add</code>, and our reducer will handle them nicely.</p>
+<p>Notice most of the time you&apos;ll have more data than just a nested group of
+components. You have two options to deal with that. First, you can always just
+use the nested reducer as part of another reducer:</p>
+<pre><code>const countersReducer = nest.reducers({
+  left: twoCounters.reducer,
+  right: twoCounters.reducer
+})
+
+const reducer = (state, { type, payload }) =&gt; {
+  switch (type) {
+    case &apos;someOtherAction:
+      ...
+    default:
+      return countersReducer(state, { type, payload })
+  }
+}
+</code></pre><p>The other alternative is to use <code>combine</code>, to combine reducers. This method is
+analogous to Redux&apos;s <code>combineReducers</code>.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../docs/api/processes.html" class="navigation navigation-prev " aria-label="Previous page: processes"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../docs/real_world/testing.html" class="navigation navigation-next " aria-label="Next page: Testing"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,25 @@
+@import '../main.css';
+
+.dot {
+  width: 20px;
+  height: 20px;
+  background: #4592fb;
+  position: absolute;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.box {
+  border: 2px dashed black;
+  line-height: 460px;
+  text-align: center;
+}
+
+.about {
+  position: absolute;
+  background: white;
+  padding: 20px;
+  width: 800px;
+  z-index: 2;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}

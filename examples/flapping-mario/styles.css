@@ -1,0 +1,107 @@
+@import '../main.css';
+
+body {
+  background: #4592fb;
+  background: -moz-linear-gradient(top, #4592fb 2%, #7abcff 100%);
+  background: -webkit-linear-gradient(top, #4592fb 2%,#7abcff 100%);
+  background: linear-gradient(#3552eb, #8accff);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4592fb', endColorstr='#7abcff',GradientType=0 );
+}
+
+.score {
+  z-index: 5;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
+  background: #cc5;
+  background: linear-gradient(#cc5, #ee9);
+  padding: 10px 30px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.mountains, .floor, .valleys {
+  position: fixed;
+  left: 0;
+}
+
+.pipe {
+  z-index: 4;
+  position: fixed;
+}
+
+.floor {
+  z-index: 3;
+  bottom: 0px;
+}
+
+.valleys {
+  z-index: 2;
+  bottom: 50px;
+}
+
+.mountains {
+  z-index: 1;
+  bottom: 70px;
+}
+
+.mario {
+  z-index: 4;
+  position: fixed;
+  left: 40%;
+  transform: translate(-100%);
+}
+
+.home, .gameOver {
+  z-index: 5;
+  position: fixed;
+  left: 19%;
+  width: 60%;
+  top: 19%;
+  height: 60%;
+  background: #fff;
+  box-shadow: 0 0 4px black;
+  background: linear-gradient(#9cf, #fff);
+  text-align: center;
+  padding: 2%;
+  vertical-align: middle;
+  opacity: 0.9;
+}
+
+.gameOver {
+  background: #B72400 url(./sprites/gameOver.jpg) no-repeat center;
+  background-size: contain;
+}
+
+
+.home p {
+  line-height: 2em;
+}
+
+.home em {
+  background: #444;
+  color: white;
+  padding: 2px 6px;
+  font-style: normal;
+  text-shadow: 0 1px 2px black;
+  border-radius: 4px;
+}
+
+.blur img {
+  -webkit-filter: blur(3px) sepia(0.6);
+}
+
+.home img {
+  -webkit-filter: blur(0);
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-device-width : 600px) {
+  h1 {
+    font-size: 22px;
+  }
+  .home img {
+    width: 60px;
+    margin-bottom: 10px;
+  }
+}

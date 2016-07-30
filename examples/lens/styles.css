@@ -1,0 +1,38 @@
+@import '../main.css';
+
+body {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 100px;
+}
+
+dl {
+  text-align: left;
+}
+
+main {
+  padding: 20px;
+  background: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.purchase {
+  text-align: left;
+}
+
+.total {
+  color: #4592fb;
+  float: right;
+}

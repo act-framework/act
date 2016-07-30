@@ -1,0 +1,22 @@
+@import '../main.css';
+
+main {
+  overflow: hidden;
+}
+
+article {
+  background: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  margin: 20px 40px 20px 4px;
+  padding: 20px 40px 30px 40px;
+}
+
+button:last-child {
+  margin-right: 0;
+}
+
+article h1 {
+  font-weight: 400;
+  font-size: 70px;
+  text-align: right;
+}

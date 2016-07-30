@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline --watch"
+  },
+  "devDependencies": {
+    "@act/hmr": "0.0.4",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  }
+}

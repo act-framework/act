@@ -1,0 +1,990 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Reducers | Hello Act</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../docs/concepts/actions.html" />
+    
+    
+    <link rel="prev" href="../../docs/concepts/single-model-and-reducer.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.4"
+        data-chapter-title="Reducers"
+        data-filepath="docs/concepts/reducers.md"
+        data-basepath="../.."
+        data-revision="Sat Jul 30 2016 18:58:51 GMT+0300 (IDT)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        act
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/examples.html">
+            
+                
+                    <a href="../../docs/examples.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Examples
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/goals.html">
+            
+                
+                    <a href="../../docs/goals.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Goals &amp; principles
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/cheatsheet.html">
+            
+                
+                    <a href="../../docs/cheatsheet.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Cheat Sheet
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" >
+            
+            <span><b>4.</b> Comparisons</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="docs/react/index.html">
+            
+                
+                    <a href="../../docs/react/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        For React developers
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="docs/react/jsx-vs-json.html">
+            
+                
+                    <a href="../../docs/react/jsx-vs-json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.1.</b>
+                        
+                        JSX vs JSON
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="docs/react/shortcuts.html">
+            
+                
+                    <a href="../../docs/react/shortcuts.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.2.</b>
+                        
+                        Class and id shortcuts
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="docs/react/attributes.html">
+            
+                
+                    <a href="../../docs/react/attributes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.3.</b>
+                        
+                        JS vs HTML attribute names
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="docs/react/classes.html">
+            
+                
+                    <a href="../../docs/react/classes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.4.</b>
+                        
+                        class-names vs class-lists
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="docs/react/lifecycle.html">
+            
+                
+                    <a href="../../docs/react/lifecycle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.5.</b>
+                        
+                        Lifecycle events
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="docs/react/should-update-vs-memoization.html">
+            
+                
+                    <a href="../../docs/react/should-update-vs-memoization.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.6.</b>
+                        
+                        shouldComponentUpdate vs memoization
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="docs/react/events.html">
+            
+                
+                    <a href="../../docs/react/events.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.7.</b>
+                        
+                        Events
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="docs/react/subscriptions.html">
+            
+                
+                    <a href="../../docs/react/subscriptions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.8.</b>
+                        
+                        Subscriptions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="docs/react/testing.html">
+            
+                
+                    <a href="../../docs/react/testing.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.9.</b>
+                        
+                        Testing
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.10" data-path="docs/react/reselect_vs_ramda.html">
+            
+                
+                    <a href="../../docs/react/reselect_vs_ramda.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.10.</b>
+                        
+                        Reselect vs Ramda
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="docs/elm/index.html">
+            
+                
+                    <a href="../../docs/elm/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        For Elm developers
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="docs/elm/update-vs-reducer.html">
+            
+                
+                    <a href="../../docs/elm/update-vs-reducer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                        update vs reducer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="docs/elm/html-helpers-vs-json.html">
+            
+                
+                    <a href="../../docs/elm/html-helpers-vs-json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.2.</b>
+                        
+                        Html helpers vs JSON
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="docs/elm/actions.html">
+            
+                
+                    <a href="../../docs/elm/actions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.</b>
+                        
+                        Actions
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="docs/concepts/index.html">
+            
+                
+                    <a href="../../docs/concepts/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Concepts
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="docs/concepts/json.html">
+            
+                
+                    <a href="../../docs/concepts/json.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        Using JSON for rendering
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="docs/concepts/unidirectional-data-flow.html">
+            
+                
+                    <a href="../../docs/concepts/unidirectional-data-flow.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        Unidirectional data flow
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="docs/concepts/single-model-and-reducer.html">
+            
+                
+                    <a href="../../docs/concepts/single-model-and-reducer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        Single model &amp; reducer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.4" data-path="docs/concepts/reducers.html">
+            
+                
+                    <a href="../../docs/concepts/reducers.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        Reducers
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="docs/concepts/actions.html">
+            
+                
+                    <a href="../../docs/concepts/actions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        Actions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="docs/concepts/signals.html">
+            
+                
+                    <a href="../../docs/concepts/signals.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        Signals: sources &amp; processes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="docs/concepts/history.html">
+            
+                
+                    <a href="../../docs/concepts/history.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        History
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="docs/concepts/subscriptions.html">
+            
+                
+                    <a href="../../docs/concepts/subscriptions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.8.</b>
+                        
+                        Subscriptions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9" data-path="docs/concepts/storage.html">
+            
+                
+                    <a href="../../docs/concepts/storage.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.9.</b>
+                        
+                        Storage
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.10" data-path="docs/concepts/memoization.html">
+            
+                
+                    <a href="../../docs/concepts/memoization.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.10.</b>
+                        
+                        Memoization
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.11" data-path="docs/concepts/presenters.html">
+            
+                
+                    <a href="../../docs/concepts/presenters.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.11.</b>
+                        
+                        Presenters
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="docs/api/index.html">
+            
+                
+                    <a href="../../docs/api/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        API
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="docs/api/main.html">
+            
+                
+                    <a href="../../docs/api/main.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        main
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="docs/api/processes.html">
+            
+                
+                    <a href="../../docs/api/processes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        processes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="docs/api/signals.html">
+            
+            <span><b>6.3.</b> signals</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="docs/api/nest.html">
+            
+            <span><b>6.4.</b> nest</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="docs/api/combine.html">
+            
+            <span><b>6.5.</b> combine</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="docs/api/storages.html">
+            
+            <span><b>6.6.</b> storages</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="docs/api/subscriptions.html">
+            
+            <span><b>6.7.</b> subscriptions</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="docs/api/actions.html">
+            
+            <span><b>6.8.</b> actions</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" data-path="docs/api/testHelpers.html">
+            
+            <span><b>6.9.</b> testHelpers</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="docs/real_world/READEME.html">
+            
+            <span><b>7.</b> Real world</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="docs/real_world/nesting.html">
+            
+                
+                    <a href="../../docs/real_world/nesting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        Nesting
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="docs/real_world/testing.html">
+            
+                
+                    <a href="../../docs/real_world/testing.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        Testing
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="docs/real_world/performance.html">
+            
+                
+                    <a href="../../docs/real_world/performance.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        Performance
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="docs/real_world/errors_debugging.html">
+            
+                
+                    <a href="../../docs/real_world/errors_debugging.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        Errors &amp; debugging
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="docs/real_world/webpack.html">
+            
+                
+                    <a href="../../docs/real_world/webpack.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        Webpack tips
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="docs/todo.html">
+            
+                
+                    <a href="../../docs/todo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Wanna help?
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Hello Act</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="reducers">Reducers</h1>
+<p>A reducer is a function that gets the current state and an action (an object
+with the format <code>{ type: &apos;some type&apos;, payload: &apos;some value&apos; }</code> and returns a
+completely new state.</p>
+<p>Reducers make updates predictable &#x2013; since they are pure by definition &#x2013;, and,
+therefore reproduceable.</p>
+<p>They have the following signature: <code>Model, Action -&gt; Model</code>, where <code>Model</code> is
+any value, and <code>Action</code> is <code>object { type: string, payload: any, * }</code>. This
+means the action object must have at least the <code>type</code> and <code>payload</code> keys, but
+can have any other key you want.</p>
+<p>Example:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> calculatorReducer = (state, { type, payload }) {
+  <span class="hljs-keyword">switch</span> (type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;add&apos;</span>:
+      <span class="hljs-keyword">return</span> state + payload
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;subtract&apos;</span>:
+      <span class="hljs-keyword">return</span> state - payload
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;multiply&apos;</span>:
+      <span class="hljs-keyword">return</span> state * payload
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;divide&apos;</span>:
+      <span class="hljs-keyword">return</span> state / payload
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+</code></pre>
+<h4 id="more-idiomatic-reducers">More idiomatic reducers</h4>
+<p>Many people are put off for the usage of <code>switch</code>. Although this is an
+aesthetic judgement and there&apos;s nothing intrinsically wrong with it, there
+are more idiomatic ways to write reducers.</p>
+<p>First of all a switch statement is the poor cousins of <a href="http://learnyouahaskell.com/syntax-in-functions" target="_blank">pattern matching and
+guards</a>. Take a look:</p>
+<pre><code class="lang-haskell"><span class="hljs-title">calculatorReducer</span> <span class="hljs-string">&quot;add&quot;</span>      state payload = state + payload
+<span class="hljs-title">calculatorReducer</span> <span class="hljs-string">&quot;subtract&quot;</span> state payload = state - payload
+<span class="hljs-title">calculatorReducer</span> <span class="hljs-string">&quot;multiply&quot;</span> state payload = state * payload
+<span class="hljs-title">calculatorReducer</span> <span class="hljs-string">&quot;divide&quot;</span>   state payload = state / payload
+<span class="hljs-title">calculatorReducer</span> _          state _       = state
+
+<span class="hljs-comment">-- or</span>
+<span class="hljs-title">calculatorReducer</span> <span class="hljs-typedef"><span class="hljs-keyword">type</span> state payload</span>
+  | eq <span class="hljs-string">&quot;add&quot;</span>      = state + payload
+  | eq <span class="hljs-string">&quot;subtract&quot;</span> = state + payload
+  ...
+  <span class="hljs-keyword">where</span> eq = (===) <span class="hljs-typedef"><span class="hljs-keyword">type</span></span>
+</code></pre>
+<p>This would be the equivalent of our previous example in Haskell. Of course, we
+can improve this my using Haskell&apos;s features, specially, I would say, proper
+types instead of strings for the action types (now you probably have a better
+clue why it is called &quot;type&quot; in JS :D), but the good news it that there is an
+interesting function in Ramda to get us a little closer to that, namely,
+<code>cond</code>.</p>
+<p>Here&apos;s the gist of <code>cond</code>:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> fn = cond([
+  [equals(<span class="hljs-number">0</span>),   always(<span class="hljs-string">&apos;water freezes at 0&#xB0;C&apos;</span>)],
+  [equals(<span class="hljs-number">100</span>), always(<span class="hljs-string">&apos;water boils at 100&#xB0;C&apos;</span>)],
+  [T,           (temp) =&gt; <span class="hljs-string">`nothing special happens at <span class="hljs-subst">${temp}</span>&#xB0;C`</span>]
+])
+fn(<span class="hljs-number">0</span>) <span class="hljs-comment">//=&gt; &apos;water freezes at 0&#xB0;C&apos;</span>
+fn(<span class="hljs-number">50</span>) <span class="hljs-comment">//=&gt; &apos;nothing special happens at 50&#xB0;C&apos;</span>
+fn(<span class="hljs-number">100</span>) <span class="hljs-comment">//=&gt; &apos;water boils at 100&#xB0;C&apos;</span>
+</code></pre>
+<p>So if the value passed to the function matches 0, it runs the first function
+and so on, until getting to final condition <code>T</code>, which is basically the &quot;true
+function&quot;, i.e a function that always returns true (like in <code>() =&gt; true</code>), so
+it always matches any unmatched value, working pretty much as Haskell&apos;s
+<code>otherwise</code> or JS&apos;s <code>default</code>.</p>
+<p>So one more idiomatic - in the functional context &#x2013; way of building a reducer,
+would be to resort to this helper:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> typeHandlers = cond([
+  [equals(<span class="hljs-string">&quot;add&quot;</span>),      (type, state, payload) =&gt; state + payload],
+  [equals(<span class="hljs-string">&quot;subtract&quot;</span>), (type, state, payload) =&gt; state - payload],
+  [equals(<span class="hljs-string">&quot;multiply&quot;</span>), (type, state, payload) =&gt; state * payload],
+  [equals(<span class="hljs-string">&quot;divide&quot;</span>),   (type, state, payload) =&gt; state / payload],
+  [T,                  (type, state, payload) =&gt; state]
+])
+
+<span class="hljs-keyword">const</span> calculatorReducer = (state, { type, payload }) =&gt;
+  typeHandlers(type, state, payload)
+</code></pre>
+<p>Although this is more composable than a switch, since you can add items to the
+list dynamically, and more idiomatic functionally speaking, it seems still too
+verbose and not really idiomatic in a JavaScript context (which I guess it&apos;s a
+hard to define thing to do... probably idiomatic JavaScript is either jQuery or
+injecting logic as tag&apos;s attributes :D).</p>
+<p>So by looking at <code>cond</code> and the specific use of it in reducers, it seems it&apos;s
+always the case we wanna use <code>equals</code> in the condition (except for T), and
+always a function with the reducer arguments as the 2nd parameter. Therefore,
+it is natural to assume we could end up with a configuration like this:</p>
+<pre><code class="lang-js">{
+  add: (state, payload) =&gt; state + payload,
+  subtract: (state, payload) =&gt; state - payload,
+  ...
+}
+</code></pre>
+<p>We could also remove the <code>action</code> being passed to the function (something that
+<code>cond</code> would always do) by wrapping it, and have the T condition as a default.</p>
+<p>This is what you&apos;ll find in the <code>guard</code> helper. It is a little
+syntactic sugar over Ramda&apos;s <code>cond</code>. Here&apos;s the full example:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> calculatorReducer = guard({
+  add: (state, payload) =&gt; state + payload,
+  subtract: (state, payload) =&gt; state - payload,
+  multiply: (state, payload) =&gt; state * payload,
+  divide: (state, payload) =&gt; state / payload
+})
+</code></pre>
+<p>Mutch more brief.</p>
+<p>You will find something very similar in the Redux world in redux-actions&apos;s
+<a href="https://github.com/acdlite/redux-actions#handleactionsreducermap-defaultstate" target="_blank">handleActions</a>.</p>
+<p>But still, if we look into Ramda&apos;s utilities we will find
+functions with exactly the same signatures we need here, namely <code>Number &#x2192; Number
+&#x2192; Number</code> (gets two numbers, returns a number). As examples,
+<a href="http://ramdajs.com/0.21.0/docs/#add" target="_blank"><code>add</code></a>,
+<a href="http://ramdajs.com/0.21.0/docs/#subtract" target="_blank"><code>subtract</code></a>,
+<a href="http://ramdajs.com/0.21.0/docs/#multiply" target="_blank"><code>multiply</code></a> and
+<a href="http://ramdajs.com/0.21.0/docs/#divide" target="_blank"><code>divide</code></a>.</p>
+<p>Therefore, we can do:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> calculatorReducer = guard({
+  add: add,
+  subtract: subtract,
+  multiply: multiply,
+  divide: divide
+})
+</code></pre>
+<p>And finally, this is the same as:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> calculatorReducer = guard({ add, subtract, multiply, divide })
+</code></pre>
+<p>As a final note, you may be wondering what are the advantages of implementing
+this on top of <code>cond</code>, instead of a more &quot;traditional&quot; (in the JS world) way,
+like other libraries do. Apart from the fact it follows the general Act way of
+building things it gives you some nice alternatives. For instance, if you may need
+a more tricky condition, you can still do that, using arrays instead of an object:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> load = equals(<span class="hljs-string">&apos;load&apos;</span>)
+<span class="hljs-keyword">const</span> unload = complement(load)
+<span class="hljs-keyword">const</span> loading = set(lensProp(<span class="hljs-string">&apos;loading&apos;</span>))
+
+<span class="hljs-keyword">const</span> reducer = guard([
+  [load, loading(<span class="hljs-literal">true</span>)],
+  [unload, loading(<span class="hljs-literal">false</span>)] <span class="hljs-comment">// runs for all actions except `&apos;load&apos;`</span>
+])
+</code></pre>
+<p>And as you can see, using Ramda&apos;s lens make it all so much nicer.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../docs/concepts/single-model-and-reducer.html" class="navigation navigation-prev " aria-label="Previous page: Single model &amp; reducer"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../docs/concepts/actions.html" class="navigation navigation-next " aria-label="Next page: Actions"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

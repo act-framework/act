@@ -1,0 +1,10 @@
+@import '../main.css';
+
+.red {
+  background: red;
+}
+
+.padded {
+  padding: 40px;
+}
+

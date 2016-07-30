@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '4'
+before_script:
+- npm install
+- lerna bootstrap
+script:
+  - cd packages/main/ && npm test
+cache:
+  directories:
+    - node_modules
+    - .nvm
