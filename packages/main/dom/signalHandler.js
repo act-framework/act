@@ -1,12 +1,12 @@
-import always from '../signals/processes/always'
-import fromEvent from '../signals/sources/fromEvent'
-import identity from '../signals/processes/identity'
+import always from 'zen-signals/always'
+import fromEvent from 'zen-signals/fromEvent'
+import id from 'zen-signals/id'
 import isArrayLike from 'ramda/src/isArrayLike'
 import map from 'ramda/src/map'
 import toPairs from 'ramda/src/toPairs'
 
 const eventsAsList = (events) => {
-  if (typeof events === 'function' || typeof events === 'string') return [[events, identity]]
+  if (typeof events === 'function' || typeof events === 'string') return [[events, id]]
   if (isArrayLike(events)) return isArrayLike(events[0]) ? events : [events]
   if (typeof events === 'object') return toPairs(events)
   return []
@@ -47,7 +47,7 @@ class SignalHandler {
 
       this.sources[type] = fromEvent(node, this.event)
 
-      this.processes[type](this.sources[type].start())((payload) => {
+      this.processes[type](this.sources[type])((payload) => {
         action(payload, this.history)
       })
     }, this.events)

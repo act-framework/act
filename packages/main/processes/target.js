@@ -5,7 +5,7 @@
  *
  */
 
-import map from '../signals/processes/map'
+import map from 'zen-signals/map'
 import prop from 'ramda/src/prop'
 
 export default map(prop('target'))

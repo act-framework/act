@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.12
+
+- Moves all signals to `zen-signals` library. No changes to the API.
+
 #### 0.0.11
 
 - Adds `takeBetween` process

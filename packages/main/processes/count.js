@@ -1,7 +1,7 @@
 import add from 'ramda/src/add'
-import always from '../signals/processes/always'
-import pipe from '../signals/pipe'
-import fold from '../signals/processes/fold'
+import always from 'zen-signals/always'
+import pipe from 'ramda/src/pipe'
+import fold from 'zen-signals/fold'
 
 export default pipe(
   always(1),
