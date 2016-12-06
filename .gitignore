@@ -2,3 +2,4 @@ node_modules
 _book
 examples/*/bundle.js
 npm-debug.log
+.DS_Store

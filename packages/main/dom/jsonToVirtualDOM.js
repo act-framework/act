@@ -51,7 +51,7 @@ const processChildren = (el, history, tag, children, namespaces = []) => {
 
 const jsonToVirtualDOM = (json, history, namespaces = []) => {
   const svgns = 'http://www.w3.org/2000/svg'
-  
+
   if (!isArrayLike(json)) {
     return jsonToVirtualDOM(['span', json], history)
   }
@@ -74,7 +74,7 @@ const jsonToVirtualDOM = (json, history, namespaces = []) => {
   if (tag === 'svg' && namespaces.indexOf(svgns) < 0) {
     namespaces = [...namespaces, svgns]
   }
-  
+
   if (isArrayLike(children)) {
     children = map((el) => processChildren(el, history, tag, children, namespaces), children)
   } else if (typeof children === 'function') {
@@ -124,10 +124,76 @@ function attrToProp (ats) {
   }, transformableAttrs)
 }
 
+const eventsAsList = (events) => {
+  if (typeof events === 'function' || typeof events === 'string') return [[events, identity]]
+  if (isArrayLike(events)) return isArrayLike(events[0]) ? events : [events]
+  if (typeof events === 'object') return toPairs(events)
+  return []
+}
+
+import identity from '../signals/processes/identity'
+import toPairs from 'ramda/src/toPairs'
+import always from '../signals/processes/always'
+
+function start (event, events, history, ns)
+{
+  const evs = eventsAsList(events)
+  console.log('start0', events, history, ns)
+
+  // this.sources[type] = fromEvent(node, this.event)
+
+  // this.processes[type](this.sources[type].start())((payload) => {
+    // action(payload, this.history)
+  // })
+
+  const cb = (next) =>
+  {
+    return (e) =>
+    {
+      next(e)
+    }
+  }
+
+  const actions = []
+  const processes = []
+  const calls = map(([type, value]) => {
+    console.log('type', type)
+    const action = (payload, history) =>
+      history.push({ type: [...ns, type].join('.'), payload })
+
+    actions[type] = action
+    processes[type] = () => value
+
+    // if (prev) {
+      // if (
+        // prev.processes[type] === this.processes[type] &&
+        // prev.actions[type] === this.actions[type]) {
+        // this.sources[type] = prev.sources[type]
+        // return
+      // }
+      // prev.sources[type].stop()
+    // }
+
+    return processes[type](cb)((payload) => {
+      console.log("FINAL", payload, action)
+      action(payload, history)
+    })
+  }, events)
+
+  return (e) => {
+    console.log('e', e)
+    map(call => call(e), calls)
+  }
+
+}
+
 function injectEventHandlers (ats, history, namespaces) {
   const eventsInAttrs = intersection(Object.keys(ats), events)
+  ats.foo = 1
   map((event) => {
-    ats[`${event}-handler`] = signalHandler(event, ats[event], history, namespaces)
+    console.log('>>>', event)
+    ats.onclick = start(event, ats[event], history, namespaces)
+    // = signalHandler(event, ats[event], history, namespaces)
   }, eventsInAttrs)
 }
 
