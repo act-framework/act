@@ -1,6 +1,6 @@
-import filter from '../signals/processes/filter'
+import filter from 'zen-signals/filter'
 import equals from 'ramda/src/equals'
-import pipe from '../signals/pipe'
+import pipe from 'ramda/src/pipe'
 import keyCode from './keyCode'
 
 export default (code) => pipe(

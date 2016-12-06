@@ -16,7 +16,7 @@
  * ```
  */
 
-import map from '../signals/processes/map'
+import map from 'zen-signals/map'
 
 export default map((value) => {
   console.log('[ACT] Processor log:', value)

@@ -1,4 +1,4 @@
-import map from '../signals/processes/map'
+import map from 'zen-signals/map'
 
 // clipboard
 const clipboard = (mime) =>

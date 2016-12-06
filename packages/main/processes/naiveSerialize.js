@@ -1,5 +1,5 @@
-import map from '../signals/processes/map'
-import pipe from '../signals/pipe'
+import map from 'zen-signals/map'
+import pipe from 'ramda/src/pipe'
 import mapObjectIndex from 'ramda/src/map'
 import identity from 'ramda/src/identity'
 import _map from 'ramda/src/map'

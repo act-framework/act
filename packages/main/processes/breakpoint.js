@@ -1,8 +1,8 @@
-import distinct from '../signals/processes/distinct'
+import distinct from 'zen-signals/distinct'
 import find from 'ramda/src/find'
 import head from 'ramda/src/head'
-import map from '../signals/processes/map'
-import pipe from '../signals/pipe'
+import map from 'zen-signals/map'
+import pipe from 'ramda/src/pipe'
 import toPairs from 'ramda/src/toPairs'
 import width from './width'
 
